@@ -3,6 +3,8 @@ Autoit-Gui-Skeleton (AGS)
 
 > Proposes to provide an architecture and an organization to efficiently build an desktop application Windows with AutoIt.
 
+<br/>
+
 - [Autoit-Gui-Skeleton (AGS)](#autoit-gui-skeleton--ags-)
   * [Architecture](#architecture)
     + [Directory `assets`](#directory--assets-)
@@ -131,7 +133,7 @@ The `Global` statement is used to explicitly indicate which access to the scope 
 
 The statement `Global Const` is used to declare a constant. Once created a global constant, you can not change the value of a constant. In addition, you can not replace an existing variable with a constant.
 
-```
+```AutoIt
 ;; myApplication_GLOBAL.au3 ;;
 
 ; Application main constants
@@ -239,13 +241,14 @@ EndFunc
 (...)
 ```
 
+
 Some comments:
 
- - All uppercase variables (`$ APP_NAME`,` $ APP_WIDTH`, `$ APP_HEIGHT`) are declared in the global scope of the application. Their definition is done in the file `myApplication_GLOBAL.au3`;
- - `_GUI_Init_Menu ()` is used to create a menu control in the main GUI;
- - `_GUI_Init_Footer ()` is used to create footer elements in the main GUI. Its definition is made in a separate special file. All footer elements are visible in all views by default, so we do not need to manage its visibility.
- - `_GUI_Init_View_Welcome ()` is used to create GUI elements for a "Welcome" view name. All items declared in this method are hidden by default. To display the "Welcome" view, that is, to make it visible, simply call the method with this parameter `_GUI_ShowHide_View_Welcome ($ GUI_SHOW)`. And to hide them, just call `_GUI_ShowHide_View_Welcome ($ GUI_HIDE)`;
- - `_GUI_HandleEvents ()` handles all user interactions and events by parsing the return message with the `GUIGetMsg ()` method. The event return with the GUIGetMsg method is the control ID of the control that sends the message. This method calls another specific handler event per view, for example `_GUI_HandleEvents_View_Welcome ($ msg)`;
+- All uppercase variables (`$ APP_NAME`,` $ APP_WIDTH`, `$ APP_HEIGHT`) are declared in the global scope of the application. Their definition is done in the file `myApplication_GLOBAL.au3`;
+- `_GUI_Init_Menu ()` is used to create a menu control in the main GUI;
+- `_GUI_Init_Footer ()` is used to create footer elements in the main GUI. Its definition is made in a separate special file. All footer elements are visible in all views by default, so we do not need to manage its visibility.
+- `_GUI_Init_View_Welcome ()` is used to create GUI elements for a "Welcome" view name. All items declared in this method are hidden by default. To display the "Welcome" view, that is, to make it visible, simply call the method with this parameter `_GUI_ShowHide_View_Welcome ($ GUI_SHOW)`. And to hide them, just call `_GUI_ShowHide_View_Welcome ($ GUI_HIDE)`;
+- `_GUI_HandleEvents ()` handles all user interactions and events by parsing the return message with the `GUIGetMsg ()` method. The event return with the GUIGetMsg method is the control ID of the control that sends the message. This method calls another specific handler event per view, for example `_GUI_HandleEvents_View_Welcome ($ msg)`;
 
 
 ### Declare code for all views in dedicated files
