@@ -20,6 +20,23 @@ Autoit-Gui-Skeleton (AGS)
     + [Déclarez le code de toutes les vues dans des fichiers spécifiquement dédiés](#d-clarez-le-code-de-toutes-les-vues-dans-des-fichiers-sp-cifiquement-d-di-s)
     + [Gestionnaire principal des événements](#gestionnaire-principal-des--v-nements)
     + [Changer de vue](#changer-de-vue)
+  * [Package et déploiement](#package-et-d-ploiement)
+    + [Motivations](#motivations)
+    + [Windows batch, le chef d'orquestre](#windows-batch--le-chef-d-orquestre)
+      - [Etape 1/7 : créer le répertoire de sortie](#etape-1-7---cr-er-le-r-pertoire-de-sortie)
+      - [Étape 2/7 : Compilation AutoIt du programme principal](#-tape-2-7---compilation-autoit-du-programme-principal)
+      - [Étape 3/7 : Copie des assets](#-tape-3-7---copie-des-assets)
+      - [Étape 4/7 : Date de génération](#-tape-4-7---date-de-g-n-ration)
+      - [Étape 5/7 : Création de l'archive zip](#-tape-5-7---cr-ation-de-l-archive-zip)
+      - [Étape 6/7 : Création de l'installeur Windows via InnoSetup](#-tape-6-7---cr-ation-de-l-installeur-windows-via-innosetup)
+      - [Étape 7/7 : Suppression du repertoire temporaire de sortie](#-tape-7-7---suppression-du-repertoire-temporaire-de-sortie)
+    + [Fonctionnalités de l'installeur](#fonctionnalit-s-de-l-installeur)
+      - [Gestion i18n](#gestion-i18n)
+      - [Déjà installé ?](#d-j--install---)
+      - [Messages complémentaires dans l'installeur : accord licence, prérequis & historique projet](#messages-compl-mentaires-dans-l-installeur---accord-licence--pr-requis---historique-projet)
+      - [Ajout dans le menu démarrer Windows](#ajout-dans-le-menu-d-marrer-windows)
+      - [Lancer l'application à la fin de l'installation](#lancer-l-application---la-fin-de-l-installation)
+      - [Changer les éléments graphiques de l'installeur](#changer-les--l-ments-graphiques-de-l-installeur)
   * [A propos](#a-propos)
     + [Historique](#historique)
     + [Contribution](#contribution)
@@ -345,6 +362,216 @@ Func _GUI_Hide_all_view()
    _GUI_ShowHide_View_About($GUI_HIDE)
 EndFunc
 ```
+
+<br/>
+
+## Package et déploiement
+
+### Motivations
+
+Pour faciliter le déploiement d'une application bureautique Windows, on se propose de construire un installeur Windows avec la solution [InnoSetup](http://www.jrsoftware.org/isinfo.php).
+
+Pour préparer un package et génerer un installeur, les grandes étapes consiste à :
+
+- Attribuer un numéro de version à l'application ;
+- Compiler l'application via le point d'entrée principal `myApplication.au3` avec le compilateur `aut2exe` ;
+- Copier les assets (images, fichiers...) nécessaires au bon fonctionnement de l'application dans le répertoire de sortie ;
+- Créer une archive zip pour recetter l'application ;
+- Et enfin construire l'installeur en compilant le script InnoSetup associé.
+
+Toutes les étapes, pour packager l'application et générer l'installeur, peuvent être pilotées depuis un batch Windows, pour des raisons évidentes de rejouabilité et de facilité.
+
+
+### Windows batch, le chef d'orquestre
+
+C'est le fichier batch Windows `.\deployment\deployment_autoit_application.bat` qui joue le rôle de chef d'orquestre. Dans le répertoire `.\deployment`, il va créer les répertoires `\releases\vx.y.z\` où seront construits l'archive zip de l'application et l'installeur Windows.
+
+![AGS-package-and-deployment](docs/AGS-package-deployment/AGS-package-and-deployment.gif)
+
+Pour ce faire, il va suivre les 7 étapes suivantes :
+
+#### Etape 1/7 : créer le répertoire de sortie
+
+Avant l'execution du batch, il est nécessaire de renseigner différentes variables :
+
+   Variable  |   Description
+-------------|-----------------
+`%VERSION%`       |  Version attribué à l'application.
+`%NAME_PROJECT%`  |  Sert pour nommer l'éxécutable de l'application. Remarquons que le numéro de version apparaît également dans le nom de l'éxéctuable.
+`%AUT2EXE_AU3%`   |  Le nom du fichier AutoIt principal (`myApplication.au3`)
+`%AUT2EXE_ICON%`  |  L'îcone de l'application (`%FOLDER_SRC%\assets\images\myApplication.ico`)
+`%ZIP_CLI%`       |  Chemin du binaire 7zip pour créer une archive (`"C:\Program Files\7-Zip\7z.exe"`). Je vous conseille de l'installer via le gestionnaire Chocolatey.
+`%ISCC_CLI%`      |  Chemin du binaire du compilateur InnoSetup (`"C:\Program Files (x86)\Inno Setup 5\ISCC.exe"`). Je vous conseille de l'installer via le gestionnaire Chocolatey.
+
+A partir de ces variables, il va construire le repertoire de sortie, dans lequel le fichier AutoIt principal sera compiler : `.\releases\v1.0.0\myApplication_v1.0.0\`.
+
+
+#### Étape 2/7 : Compilation AutoIt du programme principal
+
+en ligne de commande avec le binaire `aut2exe`. Attention, il est nécessaire que ce dernier soit renseigner dans la variable d'environnement PATH du système d'exploitation.
+
+```Batchfile
+:: deployment_autoit_application.bat ::
+
+(...)
+
+set AUT2EXE_ARGS=/in "%FOLDER_SRC%\%AUT2EXE_AU3%" /out "%FOLDER_OUT%\%NAME_EXE%" /icon
+aut2exe %AUT2EXE_ARGS%
+echo Compilation AutoIt is finished.
+```
+
+
+#### Étape 3/7 : Copie des assets
+
+On copie dans le répertoire de sortie, toutes les assets (images, fichiers...) nécessaires au bon fonctionnement de l'application et à la génération de l'installeur.
+
+
+#### Étape 4/7 : Date de génération
+
+Pour tracer la date de génération, on créé un fichier intitulé `".v%VERSION%"` dans le repertoire de sortie.
+
+
+#### Étape 5/7 : Création de l'archive zip
+
+La création de l'archive zip necessite que 7zip soit installé sur le poste et que la variable `%ZIP_CLI%` soit correctement renseigner vers le chemin du binaire. La commande qui générer l'archive est la suivante :
+
+```Batchfile
+set ZIP_CLI="C:\Program Files\7-Zip\7z.exe"
+
+%ZIP_CLI% a -tzip %NAME_PROJECT%_v%VERSION%.zip "%NAME_PROJECT%_v%VERSION%
+echo * The zip has been created.
+```
+
+
+#### Étape 6/7 : Création de l'installeur Windows via InnoSetup
+
+C'est le fichier InnoSetup `.\deployment\deployment_autoit_application.iss` qui contient toutes les instructions pour générer l'installeur Windows associé.
+
+On passe les arguments definis dans le batch Windows au script ISS via le jeu `/dNameVariable=ValueVariable` en ligne de commande. Ainsi il est suffisant de configurer qu'une seul fois les variables projet (nom, version...) dans le fichier batch Windows.
+
+> **!!! Attention !!!**
+>
+> Dans le fichier script ISS, il existe d'autres variables à configurer  : `ApplicationPublisher`, `ApplicationURL`, `ApplicationGUID`, ...
+
+```Batchfile
+set ISCC_CLI="C:\Program Files (x86)\Inno Setup 5\ISCC.exe"
+set ISCC_SCRIPT=deployment_autoit_application.iss
+
+echo * Launch compilation with iscc
+%ISCC_CLI% %ISCC_SCRIPT% /dApplicationVersion=%VERSION% /dApplicationName=%NAME_PROJECT%
+echo * Compilation has been finished.
+```
+
+
+#### Étape 7/7 : Suppression du repertoire temporaire de sortie
+
+Il est suffisant de ne garder que l'archive Zip et l'installeur Windows à la fin du processus.
+
+![AGS-package-and-deployment-result](docs/AGS-package-deployment/AGS-package-and-deployment-result.png)
+
+
+### Fonctionnalités de l'installeur
+
+
+#### Gestion i18n
+
+Pour ajouter une nouvelle langue, il suffit d'ajouter dans la section `[languages]` la langue fournit dans le compilateur. Cela va traduire l'ensemble des messages natifs à InnoSetup. Attention à l'expcetion des boutons OUI/NON utilisé dans MsgBox. C'est dernier serton forcement dans la langue du système d'exploitation.
+
+```Pascal
+[Languages]
+Name: "en"; MessagesFile: compiler:Default.isl;
+Name: "french"; MessagesFile: "compiler:Languages\French.isl"
+```
+
+Pour traduire les autres messages, il suffit de les déclarer dans la section `[CustomMessages]`, en préfixant les variables avec la langue (`en`, `french`, `nl`, ...). Plus d'information : http://www.jrsoftware.org/ishelp/index.php?topic=languagessection
+
+```Pascal
+[CustomMessages]
+french.CheckInstall=est déjà installé sur ce PC.
+french.CheckInstallAction=Souhaitez-vous désinstaller cette version existante avant de poursuivre?
+en.CheckInstall=is already install on this PC.
+en.CheckInstallAction=Do you want to uninstall this existing version before continuing?
+```
+
+Ainsi au démarrage de l'installeur, ce dernier demande à l'utilisateur de choisir la langue qu'il doit utiliser.
+
+![innosetup_choose_language](docs/AGS-package-deployment/innosetup_choose_language.png)
+
+
+#### Déjà installé ?
+
+Pour éviter d'installer plusieurs fois l'application sur le poste client, l'installeur vérifie au préalable qu'il bn'est pas déjà présent.
+
+![](docs/AGS-package-deployment/innosetup_check_already_install.png)
+
+Pour ce faire, il se base sur le GUID (global unique identifiant) définit dans le script InnoSetup. Il est important de ne pas changer de code entre différentes version d'application et qu'il soit bien unique. L'IDE fournit par InnoSetup fournit un outil pour en générer un nouveau accessible via le menu : *Tools > Generate GUID inside the IDE*.
+
+```Pascal
+; NOTE: The value of AppId uniquely identifies this application.
+; Do not use the same AppId value in installers for other applications.
+; (To generate a new GUID, click Tools | Generate GUID inside the IDE.)
+#define ApplicationGUID "6886E28B-AAB5-4866-BCD5-E1B4C171A87A"
+#define ApplicationID ApplicationName + "_" + ApplicationGUID
+```
+
+De plus l'installeur ajoute dans la base de registre Windows la clé `SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\{#ApplicationID}_is1`. Lorsque l'application est desinstallé, cette clé est supprimé. Ainsi il nous suffit de vérifier la présence de cette clé dans la base de registre pour savoir si l'application a déjà été installé.
+
+![](docs/AGS-package-deployment/innosetup_check_already_install2.png)
+
+
+#### Messages complémentaires dans l'installeur : accord licence, prérequis & historique projet
+
+Pour configurer les différents messages à afficher dans l'installeur, notamment les accords de licence, il suffit de renseigner les fichiers textes dans le repertoire `./assets/`
+
+- AFTER_INSTALL.txt : généralement pour afficher la roadmap et historique projet ;
+- BEFORE_INSTALL.txt : généralement pour afficher les prérequis de l'application ;
+- LICENSE.txt :  la licence d'utilisation.
+
+![](docs/AGS-package-deployment/innosetup_choose_license_agreement.png)
+
+
+#### Ajout dans le menu démarrer Windows
+
+Pour ajouter des éléments dans le menu démarrer de Windows, on renseigne la section `[Icons]` dans le script InnoSetup de la manière suivante :
+
+```Pascal
+[Icons]
+Name: "{group}\{#ApplicationName}"; Filename: "{app}\{#ApplicationExeName}"; IconFilename: {app}\assets\images\myApplication.ico;
+Name: "{group}\{cm:ProgramOnTheWeb,{#ApplicationName}}"; Filename: "{#ApplicationURL}";
+Name: "{group}\{cm:UninstallProgram,{#ApplicationName}}"; Filename: "{uninstallexe}"; IconFilename: {app}\assets\images\setup.ico;
+Name: "{commondesktop}\{#ApplicationName}"; Filename: "{app}\{#ApplicationExeName}"; IconFilename: {app}\assets\images\myApplication.ico; IconIndex: 0
+```
+
+Et on obtient :
+
+![](docs/AGS-package-deployment/innosetup_finish2.png)
+
+
+#### Lancer l'application à la fin de l'installation
+
+![](docs/AGS-package-deployment/innosetup_finish.png)
+
+
+#### Changer les éléments graphiques de l'installeur
+
+On a 2 images et 2 icones utilisés dans l'installeur. Elles sont stockées dans le répertoire `.\assets\images`. Les images sont forcement au format bmp et doivent respecter des tailles standards.
+
+Images use in setup       | File  | Comments
+--------------------------|-------|---------
+UninstallDisplayIcon      | .\assets\images\myApplication.ico | Must be an ico
+SetupIconFile             | .\assets\images\setup.ico  | Must be an ico
+WizardImageFile           | .\assets\images\innosetup_background.bmp  |  Must be a 500x313 bmp image
+WizardSmallImageFile      | .\assets\images\innosetup_image.bmp  | Must be a 50x50 bmp image
+
+Dans le script InnoSetup, elles sont utilisées de la manière suivante :
+
+```Pascal
+UninstallDisplayIcon={app}\assets\images\myApplication.ico
+WizardImageFile={#PathAssets}\images\innosetup_background.bmp
+WizardSmallImageFile={#PathAssets}\images\innosetup_image.bmp
+SetupIconFile={#PathAssets}\images\setup.ico
+```
+
 
 
 <br/>
