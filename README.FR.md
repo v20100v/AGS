@@ -1,6 +1,10 @@
 Autoit-Gui-Skeleton (AGS)
 =========================
 
+*Read this in other languages: [English](README.md), [French](README.FR.md)*
+
+<br/>
+
 > Fournir une architecture et une organisation pour construire efficacement une application bureautique Windows via la solution AutoIt.
 
 <br/>

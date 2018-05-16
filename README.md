@@ -1,6 +1,10 @@
 Autoit-Gui-Skeleton (AGS)
 =========================
 
+*Read this in other languages: [English](README.md), [French](README.FR.md)*
+
+<br/>
+
 > Proposes to provide an architecture and an organization to efficiently build an desktop application Windows with AutoIt.
 
 <br/>
