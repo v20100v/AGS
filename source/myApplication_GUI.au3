@@ -1,5 +1,5 @@
 #cs ----------------------------------------------------------------------------
-Graphic User Interface definition
+Graphic User Interface
 
 AutoIt Version : 3.3.14.5
 Author         : v20100v <7567933+v20100v@users.noreply.github.com>
@@ -73,10 +73,18 @@ Func _GUI_HandleEvents()
    WEnd
 EndFunc
 
+
+;===========================================================================================================
+; Use it to configure the main GUI (set icon, background color...)
+;
+; @param void
+; @return void
+;===========================================================================================================
 Func _GUI_Configuration()
    GUISetIcon("./assets/images/myApplication.ico") ; icone de l'application
    GUISetBkColor(0xFFFFFF) ; background color de l'application
 EndFunc
+
 
 ;===========================================================================================================
 ; Hide elements for all views handle in methods _GUI_ShowHide_View_xxx

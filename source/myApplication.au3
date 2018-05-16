@@ -28,6 +28,5 @@ Opt('MustDeclareVars', 1)
 #include 'myApplication_GUI.au3'
 
 
-
 ; Start main graphic user interface
 _main_GUI()
