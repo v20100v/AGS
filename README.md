@@ -30,7 +30,7 @@ Autoit-Gui-Skeleton (AGS)
       - [Step 5/7: Creating the zip archive](#step-5-7--creating-the-zip-archive)
       - [Step 6/7: Creating the Windows Installer via InnoSetup](#step-6-7--creating-the-windows-installer-via-innosetup)
       - [Step 7/7: Deleting the temporary exit directory](#step-7-7--deleting-the-temporary-exit-directory)
-    + [Fonctionnalités de l'installeur](#fonctionnalit-s-de-l-installeur)
+    + [Features of windows setup](#features-of-windows-setup)
       - [1 - Handler i18n](#1---handler-i18n)
       - [2 - Already install ?](#2---already-install--)
       - [3 - Additional messages in the setup : license agreement, prerequisites & project history](#3---additional-messages-in-the-setup---license-agreement--prerequisites---project-history)
@@ -41,7 +41,6 @@ Autoit-Gui-Skeleton (AGS)
     + [Release history](#release-history)
     + [Contributing](#contributing)
     + [License](#license)
-
 
 <br/>
 
@@ -350,6 +349,7 @@ Func _GUI_HandleEvents()
 EndFunc
 ```
 
+
 ### Switch view
 
 To switch from a start view to another arrival view, you first have to hide all the graphic elements, then in a second time to display only those of the arrival view. So, how to hide all the graphic elements? Just with a `_GUI_Hide_all_view()` method that will call the view manager of each view. These are conventionally named `_GUI_ShowHide_View_Xxx`.
@@ -362,7 +362,6 @@ Func _GUI_Hide_all_view()
    _GUI_ShowHide_View_About($GUI_HIDE)
 EndFunc
 ```
-
 
 
 <br/>
@@ -412,6 +411,7 @@ From these variables, it will build the output directory, in which the main Auto
 
 
 <br/>
+
 #### Step 2/7: AutoIt compilation of the main program
 
 The main AutoIt program is compiled from the command line with the `aut2exe` binary. Attention, it is necessary that this last one is to inform in the variable of environment PATH of the operating system.
@@ -426,19 +426,23 @@ aut2exe %AUT2EXE_ARGS%
 echo Compilation AutoIt is finished.
 ```
 
+
 <br/>
+
 #### Step 3/7: Copy Assets
 
 We copy in the output directory, all assets (images, files ...) necessary for the proper functioning of the application and the generation of the installer.
 
 
 <br/>
+
 #### Step 4/7: Generation Date
 
 To plot the build date, we create a file named `".v%VERSION%"` in the output directory.
 
 
 <br/>
+
 #### Step 5/7: Creating the zip archive
 
 Creating the zip archive requires that 7zip is installed on the computer and that the `%ZIP_CLI%` variable is correctly filled in to the binary path. The command that generates the archive is as follows:
@@ -452,6 +456,7 @@ echo * The zip has been created.
 
 
 <br/>
+
 #### Step 6/7: Creating the Windows Installer via InnoSetup
 
 This is the InnoSetup file `.\Deployment\deployment_autoit_application.iss` which contains all the instructions for generating the associated Windows installer.
@@ -473,6 +478,7 @@ echo * Compilation has been finished.
 
 
 <br/>
+
 #### Step 7/7: Deleting the temporary exit directory
 
 It is sufficient to keep only the Zip archive and the Windows installer at the end of the process.
@@ -481,7 +487,8 @@ It is sufficient to keep only the Zip archive and the Windows installer at the e
 
 
 <br/>
-### Fonctionnalités de l'installeur
+
+### Features of windows setup
 
 
 #### 1 - Handler i18n
@@ -510,6 +517,7 @@ So when starting the setup, it asks the user to choose the language he should us
 
 
 <br/>
+
 #### 2 - Already install ?
 
 In order to avoid installing the application on the client computer several times, the installer checks beforehand that it is not already present.
@@ -532,6 +540,7 @@ In addition, the installer adds the `SOFTWARE\Microsoft\Windows\CurrentVersion\U
 
 
 <br/>
+
 #### 3 - Additional messages in the setup : license agreement, prerequisites & project history
 
 To configure the different messages to be displayed in the installer, including the license agreements, just fill in the text files in the `./assets/` directory.
@@ -544,6 +553,7 @@ To configure the different messages to be displayed in the installer, including 
 
 
 <br/>
+
 #### 4 - Add to Windows start menu
 
 To add items to the Windows start menu, enter the `[Icons]` section in the InnoSetup script as follows:
@@ -562,12 +572,14 @@ Et on obtient :
 
 
 <br/>
+
 #### 5 - Launch the application at the end of the installation
 
 ![](docs/AGS-package-deployment/innosetup_finish.png)
 
 
 <br/>
+
 ### Change the graphic elements of the installer
 
 There are 2 images and 2 icons used in the installer. They are stored in the `. \ Assets \ images` directory. The images are necessarily in the format bmp and must respect standard sizes.

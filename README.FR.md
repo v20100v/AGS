@@ -24,24 +24,23 @@ Autoit-Gui-Skeleton (AGS)
     + [Motivations](#motivations)
     + [Windows batch, le chef d'orquestre](#windows-batch--le-chef-d-orquestre)
       - [Etape 1/7 : créer le répertoire de sortie](#etape-1-7---cr-er-le-r-pertoire-de-sortie)
-      - [Étape 2/7 : Compilation AutoIt du programme principal](#-tape-2-7---compilation-autoit-du-programme-principal)
-      - [Étape 3/7 : Copie des assets](#-tape-3-7---copie-des-assets)
-      - [Étape 4/7 : Date de génération](#-tape-4-7---date-de-g-n-ration)
-      - [Étape 5/7 : Création de l'archive zip](#-tape-5-7---cr-ation-de-l-archive-zip)
-      - [Étape 6/7 : Création de l'installeur Windows via InnoSetup](#-tape-6-7---cr-ation-de-l-installeur-windows-via-innosetup)
-      - [Étape 7/7 : Suppression du repertoire temporaire de sortie](#-tape-7-7---suppression-du-repertoire-temporaire-de-sortie)
+      - [Etape 2/7 : Compilation AutoIt du programme principal](#etape-2-7---compilation-autoit-du-programme-principal)
+      - [Etape 3/7 : Copie des assets](#etape-3-7---copie-des-assets)
+      - [Etape 4/7 : Date de génération](#etape-4-7---date-de-g-n-ration)
+      - [Etape 5/7 : Création de l'archive zip](#etape-5-7---cr-ation-de-l-archive-zip)
+      - [Etape 6/7 : Création de l'installeur Windows via InnoSetup](#etape-6-7---cr-ation-de-l-installeur-windows-via-innosetup)
+      - [Etape 7/7 : Suppression du repertoire temporaire de sortie](#etape-7-7---suppression-du-repertoire-temporaire-de-sortie)
     + [Fonctionnalités de l'installeur](#fonctionnalit-s-de-l-installeur)
-      - [Gestion i18n](#gestion-i18n)
-      - [Déjà installé ?](#d-j--install---)
-      - [Messages complémentaires dans l'installeur : accord licence, prérequis & historique projet](#messages-compl-mentaires-dans-l-installeur---accord-licence--pr-requis---historique-projet)
-      - [Ajout dans le menu démarrer Windows](#ajout-dans-le-menu-d-marrer-windows)
-      - [Lancer l'application à la fin de l'installation](#lancer-l-application---la-fin-de-l-installation)
-      - [Changer les éléments graphiques de l'installeur](#changer-les--l-ments-graphiques-de-l-installeur)
+      - [1 - Gestion de l'i18n](#1---gestion-de-l-i18n)
+      - [2 - Déjà installé ?](#2---d-j--install---)
+      - [3 - Messages complémentaires dans l'installeur : accord licence, prérequis & historique projet](#3---messages-compl-mentaires-dans-l-installeur---accord-licence--pr-requis---historique-projet)
+      - [4 - Ajout dans le menu démarrer Windows](#4---ajout-dans-le-menu-d-marrer-windows)
+      - [5 - Lancer l'application à la fin de l'installation](#5---lancer-l-application---la-fin-de-l-installation)
+    + [Changer les éléments graphiques de l'installeur](#changer-les--l-ments-graphiques-de-l-installeur)
   * [A propos](#a-propos)
     + [Historique](#historique)
     + [Contribution](#contribution)
     + [Licence](#licence)
-
 
 <br/>
 
@@ -411,7 +410,7 @@ A partir de ces variables, il va construire le repertoire de sortie, dans lequel
 
 <br/>
 
-#### Étape 2/7 : Compilation AutoIt du programme principal
+#### Etape 2/7 : Compilation AutoIt du programme principal
 
 On compile le programme princial AutoIt en ligne de commande avec le binaire `aut2exe`. Attention, il est nécessaire que ce dernier soit renseigner dans la variable d'environnement PATH du système d'exploitation.
 
@@ -427,19 +426,22 @@ echo Compilation AutoIt is finished.
 
 
 <br/>
-#### Étape 3/7 : Copie des assets
+
+#### Etape 3/7 : Copie des assets
 
 On copie dans le répertoire de sortie, toutes les assets (images, fichiers...) nécessaires au bon fonctionnement de l'application et à la génération de l'installeur.
 
 
 <br/>
-#### Étape 4/7 : Date de génération
+
+#### Etape 4/7 : Date de génération
 
 Pour tracer la date de génération, on créé un fichier intitulé `".v%VERSION%"` dans le repertoire de sortie.
 
 
 <br/>
-#### Étape 5/7 : Création de l'archive zip
+
+#### Etape 5/7 : Création de l'archive zip
 
 La création de l'archive zip necessite que 7zip soit installé sur le poste et que la variable `%ZIP_CLI%` soit correctement renseigner vers le chemin du binaire. La commande qui générer l'archive est la suivante :
 
@@ -450,8 +452,9 @@ set ZIP_CLI="C:\Program Files\7-Zip\7z.exe"
 echo * The zip has been created.
 ```
 
+<br/>
 
-#### Étape 6/7 : Création de l'installeur Windows via InnoSetup
+#### Etape 6/7 : Création de l'installeur Windows via InnoSetup
 
 C'est le fichier InnoSetup `.\deployment\deployment_autoit_application.iss` qui contient toutes les instructions pour générer l'installeur Windows associé.
 
@@ -472,7 +475,8 @@ echo * Compilation has been finished.
 
 
 <br/>
-#### Étape 7/7 : Suppression du repertoire temporaire de sortie
+
+#### Etape 7/7 : Suppression du repertoire temporaire de sortie
 
 Il est suffisant de ne garder que l'archive Zip et l'installeur Windows à la fin du processus.
 
@@ -480,6 +484,7 @@ Il est suffisant de ne garder que l'archive Zip et l'installeur Windows à la fi
 
 
 <br/>
+
 ### Fonctionnalités de l'installeur
 
 
@@ -509,6 +514,7 @@ Ainsi au démarrage de l'installeur, ce dernier demande à l'utilisateur de choi
 
 
 <br/>
+
 #### 2 - Déjà installé ?
 
 Pour éviter d'installer plusieurs fois l'application sur le poste client, l'installeur vérifie au préalable qu'il bn'est pas déjà présent.
@@ -531,6 +537,7 @@ De plus l'installeur ajoute dans la base de registre Windows la clé `SOFTWARE\M
 
 
 <br/>
+
 #### 3 - Messages complémentaires dans l'installeur : accord licence, prérequis & historique projet
 
 Pour configurer les différents messages à afficher dans l'installeur, notamment les accords de licence, il suffit de renseigner les fichiers textes dans le repertoire `./assets/`
@@ -543,6 +550,7 @@ Pour configurer les différents messages à afficher dans l'installeur, notammen
 
 
 <br/>
+
 #### 4 - Ajout dans le menu démarrer Windows
 
 Pour ajouter des éléments dans le menu démarrer de Windows, on renseigne la section `[Icons]` dans le script InnoSetup de la manière suivante :
@@ -561,12 +569,14 @@ Et on obtient :
 
 
 <br/>
+
 #### 5 - Lancer l'application à la fin de l'installation
 
 ![](docs/AGS-package-deployment/innosetup_finish.png)
 
 
 <br/>
+
 ### Changer les éléments graphiques de l'installeur
 
 On a 2 images et 2 icones utilisés dans l'installeur. Elles sont stockées dans le répertoire `.\assets\images`. Les images sont forcement au format bmp et doivent respecter des tailles standards.
