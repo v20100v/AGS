@@ -390,6 +390,9 @@ C'est le fichier batch Windows `.\deployment\deployment_autoit_application.bat` 
 
 Pour ce faire, il va suivre les 7 étapes suivantes :
 
+
+<br/>
+
 #### Etape 1/7 : créer le répertoire de sortie
 
 Avant l'execution du batch, il est nécessaire de renseigner différentes variables :
@@ -406,11 +409,13 @@ Avant l'execution du batch, il est nécessaire de renseigner différentes variab
 A partir de ces variables, il va construire le repertoire de sortie, dans lequel le fichier AutoIt principal sera compiler : `.\releases\v1.0.0\myApplication_v1.0.0\`.
 
 
+<br/>
+
 #### Étape 2/7 : Compilation AutoIt du programme principal
 
-en ligne de commande avec le binaire `aut2exe`. Attention, il est nécessaire que ce dernier soit renseigner dans la variable d'environnement PATH du système d'exploitation.
+On compile le programme princial AutoIt en ligne de commande avec le binaire `aut2exe`. Attention, il est nécessaire que ce dernier soit renseigner dans la variable d'environnement PATH du système d'exploitation.
 
-```Batchfile
+```Batch
 :: deployment_autoit_application.bat ::
 
 (...)
@@ -421,21 +426,24 @@ echo Compilation AutoIt is finished.
 ```
 
 
+<br/>
 #### Étape 3/7 : Copie des assets
 
 On copie dans le répertoire de sortie, toutes les assets (images, fichiers...) nécessaires au bon fonctionnement de l'application et à la génération de l'installeur.
 
 
+<br/>
 #### Étape 4/7 : Date de génération
 
 Pour tracer la date de génération, on créé un fichier intitulé `".v%VERSION%"` dans le repertoire de sortie.
 
 
+<br/>
 #### Étape 5/7 : Création de l'archive zip
 
 La création de l'archive zip necessite que 7zip soit installé sur le poste et que la variable `%ZIP_CLI%` soit correctement renseigner vers le chemin du binaire. La commande qui générer l'archive est la suivante :
 
-```Batchfile
+```Batch
 set ZIP_CLI="C:\Program Files\7-Zip\7z.exe"
 
 %ZIP_CLI% a -tzip %NAME_PROJECT%_v%VERSION%.zip "%NAME_PROJECT%_v%VERSION%
@@ -453,7 +461,7 @@ On passe les arguments definis dans le batch Windows au script ISS via le jeu `/
 >
 > Dans le fichier script ISS, il existe d'autres variables à configurer  : `ApplicationPublisher`, `ApplicationURL`, `ApplicationGUID`, ...
 
-```Batchfile
+```Batch
 set ISCC_CLI="C:\Program Files (x86)\Inno Setup 5\ISCC.exe"
 set ISCC_SCRIPT=deployment_autoit_application.iss
 
@@ -463,6 +471,7 @@ echo * Compilation has been finished.
 ```
 
 
+<br/>
 #### Étape 7/7 : Suppression du repertoire temporaire de sortie
 
 Il est suffisant de ne garder que l'archive Zip et l'installeur Windows à la fin du processus.
@@ -470,14 +479,15 @@ Il est suffisant de ne garder que l'archive Zip et l'installeur Windows à la fi
 ![AGS-package-and-deployment-result](docs/AGS-package-deployment/AGS-package-and-deployment-result.png)
 
 
+<br/>
 ### Fonctionnalités de l'installeur
 
 
-#### Gestion i18n
+#### 1 - Gestion de l'i18n
 
 Pour ajouter une nouvelle langue, il suffit d'ajouter dans la section `[languages]` la langue fournit dans le compilateur. Cela va traduire l'ensemble des messages natifs à InnoSetup. Attention à l'expcetion des boutons OUI/NON utilisé dans MsgBox. C'est dernier serton forcement dans la langue du système d'exploitation.
 
-```Pascal
+```
 [Languages]
 Name: "en"; MessagesFile: compiler:Default.isl;
 Name: "french"; MessagesFile: "compiler:Languages\French.isl"
@@ -485,7 +495,7 @@ Name: "french"; MessagesFile: "compiler:Languages\French.isl"
 
 Pour traduire les autres messages, il suffit de les déclarer dans la section `[CustomMessages]`, en préfixant les variables avec la langue (`en`, `french`, `nl`, ...). Plus d'information : http://www.jrsoftware.org/ishelp/index.php?topic=languagessection
 
-```Pascal
+```
 [CustomMessages]
 french.CheckInstall=est déjà installé sur ce PC.
 french.CheckInstallAction=Souhaitez-vous désinstaller cette version existante avant de poursuivre?
@@ -498,7 +508,8 @@ Ainsi au démarrage de l'installeur, ce dernier demande à l'utilisateur de choi
 ![innosetup_choose_language](docs/AGS-package-deployment/innosetup_choose_language.png)
 
 
-#### Déjà installé ?
+<br/>
+#### 2 - Déjà installé ?
 
 Pour éviter d'installer plusieurs fois l'application sur le poste client, l'installeur vérifie au préalable qu'il bn'est pas déjà présent.
 
@@ -506,7 +517,7 @@ Pour éviter d'installer plusieurs fois l'application sur le poste client, l'ins
 
 Pour ce faire, il se base sur le GUID (global unique identifiant) définit dans le script InnoSetup. Il est important de ne pas changer de code entre différentes version d'application et qu'il soit bien unique. L'IDE fournit par InnoSetup fournit un outil pour en générer un nouveau accessible via le menu : *Tools > Generate GUID inside the IDE*.
 
-```Pascal
+```
 ; NOTE: The value of AppId uniquely identifies this application.
 ; Do not use the same AppId value in installers for other applications.
 ; (To generate a new GUID, click Tools | Generate GUID inside the IDE.)
@@ -519,7 +530,8 @@ De plus l'installeur ajoute dans la base de registre Windows la clé `SOFTWARE\M
 ![](docs/AGS-package-deployment/innosetup_check_already_install2.png)
 
 
-#### Messages complémentaires dans l'installeur : accord licence, prérequis & historique projet
+<br/>
+#### 3 - Messages complémentaires dans l'installeur : accord licence, prérequis & historique projet
 
 Pour configurer les différents messages à afficher dans l'installeur, notamment les accords de licence, il suffit de renseigner les fichiers textes dans le repertoire `./assets/`
 
@@ -530,7 +542,8 @@ Pour configurer les différents messages à afficher dans l'installeur, notammen
 ![](docs/AGS-package-deployment/innosetup_choose_license_agreement.png)
 
 
-#### Ajout dans le menu démarrer Windows
+<br/>
+#### 4 - Ajout dans le menu démarrer Windows
 
 Pour ajouter des éléments dans le menu démarrer de Windows, on renseigne la section `[Icons]` dans le script InnoSetup de la manière suivante :
 
@@ -547,12 +560,14 @@ Et on obtient :
 ![](docs/AGS-package-deployment/innosetup_finish2.png)
 
 
-#### Lancer l'application à la fin de l'installation
+<br/>
+#### 5 - Lancer l'application à la fin de l'installation
 
 ![](docs/AGS-package-deployment/innosetup_finish.png)
 
 
-#### Changer les éléments graphiques de l'installeur
+<br/>
+### Changer les éléments graphiques de l'installeur
 
 On a 2 images et 2 icones utilisés dans l'installeur. Elles sont stockées dans le répertoire `.\assets\images`. Les images sont forcement au format bmp et doivent respecter des tailles standards.
 
