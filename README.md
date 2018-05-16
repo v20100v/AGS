@@ -347,6 +347,231 @@ EndFunc
 ```
 
 
+
+<br/>
+
+## Package & setup deployment
+
+### Goals
+
+In order to facilitate the deployment of a Windows desktop application, it is proposed to build a Windows installer with the solution [InnoSetup] (http://www.jrsoftware.org/isinfo.php).
+
+To prepare a package and generate an installer, the main steps are:
+
+- Assign a version number to the application;
+- Compile the application via the main entry point `myApplication.au3` with the` aut2exe` compiler;
+- Copy the assets (images, files ...) necessary for the proper functioning of the application in the output directory;
+- Create a zip archive to recover the application;
+- And finally build the installer by compiling the associated InnoSetup script.
+
+All steps, to package the application and generate the installer, can be driven from a Windows batch, for obvious reasons of replayability and ease.
+
+
+### Windows batch, the bandmaster
+
+This is the Windows batch file `.\Deployment\deployment_autoit_application.bat` which plays the role of orquestrian leader. In the `\Deployment` directory, it will create the `\releases\vx.y.z\` directories where the application zip archive and the Windows installer will be built.
+
+![AGS-package-and-deployment](docs/AGS-package-deployment/AGS-package-and-deployment.gif)
+
+To do this, he will follow the following 7 steps:
+
+
+<br/>
+
+#### Step 1/7: create the output directory
+
+Before the batch execution, it is necessary to inform different variables:
+
+Variable | Description
+-------- | -----------------
+`%VERSION%` | Version assigned to the application.
+`%NAME_PROJECT%` | Used to name the executable of the application. Note that the version number also appears in the executable name.
+`%AUT2EXE_AU3%` | The name of the main AutoIt file (`myApplication.au3`)
+`%AUT2EXE_ICON%` | The application icon (`%FOLDER_SRC%\assets\images\myApplication.ico`)
+`%ZIP_CLI%` | Path of the 7zip binary to create an archive (`"C:\Program Files\7-Zip\7z.exe"`). I advise you to install it via the manager Chocolatey.
+`%ISCC_CLI%` | InnoSetup compiler binary path (`"C:\Program Files (x86)\Inno Setup 5\ISCC.exe "`). I advise you to install it via the manager Chocolatey.
+
+From these variables, it will build the output directory, in which the main AutoIt file will compile: `.\Releases\v1.0.0\myApplication_v1.0.0 \`.
+
+
+<br/>
+#### Step 2/7: AutoIt compilation of the main program
+
+The main AutoIt program is compiled from the command line with the `aut2exe` binary. Attention, it is necessary that this last one is to inform in the variable of environment PATH of the operating system.
+
+```Batch
+:: deployment_autoit_application.bat ::
+
+(...)
+
+set AUT2EXE_ARGS=/in "%FOLDER_SRC%\%AUT2EXE_AU3%" /out "%FOLDER_OUT%\%NAME_EXE%" /icon
+aut2exe %AUT2EXE_ARGS%
+echo Compilation AutoIt is finished.
+```
+
+<br/>
+#### Step 3/7: Copy Assets
+
+We copy in the output directory, all assets (images, files ...) necessary for the proper functioning of the application and the generation of the installer.
+
+
+<br/>
+#### Step 4/7: Generation Date
+
+To plot the build date, we create a file named `".v%VERSION%"` in the output directory.
+
+
+<br/>
+#### Step 5/7: Creating the zip archive
+
+Creating the zip archive requires that 7zip is installed on the computer and that the `%ZIP_CLI%` variable is correctly filled in to the binary path. The command that generates the archive is as follows:
+
+```Batch
+set ZIP_CLI="C:\Program Files\7-Zip\7z.exe"
+
+%ZIP_CLI% a -tzip %NAME_PROJECT%_v%VERSION%.zip "%NAME_PROJECT%_v%VERSION%
+echo * The zip has been created.
+```
+
+
+<br/>
+#### Step 6/7: Creating the Windows Installer via InnoSetup
+
+This is the InnoSetup file `.\Deployment\deployment_autoit_application.iss` which contains all the instructions for generating the associated Windows installer.
+
+We pass the arguments defined in the Windows batch to the ISS script via the `/dNameVariable=ValueVariable` set on the command line. Thus it is sufficient to configure only once the project variables (name, version ...) in the Windows batch file.
+
+> ** !!! Warning !!!**
+>
+> In the ISS script file, there are other variables to configure: `ApplicationPublisher`,` ApplicationURL`, `ApplicationGUID`, ...
+
+```Batch
+set ISCC_CLI="C:\Program Files (x86)\Inno Setup 5\ISCC.exe"
+set ISCC_SCRIPT=deployment_autoit_application.iss
+
+echo * Launch compilation with iscc
+%ISCC_CLI% %ISCC_SCRIPT% /dApplicationVersion=%VERSION% /dApplicationName=%NAME_PROJECT%
+echo * Compilation has been finished.
+```
+
+
+<br/>
+#### Step 7/7: Deleting the temporary exit directory
+
+It is sufficient to keep only the Zip archive and the Windows installer at the end of the process.
+
+![AGS-package-and-deployment-result](docs/AGS-package-deployment/AGS-package-and-deployment-result.png)
+
+
+<br/>
+### Fonctionnalités de l'installeur
+
+
+#### 1 - Handler i18n
+
+In order to add a new language, just add in the section `[languages]` the language provided in the compiler. This will translate all native messages to InnoSetup. Watch out for the `YES/NO` buttons in MsgBox. It is last serves forcing in the language of the operating Windows system.
+
+```
+[Languages]
+Name: "en"; MessagesFile: compiler:Default.isl;
+Name: "french"; MessagesFile: "compiler:Languages\French.isl"
+```
+
+In order to translate the other messages, just declare them in the section `[CustomMessages]`, prefixing the variables with the language (`en`,` french`, `nl`, ...). More information: http://www.jrsoftware.org/ishelp/index.php?topic=languagessection
+
+```
+[CustomMessages]
+french.CheckInstall=est déjà installé sur ce PC.
+french.CheckInstallAction=Souhaitez-vous désinstaller cette version existante avant de poursuivre?
+en.CheckInstall=is already install on this PC.
+en.CheckInstallAction=Do you want to uninstall this existing version before continuing?
+```
+
+So when starting the setup, it asks the user to choose the language he should use.
+
+![innosetup_choose_language](docs/AGS-package-deployment/innosetup_choose_language.png)
+
+
+<br/>
+#### 2 - Already install ?
+
+In order to avoid installing the application on the client computer several times, the installer checks beforehand that it is not already present.
+
+![](docs/AGS-package-deployment/innosetup_check_already_install.png)
+
+To do this, it is based on the GUID (*global unique identifier*) defined in the InnoSetup script. It is important not to change the code between different application versions and that it is unique. The IDE provided by InnoSetup provides a tool to generate a new one accessible via the menu: *Tools> Generate GUID inside the IDE*.
+
+```
+; NOTE: The value of AppId uniquely identifies this application.
+; Do not use the same AppId value in installers for other applications.
+; (To generate a new GUID, click Tools | Generate GUID inside the IDE.)
+#define ApplicationGUID "6886E28B-AAB5-4866-BCD5-E1B4C171A87A"
+#define ApplicationID ApplicationName + "_" + ApplicationGUID
+```
+
+In addition, the installer adds the `SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\{#ApplicationID}_is1` key into the Windows registry. When the application is uninstalled, this key is removed. So we just have to check the presence of this key in the registry to know if the application has already been installed.
+
+![](docs/AGS-package-deployment/innosetup_check_already_install2.png)
+
+
+<br/>
+#### 3 - Additional messages in the setup : license agreement, prerequisites & project history
+
+To configure the different messages to be displayed in the installer, including the license agreements, just fill in the text files in the `./assets/` directory.
+
+- AFTER_INSTALL.txt: usually to display the roadmap and project history;
+- BEFORE_INSTALL.txt: usually to display the prerequisites of the application;
+- LICENSE.txt: the license of use.
+
+![](docs/AGS-package-deployment/innosetup_choose_license_agreement.png)
+
+
+<br/>
+#### 4 - Add to Windows start menu
+
+To add items to the Windows start menu, enter the `[Icons]` section in the InnoSetup script as follows:
+
+```Pascal
+[Icons]
+Name: "{group}\{#ApplicationName}"; Filename: "{app}\{#ApplicationExeName}"; IconFilename: {app}\assets\images\myApplication.ico;
+Name: "{group}\{cm:ProgramOnTheWeb,{#ApplicationName}}"; Filename: "{#ApplicationURL}";
+Name: "{group}\{cm:UninstallProgram,{#ApplicationName}}"; Filename: "{uninstallexe}"; IconFilename: {app}\assets\images\setup.ico;
+Name: "{commondesktop}\{#ApplicationName}"; Filename: "{app}\{#ApplicationExeName}"; IconFilename: {app}\assets\images\myApplication.ico; IconIndex: 0
+```
+
+Et on obtient :
+
+![](docs/AGS-package-deployment/innosetup_finish2.png)
+
+
+<br/>
+#### 5 - Launch the application at the end of the installation
+
+![](docs/AGS-package-deployment/innosetup_finish.png)
+
+
+<br/>
+### Change the graphic elements of the installer
+
+There are 2 images and 2 icons used in the installer. They are stored in the `. \ Assets \ images` directory. The images are necessarily in the format bmp and must respect standard sizes.
+
+Images use in setup       | File  | Comments
+--------------------------|-------|---------
+UninstallDisplayIcon      | .\assets\images\myApplication.ico | Must be an ico
+SetupIconFile             | .\assets\images\setup.ico  | Must be an ico
+WizardImageFile           | .\assets\images\innosetup_background.bmp  |  Must be a 500x313 bmp image
+WizardSmallImageFile      | .\assets\images\innosetup_image.bmp  | Must be a 50x50 bmp image
+
+Into the InnoSetup script, they are used as follows:
+
+```Pascal
+UninstallDisplayIcon={app}\assets\images\myApplication.ico
+WizardImageFile={#PathAssets}\images\innosetup_background.bmp
+WizardSmallImageFile={#PathAssets}\images\innosetup_image.bmp
+SetupIconFile={#PathAssets}\images\setup.ico
+```
+
+
 <br/>
 
 ## About
@@ -354,7 +579,7 @@ EndFunc
 
 ### Release history
 
- - AGS v1.0.0 - 2018.05.15
+ - AGS v1.0.0 - 2018.05.16
 
 
 ### Contributing
@@ -365,5 +590,3 @@ Comments, pull-request & stars are always welcome !
 ### License
 
 Copyright (c) 2018 by [v20100v](https://github.com/v20100v). Released under the [Apache license](https://github.com/v20100v/autoit-gui-skeleton/blob/master/LICENSE.md).
-
-![r2d2](docs/r2d2.gif)

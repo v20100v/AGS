@@ -581,7 +581,7 @@ SetupIconFile={#PathAssets}\images\setup.ico
 
 ### Historique
 
- - AGS v1.0.0 - 2018.05.15
+ - AGS v1.0.0 - 2018.05.16
 
 
 ### Contribution
@@ -592,5 +592,3 @@ Vos commentaires, pull-request et stars sont toujours les bienvenues !
 ### Licence
 
 Copyright (c) 2018 by [v20100v](https://github.com/v20100v). Released under the [Apache license](https://github.com/v20100v/autoit-gui-skeleton/blob/master/LICENSE.md).
-
-![r2d2](docs/r2d2.gif)
