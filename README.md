@@ -363,6 +363,9 @@ Func _GUI_Hide_all_view()
 EndFunc
 ```
 
+![AGS-package-and-deployment](docs/AGS-views-example.gif)
+
+
 
 <br/>
 

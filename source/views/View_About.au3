@@ -118,15 +118,19 @@ Func _GUI_HandleEvents_View_About($msg)
    Switch $msg
 	  Case $label_about_team
 		 ConsoleWrite('Click on "$label_about_team"' & @CRLF)
+		 _GUI_ShowHide_View_About($GUI_SHOW)
 		 _GUI_IENavigate_Embedded_About('TEAM')
 	  Case $label_about_requirements
 		 ConsoleWrite('Click on "$label_about_requirements"' & @CRLF)
+		 _GUI_ShowHide_View_About($GUI_SHOW)
 		 _GUI_IENavigate_Embedded_About('REQUIREMENTS')
 	  Case $label_about_license
 		 ConsoleWrite('Click on "$label_about_license"' & @CRLF)
+		 _GUI_ShowHide_View_About($GUI_SHOW)
 		 _GUI_IENavigate_Embedded_About('LICENSE')
 	  Case $label_about_releases
 		 ConsoleWrite('Click on "$label_about_releases"' & @CRLF)
+		 _GUI_ShowHide_View_About($GUI_SHOW)
 		 _GUI_IENavigate_Embedded_About('RELEASES')
 	  Case $label_about_contact
 		 ConsoleWrite('Click on "$label_about_contact"' & @CRLF)
