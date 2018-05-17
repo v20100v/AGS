@@ -109,7 +109,7 @@ This directory contains view managers. All the code of all the views are defined
 
 ### AGS overview
 
-![](docs/autoit-gui-skeleton_overview.png)
+![](docs/assets/images/autoit-gui-skeleton_overview.png)
 
 
 <br/>
@@ -367,7 +367,7 @@ Func _GUI_Hide_all_view()
 EndFunc
 ```
 
-![AGS-package-and-deployment](docs/AGS-views-example.gif)
+![AGS-package-and-deployment](docs/assets/images/AGS-views-example.gif)
 
 
 
@@ -394,7 +394,7 @@ All steps, to package the application and generate the installer, can be driven 
 
 This is the Windows batch file `.\Deployment\deployment_autoit_application.bat` which plays the role of orquestrian leader. In the `\Deployment` directory, it will create the `\releases\vx.y.z\` directories where the application zip archive and the Windows installer will be built.
 
-![AGS-package-and-deployment](docs/AGS-package-deployment/AGS-package-and-deployment.gif)
+![AGS-package-and-deployment](docs/assets/images/AGS-package-deployment/AGS-package-and-deployment.gif)
 
 To do this, he will follow the following 7 steps:
 
@@ -490,7 +490,7 @@ echo * Compilation has been finished.
 
 It is sufficient to keep only the Zip archive and the Windows installer at the end of the process.
 
-![AGS-package-and-deployment-result](docs/AGS-package-deployment/AGS-package-and-deployment-result.png)
+![AGS-package-and-deployment-result](docs/assets/images/AGS-package-deployment/AGS-package-and-deployment-result.png)
 
 
 <br/>
@@ -520,7 +520,7 @@ en.CheckInstallAction=Do you want to uninstall this existing version before cont
 
 So when starting the setup, it asks the user to choose the language he should use.
 
-![innosetup_choose_language](docs/AGS-package-deployment/innosetup_choose_language.png)
+![innosetup_choose_language](docs/assets/images/AGS-package-deployment/innosetup_choose_language.png)
 
 
 <br/>
@@ -529,7 +529,7 @@ So when starting the setup, it asks the user to choose the language he should us
 
 In order to avoid installing the application on the client computer several times, the installer checks beforehand that it is not already present.
 
-![](docs/AGS-package-deployment/innosetup_check_already_install.png)
+![](docs/assets/images/AGS-package-deployment/innosetup_check_already_install.png)
 
 To do this, it is based on the GUID (*global unique identifier*) defined in the InnoSetup script. It is important not to change the code between different application versions and that it is unique. The IDE provided by InnoSetup provides a tool to generate a new one accessible via the menu: *Tools> Generate GUID inside the IDE*.
 
@@ -543,7 +543,7 @@ To do this, it is based on the GUID (*global unique identifier*) defined in the 
 
 In addition, the installer adds the `SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\{#ApplicationID}_is1` key into the Windows registry. When the application is uninstalled, this key is removed. So we just have to check the presence of this key in the registry to know if the application has already been installed.
 
-![](docs/AGS-package-deployment/innosetup_check_already_install2.png)
+![](docs/assets/images/AGS-package-deployment/innosetup_check_already_install2.png)
 
 
 <br/>
@@ -556,7 +556,7 @@ To configure the different messages to be displayed in the installer, including 
 - BEFORE_INSTALL.txt: usually to display the prerequisites of the application;
 - LICENSE.txt: the license of use.
 
-![](docs/AGS-package-deployment/innosetup_choose_license_agreement.png)
+![](docs/assets/images/AGS-package-deployment/innosetup_choose_license_agreement.png)
 
 
 <br/>
@@ -575,14 +575,14 @@ Name: "{commondesktop}\{#ApplicationName}"; Filename: "{app}\{#ApplicationExeNam
 
 Et on obtient :
 
-![](docs/AGS-package-deployment/innosetup_finish2.png)
+![](docs/assets/images/AGS-package-deployment/innosetup_finish2.png)
 
 
 <br/>
 
 #### 5 - Launch the application at the end of the installation
 
-![](docs/AGS-package-deployment/innosetup_finish.png)
+![](docs/assets/images/AGS-package-deployment/innosetup_finish.png)
 
 
 <br/>

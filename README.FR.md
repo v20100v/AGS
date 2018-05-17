@@ -109,7 +109,7 @@ Ce répertoire contient les gestionnaires des vues. Tout le code de toutes les v
 
 ### Vue d'ensemble
 
-![](docs/autoit-gui-skeleton_overview.png)
+![](docs/assets/images/autoit-gui-skeleton_overview.png)
 
 
 <br/>
@@ -366,7 +366,7 @@ Func _GUI_Hide_all_view()
 EndFunc
 ```
 
-![AGS-package-and-deployment](docs/AGS-views-example.gif)
+![AGS-package-and-deployment](docs/assets/images/AGS-views-example.gif)
 
 
 
@@ -393,7 +393,7 @@ Toutes les étapes, pour packager l'application et générer l'installeur, peuve
 
 C'est le fichier batch Windows `.\deployment\deployment_autoit_application.bat` qui joue le rôle de chef d'orquestre. Dans le répertoire `.\deployment`, il va créer les répertoires `\releases\vx.y.z\` où seront construits l'archive zip de l'application et l'installeur Windows.
 
-![AGS-package-and-deployment](docs/AGS-package-deployment/AGS-package-and-deployment.gif)
+![AGS-package-and-deployment](docs/assets/images/AGS-package-deployment/AGS-package-and-deployment.gif)
 
 Pour ce faire, il va suivre les 7 étapes suivantes :
 
@@ -488,7 +488,7 @@ echo * Compilation has been finished.
 
 Il est suffisant de ne garder que l'archive Zip et l'installeur Windows à la fin du processus.
 
-![AGS-package-and-deployment-result](docs/AGS-package-deployment/AGS-package-and-deployment-result.png)
+![AGS-package-and-deployment-result](docs/assets/images/AGS-package-deployment/AGS-package-and-deployment-result.png)
 
 
 <br/>
@@ -518,7 +518,7 @@ en.CheckInstallAction=Do you want to uninstall this existing version before cont
 
 Ainsi au démarrage de l'installeur, ce dernier demande à l'utilisateur de choisir la langue qu'il doit utiliser.
 
-![innosetup_choose_language](docs/AGS-package-deployment/innosetup_choose_language.png)
+![innosetup_choose_language](docs/assets/images/AGS-package-deployment/innosetup_choose_language.png)
 
 
 <br/>
@@ -527,7 +527,7 @@ Ainsi au démarrage de l'installeur, ce dernier demande à l'utilisateur de choi
 
 Pour éviter d'installer plusieurs fois l'application sur le poste client, l'installeur vérifie au préalable qu'il bn'est pas déjà présent.
 
-![](docs/AGS-package-deployment/innosetup_check_already_install.png)
+![](docs/assets/images/AGS-package-deployment/innosetup_check_already_install.png)
 
 Pour ce faire, il se base sur le GUID (global unique identifiant) définit dans le script InnoSetup. Il est important de ne pas changer de code entre différentes version d'application et qu'il soit bien unique. L'IDE fournit par InnoSetup fournit un outil pour en générer un nouveau accessible via le menu : *Tools > Generate GUID inside the IDE*.
 
@@ -541,7 +541,7 @@ Pour ce faire, il se base sur le GUID (global unique identifiant) définit dans 
 
 De plus l'installeur ajoute dans la base de registre Windows la clé `SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\{#ApplicationID}_is1`. Lorsque l'application est desinstallé, cette clé est supprimé. Ainsi il nous suffit de vérifier la présence de cette clé dans la base de registre pour savoir si l'application a déjà été installé.
 
-![](docs/AGS-package-deployment/innosetup_check_already_install2.png)
+![](docs/assets/images/AGS-package-deployment/innosetup_check_already_install2.png)
 
 
 <br/>
@@ -554,7 +554,7 @@ Pour configurer les différents messages à afficher dans l'installeur, notammen
 - BEFORE_INSTALL.txt : généralement pour afficher les prérequis de l'application ;
 - LICENSE.txt :  la licence d'utilisation.
 
-![](docs/AGS-package-deployment/innosetup_choose_license_agreement.png)
+![](docs/assets/images/AGS-package-deployment/innosetup_choose_license_agreement.png)
 
 
 <br/>
@@ -573,14 +573,14 @@ Name: "{commondesktop}\{#ApplicationName}"; Filename: "{app}\{#ApplicationExeNam
 
 Et on obtient :
 
-![](docs/AGS-package-deployment/innosetup_finish2.png)
+![](docs/assets/images/AGS-package-deployment/innosetup_finish2.png)
 
 
 <br/>
 
 #### 5 - Lancer l'application à la fin de l'installation
 
-![](docs/AGS-package-deployment/innosetup_finish.png)
+![](docs/assets/images/AGS-package-deployment/innosetup_finish.png)
 
 
 <br/>
