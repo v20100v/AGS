@@ -17,9 +17,14 @@ title: AutoIt Gui Skeleton
 email: 7567933+v20100v@users.noreply.github.com
 description: >- # this means to ignore newlines until "baseurl:"
   Proposes to provide an architecture and an organization to efficiently build an desktop application Windows with AutoIt.
-baseurl: "" # the subpath of your site, e.g. /blog
+
+# If your site URL is just foobar.github.io, then it should work out-of-the-box
+# after git add, git commit and git push. If your site URL is something like
+# foobar.github.io/foo you must specify it in baseurl in _config.yml as /foo.
+# https://v20100v.github.io/autoit-gui-skeleton/
+baseurl: "/autoit-gui-skeleton" # the subpath of your site, e.g. /blog
+
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
-twitter_username: v20100v
 github_username:  v20100v
 
 # Build settings
@@ -27,6 +32,11 @@ markdown: kramdown
 theme: minima
 plugins:
   - jekyll-feed
+
+
+
+
+
 
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list
