@@ -34,7 +34,7 @@ In order to organize the code of an AutoIT application with a graphical interfac
 
 The `myApplication.au3` program serves as a single point of entry for our application. This is the location where the application starts. In the latter we start by including all the other dependencies that it needs: libraries of AutoIt, third-party libraries, the declaration of global variables, the code of the application GUI and business. It calls a single method: _main_GUI (). It is the main GUI manager that is used to build the interface and manage user interactions.
 
-```autoit
+```AutoIt
 ;; myApplication.au3 ;;
 
 Opt('MustDeclareVars', 1)
@@ -64,7 +64,7 @@ The Global statement is used to explicitly indicate which access to the scope is
 
 The statement Global Const is used to declare a constant. Once created a global constant, you can not change the value of a constant. In addition, you can not replace an existing variable with a constant.
 
-```autoit
+```AutoIt
 ;; myApplication_GLOBAL.au3 ;;
 
 ; Application main constants
