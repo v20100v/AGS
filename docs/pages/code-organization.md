@@ -64,7 +64,7 @@ The Global statement is used to explicitly indicate which access to the scope is
 
 The statement Global Const is used to declare a constant. Once created a global constant, you can not change the value of a constant. In addition, you can not replace an existing variable with a constant.
 
-```au3
+```autoit
 ;; myApplication_GLOBAL.au3 ;;
 
 ; Application main constants
