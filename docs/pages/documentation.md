@@ -9,7 +9,7 @@ tags: [Documentation, AGS]
 <!-- Breadcrumb navigation -->
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
-    <li class="breadcrumb-item"><a href="../">Home</a></li>
+    <li class="breadcrumb-item"><a href="../{{ site.baseurl }}">Home</a></li>
     <li class="breadcrumb-item active" aria-current="page">Documentation</li>
   </ol>
 </nav>
@@ -25,7 +25,7 @@ tags: [Documentation, AGS]
       <div class="card">
         <div class="animated-zoom-img">
           <a href="../documentation/getting-started">
-            <img class="card-img-top animation-img" src="../assets/img/documentation/getting-started/hand-3285912_1920.jpg" alt="Card image cap">
+            <img class="card-img-top animation-img" src="../assets/img/documentation/hand-3285912_1920.jpg" alt="Card image cap">
           </a>
         </div>
         <div class="card-body">
@@ -41,7 +41,7 @@ tags: [Documentation, AGS]
       <div class="card">
         <div class="animated-zoom-img">
           <a href="../documentation/code-organization">
-            <img class="card-img-top" src="../assets/img/documentation/code-organization/computer.jpeg" alt="Card image cap">
+            <img class="card-img-top" src="../assets/img/documentation/computer.jpeg" alt="Card image cap">
           </a>
         </div>
         <div class="card-body">

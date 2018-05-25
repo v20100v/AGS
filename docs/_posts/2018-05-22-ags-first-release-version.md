@@ -2,7 +2,8 @@
 layout: post
 title: First release version
 tags: [AGS, Release]
-feature-img: "assets/img/black-and-white-contemporary-dark-1040489.jpg"
+feature-img: "assets/img/documentation/hand-3285912_1920.jpg"
+thumbnail: "assets/img/documentation/hand-3285912_1920.jpg"
 excerpt_separator: <!--more-->
 ---
 

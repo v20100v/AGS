@@ -68,7 +68,7 @@ theme_settings:
       enabled: true
     tags:
       icon: "tags"
-      enabled: true
+      enabled: false
   
   # Localization strings
   str_follow_on: "Follow on"
