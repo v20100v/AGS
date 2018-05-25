@@ -21,13 +21,6 @@ tags: [Documentation, AGS]
 * TOC
 {:toc}
 
-```cs
-public interface ITest : ITestKey
-{
-    Task<string> SayHello(string name);
-}
-```
-
 
 # What is AGS ?
 

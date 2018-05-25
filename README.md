@@ -1,11 +1,13 @@
 Autoit-Gui-Skeleton (AGS)
 =========================
 
-*Read this in other languages: [English](README.md), [French](README.FR.md)*
+*Read this file in other languages: [English](README.md), [French](README.FR.md)*
 
 <br/>
 
 > Proposes to provide an architecture and an organization to efficiently build an desktop application Windows with AutoIt.
+>
+> For **documentation**, visit [https://v20100v.github.io/autoit-gui-skeleton/](https://v20100v.github.io/autoit-gui-skeleton/)
 
 <br/>
 
