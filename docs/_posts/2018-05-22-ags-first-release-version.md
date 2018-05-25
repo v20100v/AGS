@@ -13,7 +13,7 @@ AutoIt Gui Skeleton (AGS) 1.0.0 is now available on GitHub, and this is the firs
 
 AutoIt Gui Skeleton (AGS) give an environment for developers, that makes it easy to build AutoIt applications. In order to organize the code of an AutoIT application with a graphical interface, AGS propose to use conventions and a following model to develop and build AutoIt application with an graphic user interface (GUI).
 
-> [Get or view AGS 1.0.0 on GitHub](https://github.com/v20100v/autoit-gui-skeleton/releases/tag/1.0.0)
+> [View AGS 1.0.0 on GitHub](https://github.com/v20100v/autoit-gui-skeleton/releases/tag/1.0.0)
 >
-> [Start reading documentation of AGS](../../../documentation/)
+> [Start reading documentation of AGS](documentation)
  

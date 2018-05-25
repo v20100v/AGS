@@ -1,5 +1,5 @@
 # Site configuration
-baseurl: "/autoit-gui-skeleton/"
+baseurl: "/autoit-gui-skeleton"
 url: "https://v20100v.github.io"
 title: AutoIt GUI Skeleton # site's title
 description: "AGS propose to provide an architecture and an organization to efficiently develop and build a desktop application Windows with AutoIt." # used by search engines
@@ -9,7 +9,6 @@ theme_settings:
   # Meta
   title: AutoIt GUI Skeleton # blog's title
   avatar: assets/img/autoit.png
-  favicon: assets/favicon.ico
   gravatar: bf10596cd55afa7150cc66f793af1619 # Email MD5 hash
 
   # Header and footer text

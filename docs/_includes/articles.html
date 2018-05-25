@@ -13,20 +13,20 @@
         <div class="card">
             {% if post.feature-img %}
             <div class="animated-zoom-img">
-                <a href="{{ site.baseurl }}{{ post.url }}">
-                    <img class="card-img-top animation-img" src="../{{ post.feature-img }}" alt="Card image cap">
+                <a href="{{ site.url }}{{ site.baseurl }}{{ post.url }}">
+                    <img class="card-img-top animation-img" src="{{ post.feature-img }}" alt="Card image cap">
                 </a>
             </div>
             {% endif %}
 
             <div class="card-body">
-                <h4 class="card-title mt-0"><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h4>
+                <h4 class="card-title mt-0"><a href="{{ site.url }}{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h4>
                 <p class="card-text meta">{{ post.date | date: "%B %-d, %Y" }}</p>
                 <p class="card-text archive-post-item-excerpt">
                     {{ post.excerpt | strip_html | escape }}
                 </p>
                 <!-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> -->
-                <a href="{{ site.baseurl }}{{ post.url }}" class="black-text d-flex justify-content-end"><h6>Read<i class="fa fa-angle-double-right"></i></h6></a>
+                <a href="{{ site.url }}{{ site.baseurl }}{{ post.url }}" class="black-text d-flex justify-content-end"><h6>Read <i class="fa fa-angle-double-right"></i></h6></a>
             </div>
         </div>
 

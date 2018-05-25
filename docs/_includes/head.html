@@ -2,14 +2,17 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
+    <!-- Set baseurl -->
+    <base href="{{ site.url }}{{ site.baseurl }}/">
+
+    <!-- URL canonical -->
+    <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
+
     <!-- CSS -->
-    <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/main.css">
 
     <!--Favicon-->
-    <link rel="shortcut icon" href="{{ site.baseurl }}/{{ site.theme_settings.favicon }}" type="image/x-icon">
-
-    <!-- Canonical -->
-    <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
+    <link rel="shortcut icon" href="assets/img/favicon.ico" type="image/x-icon">
 
     <!-- RSS -->
     <link rel="alternate" type="application/atom+xml" title="{{ site.theme_settings.title }}" href="{{ site.url }}/{{ site.baseurl }}//feed.xml"/>
@@ -19,8 +22,6 @@
     <!-- <link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/assets/css/vendor/font-awesome.min.css"> -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
 
-
-
     <!-- Google Fonts -->
     {% if site.theme_settings.google_fonts %}
     <link href="//fonts.googleapis.com/css?family={{ site.theme_settings.google_fonts }}" rel="stylesheet" type="text/css"> 
@@ -28,7 +29,7 @@
 
     <!-- KaTeX 0.8.3 -->
     {% if site.theme_settings.katex %}
-    <link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/assets/css/vendor/katex.min.css">
+    <link rel="stylesheet" type="text/css" href="./assets/css/vendor/katex.min.css">
     {% endif %}
 
     <!-- FancyBox style -->
@@ -44,6 +45,4 @@
     <title>{% if page.title %}{{ page.title }} |{% endif %} {{ site.theme_settings.title }}</title>
     <meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.theme_settings.description }}{% endif %}">
     -->
-
-
 </head>

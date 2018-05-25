@@ -7,25 +7,29 @@ layout: default
   <div id="main" class="call-out" style="background-image: url('{{ site.baseurl }}/assets/img/black-and-white-contemporary-dark-1040489.jpg')">
     <p>AGS proposes to provide an architecture and an organization to efficiently build an desktop application Windows with AutoIt.</p>
     <p>
-      <a href="{{ site.url }}{{ site.baseurl }}documentation" class="button">Get started</a>
+      <a href="./documentation" class="button">Get started</a>
       &nbsp; or &nbsp;
       <a href="https://github.com/v20100v/autoit-gui-skeleton" class="button">View on GitHub &nbsp;<i class="fab fa-github"></i></a>
     </p>
   </div>
   {% endif %}
 
+  <!-- Pagination list posts -->
   <div class="posts">
     {% for post in paginator.posts %}
     <div class="post-teaser">
       {% if post.thumbnail %} 
-      <div class="post-img">
-         <img src="{{ site.baseurl }}/{{ post.thumbnail }}">
+      <div class="post-img mb-2">
+        <a class="post-link" href="{{ site.url }}{{ site.baseurl }}{{ post.url }}">
+          <img src="{{ post.thumbnail }}">
+        </a>
       </div>
       {% endif %}
       <span>
           <header>
             <h1>
-              <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">
+              <!--<a class="post-link" href="{{ post.url | prepend: site.baseurl }}">-->
+              <a class="post-link" href="{{ site.url }}{{ site.baseurl }}{{ post.url }}">
                 {{ post.title }}
               </a>
             </h1>

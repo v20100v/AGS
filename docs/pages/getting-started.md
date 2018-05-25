@@ -2,7 +2,7 @@
 layout: page
 title: Getting started with AGS
 permalink: /documentation/getting-started
-feature-img: "assets/img/documentation/getting-started/hand-3285912_1920.jpg"
+feature-img: "assets/img/documentation/hand-3285912_1920.jpg"
 tags: [Documentation, AGS]
 ---
 
@@ -10,8 +10,8 @@ tags: [Documentation, AGS]
 <!-- Breadcrumb navigation -->
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
-    <li class="breadcrumb-item"><a href="../">Home</a></li>
-    <li class="breadcrumb-item"><a href="../documentation">Documentation</a></li>
+    <li class="breadcrumb-item"><a href="{{ site.url }}{{ site.baseurl }}/">Home</a></li>
+    <li class="breadcrumb-item"><a href="documentation">Documentation</a></li>
     <li class="breadcrumb-item active" aria-current="page">Getting started</li>
   </ol>
 </nav>
@@ -100,7 +100,7 @@ This directory contains view managers. All the code of all the views are defined
 
 ## Overview of AGS architecture
 
-![Overview of AGS architecture]({{ "/assets/img/documentation/getting-started/autoit-gui-skeleton_overview.png" | absolute_url }}){:class="img-fancybox img-full"}
+![Overview of AGS architecture]({{ "assets/img/documentation/autoit-gui-skeleton_overview.png" | absolute_url }}){:class="img-fancybox img-full"}
 
 
 ### Main entry program
@@ -136,10 +136,10 @@ For generate a Windows application installer, we need a preparation whose main s
 
 All these steps are driven by the Windows batch `deployment_autoit_application.bat` store in directory `deployment`.
 
-![Result of process to package AutoIt application and generate Windows installer in AGS]({{ "/assets/img/documentation/getting-started/AGS-package-and-deployment-result.png" | absolute_url }}){:class="img-full"}
+![Result of process to package AutoIt application and generate Windows installer in AGS]({{ "assets/img/documentation/AGS-package-and-deployment-result.png" | absolute_url }}){:class="img-full"}
 
 <br/>
 
-> **Next step**
+> **Relating reading**
 > 
-> Continue reading with <a href="/autoit-gui-skeleton/documentation/code-organization">Code organization</a>.
+> Next step and continue reading with <a href="/autoit-gui-skeleton/documentation/code-organization">Code organization</a>.

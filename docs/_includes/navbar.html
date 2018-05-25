@@ -2,12 +2,12 @@
 
     <!-- Logo and title -->
 	<div class="branding">
-		<a href="{{ site.baseurl }}">
-			<img class="avatar" src="{{ site.baseurl }}/{{ site.theme_settings.avatar }}" alt=""/>
+		<a href="{{ site.url }}{{ site.baseurl }}/">
+			<img class="avatar" src="assets/img/autoit.png" alt=""/>
 		</a>
 
 		<p class="site-title">
-			<a href="{{ site.baseurl }}">Home</a>
+			<a href="{{ site.url }}{{ site.baseurl }}/">Home</a>
 		</p>
 	</div>
 
@@ -41,15 +41,15 @@
                 {% assign sublinks = entry.sublinks %}
                 {% if sublinks %}
                     <li{{ current }}>
-                        <a href="{{ site.baseurl }}{{ entry.url }}">{{ entry.title }}</a>
+                        <a href="{{ entry.url }}">{{ entry.title }}</a>
                         <ul>
                         {% for sublink in sublinks %}
-                            <li><a href="{{ site.baseurl }}{{ sublink.url }}">{{ sublink.title }}</a></li>
+                            <li><a href="{{ sublink.url }}">{{ sublink.title }}</a></li>
                         {% endfor %}
                         </ul>
                     </li>
                 {% else %}
-                    <li{{ current }}><a href="{{ site.baseurl }}{{ entry.url }}">{{ entry.title }}</a></li>
+                    <li{{ current }}><a href="{{ entry.url }}">{{ entry.title }}</a></li>
                 {% endif %}
             {% endfor %}
 
