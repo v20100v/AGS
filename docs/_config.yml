@@ -1,51 +1,123 @@
-# Welcome to Jekyll!
-#
-# This config file is meant for settings that affect your whole blog, values
-# which you are expected to set up once and rarely edit after that. If you find
-# yourself editing this file very often, consider using Jekyll's data files
-# feature for the data you need to update frequently.
-#
-# For technical reasons, this file is *NOT* reloaded automatically when you use
-# 'bundle exec jekyll serve'. If you change this file, please restart the server process.
+# Site configuration
+baseurl: "/autoit-gui-skeleton/"
+url: "https://v20100v.github.io"
+title: AutoIt GUI Skeleton # site's title
+description: "AGS propose to provide an architecture and an organization to efficiently develop and build a desktop application Windows with AutoIt." # used by search engines
 
-# Site settings
-# These are used to personalize your new site. If you look in the HTML files,
-# you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
-# You can create any custom variable you would like, and they will be accessible
-# in the templates via {{ site.myvariable }}.
-title: AutoIt Gui Skeleton
-email: 7567933+v20100v@users.noreply.github.com
-description: >- # this means to ignore newlines until "baseurl:"
-  Proposes to provide an architecture and an organization to efficiently build an desktop application Windows with AutoIt.
+# Theme configuration
+theme_settings:
+  # Meta
+  title: AutoIt GUI Skeleton # blog's title
+  avatar: assets/img/autoit.png
+  favicon: assets/favicon.ico
+  gravatar: bf10596cd55afa7150cc66f793af1619 # Email MD5 hash
 
-# If your site URL is just foobar.github.io, then it should work out-of-the-box
-# after git add, git commit and git push. If your site URL is something like
-# foobar.github.io/foo you must specify it in baseurl in _config.yml as /foo.
-# https://v20100v.github.io/autoit-gui-skeleton/
-baseurl: "/autoit-gui-skeleton" # the subpath of your site, e.g. /blog
+  # Header and footer text
+  header_text: > #two or three lines to describe your site
+     <p>AGS proposes to provide an architecture and an organization to efficiently build an desktop application Windows with AutoIt.</p>
+  header_text_feature_image: assets/img/abstract-black-background-blue-604684.jpg
+  footer_text: >
+   Build with ♥ by <a href="https://jekyllrb.com/">Jekyll</a> and <a href="https://github.com/sylhare/Type-on-Strap">Type on Strap</a>
 
-url: "" # the base hostname & protocol for your site, e.g. http://example.com
-github_username:  v20100v
+  # Icons
+  rss: false  # Make sure you created a feed.xml with feed.xml layout
+  email_address: 7567933+v20100v@users.noreply.github.com # Full email address, e.g. "sam@example.com"
+  behance:
+  bitbucket:
+  dribbble:
+  facebook:
+  flickr:
+  gitlab:
+  github: "v20100v"
+  google_plus:
+  instagram:
+  keybase:
+  linkedin:  # Full URL
+  pinterest:
+  reddit:
+  soundcloud:
+  stack_exchange:  # Full URL
+  steam:
+  tumblr:
+  twitter: # "twitter username"
+  vimeo:
+  wordpress:
+  youtube:
 
-# Build settings
+  # Sharing options
+  share_buttons:
+    facebook: true
+    twitter: true
+    google_plus: true
+    tumblr:
+    pinterest: true
+    pocket:
+    reddit:
+    linkedin: true
+    wordpress:
+    email: true
+
+  # Scripts / Features 
+  google_analytics: "UA-119463892-1" # Tracking ID, e.g. "UA-000000-01"
+  disqus_shortname: v20100v
+  katex: true # Enable if using math markup
+  
+  special_page:
+    search: 
+      icon: "search" # Assuming page link and icon are the same
+      enabled: true
+    tags:
+      icon: "tags"
+      enabled: true
+  
+  # Localization strings
+  str_follow_on: "Follow on"
+  str_rss_follow: "Follow RSS feed"
+  str_share_on: "Share on"
+  str_add_to: "Add to"
+  str_email: "Email"
+  str_tweet: "Tweet"
+  str_pin_it: "Pin it"
+  str_next_post: "Next post"
+  str_previous_post: "Previous post"
+  str_next_page: "Next"
+  str_previous_page: "Prev"
+  str_continue_reading: "Continue reading"
+  str_javascript_required_disqus: "Please enable JavaScript to view comments."
+
+  # Colours, typography and padding
+  # Open the "_sass > base" folder, and open "_variables.scss"
+  google_fonts: "Source+Sans+Pro:400,700,700italic,400italic"
+
+  # Post navigation
+  post_navigation: true
+  
+  
+# PAGINATION
+paginate: 5
+paginate_path: "blog/page:num"
+
+
+# PORTFOLIO
+collections:
+  portfolio:
+    output: true
+    permalink: /:collection/:name
+
+
+# BUILD SETTINGS
 markdown: kramdown
-theme: minima
-plugins:
-  - jekyll-feed
+kramdown:
+  input: GFM
+highlighter: rouge
+sass:
+  sass_dir: _sass
+  style: :compressed
+
+# PLUGIN
+plugins: [jekyll-paginate, jekyll-seo-tag]
+
+#theme: type-on-strap # Uncomment if using the theme as a jekyll theme gem
+exclude: ["Gemfile", "Gemfile.lock", "type-on-strap.gemspec", "*.gem", "LICENSE", "README.md"]
 
 
-
-
-
-
-# Exclude from processing.
-# The following items will not be processed, by default. Create a custom list
-# to override the default setting.
-# exclude:
-#   - Gemfile
-#   - Gemfile.lock
-#   - node_modules
-#   - vendor/bundle/
-#   - vendor/cache/
-#   - vendor/gems/
-#   - vendor/ruby/

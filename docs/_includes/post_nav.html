@@ -1,0 +1,24 @@
+<div id="post-nav" class="row post-nav">
+
+    <div class="col-sm-{% if page.next.url == undefined %}12{% else %}6{% endif %}">
+        <div id="previous-post" class="post-nav-post">
+            {% if page.previous.url %}
+            <p>{{ site.theme_settings.str_previous_post }}</p>
+            <a href="{{ site.baseurl }}{{ page.previous.url }}">
+                {{ page.previous.title }}
+            </a>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="col-sm-{% if page.previous.url == undefined %}12{% else %}6{% endif %}">
+        <div id="next-post" class="post-nav-post">
+            {% if page.next.url %}
+            <p>{{ site.theme_settings.str_next_post }}</p>
+            <a href="{{ site.baseurl }}{{ page.next.url }}">
+                {{ page.next.title }}
+            </a>
+            {% endif %}
+        </div>
+    </div>
+</div>

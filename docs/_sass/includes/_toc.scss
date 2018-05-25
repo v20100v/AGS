@@ -1,0 +1,19 @@
+#markdown-toc {
+  background: #f9f9f9 none repeat scroll 0 0;
+  border: 1px solid #aaa;
+  display: table;
+  margin-bottom: 1em;
+  padding: 20px;
+  width: 100%;
+}
+
+#markdown-toc, .about {
+  li, ul, ul li {
+    list-style: outside none none !important;
+  }
+  li:before {
+    content: "\0BB \020";
+  }
+}
+
+
