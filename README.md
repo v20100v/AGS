@@ -11,12 +11,32 @@ Autoit-Gui-Skeleton (AGS)
 
 <br/>
 
+- [Autoit-Gui-Skeleton (AGS)](#autoit-gui-skeleton--ags-)
+  * [What is AGS ?](#what-is-ags--)
+  * [Architecture and overview of an AGS project](#architecture-and-overview-of-an-ags-project)
+    + [Directories and files of AutoIt project](#directories-and-files-of-autoit-project)
+      - [Directory `assets`](#directory--assets-)
+      - [Directory `deployment`](#directory--deployment-)
+      - [Directory `vendor`](#directory--vendor-)
+      - [Directory `views`](#directory--views-)
+    + [Overview of AGS architecture](#overview-of-ags-architecture)
+      - [Main entry program](#main-entry-program)
+      - [Main handler GUI](#main-handler-gui)
+      - [Centralize declaration of variables in global scope](#centralize-declaration-of-variables-in-global-scope)
+      - [Package and setup deployment](#package-and-setup-deployment)
+    + [Example of AGS project](#example-of-ags-project)
+  * [About](#about)
+    + [Release history](#release-history)
+    + [Contributing](#contributing)
+    + [License](#license)
+    
+<br />
 
 ## What is AGS ?
 
 AutoIt Gui Skeleton (AGS) give an environment for developers, that makes it easy to build AutoIt applications.
 
-In order to organize the code of an AutoIT application with a graphical interface, AGS propose to use conventions and a following model to develop and build AutoIt application with an graphic user interface (GUI).
+In order to organize the code of an AutoIT application, AGS propose to use conventions and a following model to develop and build AutoIt application with an graphic user interface (GUI).
 
 <br/>
 
@@ -54,14 +74,14 @@ project root folder
     View_Welcome.au3
 ```
 
-### Directories and files of AutoIt project
+### Directories and files of AGS project
 
 We organize the files of an AutoIt project in specific directories.
 
 
 #### Directory `assets`
 
-This directory contains the elements used in the application like images, text files, pdf, html, css, javascript. Indeed, note that it is possible to integrate in a AutoIt application, a static html file, into a web browser embedded in the HMI with the `_IECreateEmbedded ()` method provided by the `IE.au3` library.
+This directory contains the elements used in the application like images, text files, pdf, html, css, javascript. This folder contains all local files need into the application.
 
 
 #### Directory `deployment`
@@ -103,15 +123,17 @@ The main handler GUI contains the `_main_GUI()` method which is only called by t
 
 #### Centralize declaration of variables in global scope
 
-All constants and global variables are set in one place, in `myProject_GLOBALS.au3`. With the exception of all global variables of graphic elements which are set in each specific view file. It is recalled that constants can no longer change their value over time, unlike global variables.
+All constants and global variables are set in one place, in the file `myProject_GLOBALS.au3`. With the exception of all global variables of graphic elements which are set in each specific view file. It is recalled that constants can no longer change their value over time, unlike global variables.
 
 By convention, all the global variables must be written in capital letter and separated by underscore. For example : `Global Const $APP_EMAIL_CONTACT`
 
-#### Package and setup deployment
+#### Package and deployment
 
-In order to facilitate the deployment of a Windows desktop application develop with AutoIt. We propose to provide an automated process to build a Windows installer with the [InnoSetup](http://www.jrsoftware.org/isinfo.php) solution.
+In order to facilitate the deployment of a Windows desktop application develop with AutoIt, we propose to use an automated process to build a Windows installer with the [InnoSetup](http://www.jrsoftware.org/isinfo.php) solution. In AGS we use a Windows batch file, called `.deployment_autoit_application.bat`, which plays the role of orquestrian leader in the generation of the setup. In the `\Deployment` directory, it will create the `\releases\vx.y.z\` directories where the application zip archive and the Windows will built.
 
-For generate a Windows application installer, we need a preparation whose main steps are:
+![AGS GUI package and deployment process](docs/assets/img/documentation/AGS-package-and-deployment-process.gif)
+
+For generate a Windows application installer, we must a preparation whose main steps are:
 
 - Assign a version number to the application;
 - Compile the application, i.e. compile the main entry point myProject.au3 with aut2exe compiler;
@@ -119,9 +141,16 @@ For generate a Windows application installer, we need a preparation whose main s
 - Create a zip archive to recover the application;
 - And finally build the installer by compiling the associated InnoSetup script.
 
-All these steps are driven by the Windows batch deployment_autoit_application.bat store in directory deployment.
+All these steps are driven by the Windows batch `deployment_autoit_application.bat`.
 
 ![Result of process to package AutoIt application and generate Windows installer in AGS](docs/assets/img/documentation/AGS-package-and-deployment-result.png)
+
+
+### Example of AGS project
+
+In this git repository, we added into folder [source](https://github.com/v20100v/autoit-gui-skeleton/tree/master/source) an AutoIt project, built with AGS conventions. To create a new project with AGS, i advise you to start with it, and change mentions 'myApplication' with the real name of your application.
+
+![Result of process to package AutoIt application and generate Windows installer in AGS](docs/assets/img/documentation/AGS-gui-example.gif)
 
 
 
