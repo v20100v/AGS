@@ -15,5 +15,5 @@ AutoIt Gui Skeleton (AGS) give an environment for developers, that makes it easy
 
 > [View AGS 1.0.0 on GitHub](https://github.com/v20100v/autoit-gui-skeleton/releases/tag/1.0.0)
 >
-> [Start reading documentation of AGS](documentation)
+> [Getting started AGS with reading documentation]({{ site.url }}{{ site.baseurl }}/documentation)
  
