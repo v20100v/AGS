@@ -123,14 +123,21 @@ dl,
 
 // Lists within lists
 li {
+    list-style:square;
+    margin-left: 2em;
     p {
         display: inline;
     }
     & > ul,
     & > ol {
         margin-bottom: 0;
-        margin-left: 1em;
+        margin-left: 0em;
     }
+}
+
+.breadcrumb li {
+    list-style: none;
+    margin-left: 0em;
 }
 
 ol,

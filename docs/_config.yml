@@ -58,7 +58,7 @@ theme_settings:
 
   # Scripts / Features 
   google_analytics: "UA-119463892-1" # Tracking ID, e.g. "UA-000000-01"
-  disqus_shortname: v20100v
+  disqus_shortname: https-v20100v-github-io-autoit-gui-skeleton-en
   katex: true # Enable if using math markup
   
   special_page:

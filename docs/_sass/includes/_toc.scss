@@ -14,6 +14,20 @@
   li:before {
     content: "\0BB \020";
   }
+  li {
+    margin-left: 0em;
+  }
+
+  li {
+    p {
+      display: inline;
+    }
+    & > ul,
+    & > ol {
+      margin-bottom: 0;
+      margin-left: 1em;
+    }
+  }
 }
 
 
