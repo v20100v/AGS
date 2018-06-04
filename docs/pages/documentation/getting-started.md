@@ -11,7 +11,7 @@ tags: [Documentation, AGS]
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
     <li class="breadcrumb-item"><a href="{{ site.url }}{{ site.baseurl }}/">Home</a></li>
-    <li class="breadcrumb-item"><a href="documentation">Documentation</a></li>
+    <li class="breadcrumb-item"><a href="{{ site.url }}{{ site.baseurl }}/documentation">Documentation</a></li>
     <li class="breadcrumb-item active" aria-current="page">Getting started</li>
   </ol>
 </nav>
@@ -33,8 +33,8 @@ In order to organize the code of an AutoIT application with a graphical interfac
 
 An AGS project respects the following organization for its files and directories.
 
-```
-project root folder
+<pre>
+<code class="language-markup">Project root folder
 |
 |   myApplication.au3          # Main entry program
 |   myApplication_GLOBAL.au3   # Centralized global variables declaration
@@ -58,8 +58,8 @@ project root folder
 \---views                      # Views declaration
     View_About.au3
     View_Footer.au3
-    View_Welcome.au3
-```
+    View_Welcome.au3</code>
+</pre>
 
 ## Directories and files of AutoIt project 
 
@@ -74,10 +74,10 @@ This directory contains the elements used in the application like images, text f
 
 This directory contains a Windows batch that controls the creation of a Windows installer with the [InnoSetup](http://www.jrsoftware.org/isinfo.php) solution. To run the batch, it is necessary that the InnoSetup compiler and 7zip be installed on the pc. If this is not the case, I advise you to use the Windows package manager [Chocolatey](https://chocolatey.org/) to install them simply:
 
-```
-C: \> choco install 7zip
-C: \> choco install innosetup
-```
+<pre class="command-line" data-prompt="C: \>">
+<code class=" language-bash">choco install 7zip
+choco install innosetup</code>
+</pre>
 
 
 ### Directory `vendor`
@@ -134,5 +134,5 @@ All these steps are driven by the Windows batch `deployment_autoit_application.b
 <br/>
 
 > **Relating reading**
-> 
-> Next step and continue reading with <a href="/autoit-gui-skeleton/documentation/code-organization">Code organization</a>.
+>
+> <a href="{{ site.url }}{{ site.baseurl }}/documentation/code-organization">Code organization in AGS project</a>.
