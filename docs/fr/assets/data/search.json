@@ -1,0 +1,36 @@
+[
+  
+   
+      {
+        "title"    : "Création d&#39;un setup Windows pour une application AutoIt",
+        "category" : "",
+        "tags"     : " AGS, InnoSetup",
+        "url"      : "/autoit-gui-skeleton/fr/2018/06/04/autoit-windows-setup.html",
+        "date"     : "June 4, 2018",
+        "excerpt"  : "<blockquote>\n  <p>AGS fournit un processus automatique et d’autres fonctionnalités pour faciliter la création d’un package et d’un installeur Windows (setup) d’une application AutoIt.</p>\n</blockquote>\n\n<!--more-->\n\n<h1 id=\"fonctionnalités-deploie...",
+        "content"  : "<blockquote>\n  <p>AGS fournit un processus automatique et d’autres fonctionnalités pour faciliter la création d’un package et d’un installeur Windows (setup) d’une application AutoIt.</p>\n</blockquote>\n\n<!--more-->\n\n<h1 id=\"fonctionnalités-deploiement-avec-ags\">Fonctionnalités deploiement avec AGS</h1>\n\n<p>Voici quelques nouvelles fonctionnalités avec le couple AGS et InnoSetup:</p>\n\n<ul>\n  <li>Générer un package (archive zip) et un installeur Windows.</li>\n  <li>Soutenir l’internationalisation (i18n).</li>\n  <li>Vérifier si l’application est déjà installée.</li>\n  <li>Configurer des messages supplémentaires dans la configuration comme: contrat de licence, prérequis et projet d’historique.</li>\n  <li>Ajouter des applciations d’icônes dans le menu Démarrer de Windows.</li>\n  <li>Lancer une commande personnalisée après la fin de l’installation.</li>\n  <li>Personnaliser et modifier les éléments graphiques du programme d’installation de Windows.</li>\n</ul>\n\n<h1 id=\"ags-utilise-un-batch-windows-pour-automatiser-la-génération-du-setup\">AGS utilise un batch Windows pour automatiser la génération du setup</h1>\n\n<p>Dans AGS on utilise un batch Windows qui joue le rôle de chef d’orquestre, pour générer le setup.</p>\n\n<table>\n  <tbody>\n    <tr>\n      <td>![AGS GUI package and deployment process](assets/img/documentation/AGS-package-and-deployment-process.gif”</td>\n      <td>absolute_url }}){:class=”img-full img-fancybox”}</td>\n    </tr>\n  </tbody>\n</table>\n\n<p><br /></p>\n\n<blockquote>\n  <p><strong>Read AGS documentation</strong></p>\n\n  <p><a href=\"https://v20100v.github.io/autoit-gui-skeleton/fr/documentation/creating-setup-package-autoit-application\">Creating installation packages for AutoIt application with AGS</a></p>\n</blockquote>\n\n"
+      } ,
+   
+      {
+        "title"    : "Publication d&#39;AGS v1.0.0",
+        "category" : "",
+        "tags"     : " AGS",
+        "url"      : "/autoit-gui-skeleton/fr/2018/05/22/ags-first-release-version.html",
+        "date"     : "May 22, 2018",
+        "excerpt"  : "<p>AutoIt Gui Skeleton (AGS) v1.0.0 est disponible sur GitHub. AGS essayera de respecter le <a href=\"https://semver.org/\">semantic versionning</a>, ce qui signifie qu’il ne devrait pas contenir de rupture de fonctionnalités pour les futures versio...",
+        "content"  : "<p>AutoIt Gui Skeleton (AGS) v1.0.0 est disponible sur GitHub. AGS essayera de respecter le <a href=\"https://semver.org/\">semantic versionning</a>, ce qui signifie qu’il ne devrait pas contenir de rupture de fonctionnalités pour les futures versions v1.x.x.</p>\n\n<!--more-->\n\n<p>AGS offre un environnement pour les développeurs pour faciliter la création d’applications AutoIt avec une interface graphique. Pour ce faire, AGS propose d’utiliser des conventions et une organisation du code spécifique.</p>\n\n<blockquote>\n  <ul>\n    <li>\n      <p><a href=\"https://v20100v.github.io/autoit-gui-skeleton/fr/documentation\">Lire la documentation d’AGS</a></p>\n    </li>\n    <li>\n      <p><a href=\"https://github.com/v20100v/autoit-gui-skeleton/releases/tag/1.0.0\">Obtenir AGS v1.0.0 sur GitHub</a></p>\n    </li>\n  </ul>\n</blockquote>\n\n"
+      } ,
+   
+      {
+        "title"    : "Github Pages avec Jekyll",
+        "category" : "",
+        "tags"     : " AGS",
+        "url"      : "/autoit-gui-skeleton/fr/2018/05/17/thx-github-jekyll.html",
+        "date"     : "May 17, 2018",
+        "excerpt"  : "<blockquote>\n  <p>Le site de documentation d’AGS est deployé sur Github Pages avec Jekyll. Merci pour ce mariage heureux.</p>\n</blockquote>\n\n<!--more-->\n\n<h1 id=\"cest-quoi-github-pages\">C’est quoi GitHub Pages?</h1>\n\n<p>GitHub Pages est un service...",
+        "content"  : "<blockquote>\n  <p>Le site de documentation d’AGS est deployé sur Github Pages avec Jekyll. Merci pour ce mariage heureux.</p>\n</blockquote>\n\n<!--more-->\n\n<h1 id=\"cest-quoi-github-pages\">C’est quoi GitHub Pages?</h1>\n\n<p>GitHub Pages est un service d’hebergement de site statique à destination d’une organisation, d’une personne ou pour un projet directement depuis un dépôt GitHub.</p>\n\n<p>Plus d’informations ici : <a href=\"https://help.github.com/articles/what-is-github-pages/\">Github Pages</a>.</p>\n\n<h1 id=\"cest-quoi-jekyll-\">C’est quoi Jekyll ?</h1>\n\n<p>Jekyll est un simple geneateur de site statique, type blod, adapté pour des sites personnels, projet ou d’une organisation.</p>\n\n<p>Plus d’inforamtion ici : <a href=\"https://jekyllrb.com/\">Jekyll</a>.</p>\n\n<h1 id=\"github-pages-avec-jekyll\">Github Pages avec Jekyll</h1>\n\n<p>Pour ce site, on utilise Jekyll comme generateur de site en lien avec Github Pages. En effet en plus de supporter les contenus HTML, Github Pages fonctionne également avec Jekyll.</p>\n\n<p>Plus d’information ici : <a href=\"https://help.github.com/articles/using-jekyll-as-a-static-site-generator-with-github-pages/\">Jekyll support on Github Pages</a>.</p>\n"
+      } 
+   
+   
+  
+]

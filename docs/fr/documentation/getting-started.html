@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+    <!-- URL canonical -->
+    <link rel="canonical" href="https://v20100v.github.io/autoit-gui-skeleton/documentation/getting-started" />
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://v20100v.github.io//autoit-gui-skeleton/assets/css/main.css" />
+
+    <!--Favicon-->
+    <link rel="shortcut icon" href="https://v20100v.github.io//autoit-gui-skeleton/assets/img/favicon.ico" type="image/x-icon" />
+
+    <!-- RSS -->
+    <link rel="alternate" type="application/atom+xml" title="AutoIt GUI Skeleton" href="https://v20100v.github.io//autoit-gui-skeleton/fr//feed.xml" />
+
+    <!-- Font Awesome -->
+    <!-- <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"> -->
+    <!-- <link rel="stylesheet" type="text/css" href="/autoit-gui-skeleton/fr/assets/css/vendor/font-awesome.min.css"> -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous" />
+
+    <!-- Google Fonts -->
+    
+    <link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,700italic,400italic" rel="stylesheet" type="text/css" />
+    
+
+    <!-- KaTeX 0.8.3 -->
+    
+    <link rel="stylesheet" type="text/css" href="https://v20100v.github.io//autoit-gui-skeleton/assets/css/vendor/katex.min.css" />
+    
+
+    <!-- FancyBox style -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.5/jquery.fancybox.min.css" />
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous" />
+
+    <!-- Prism CSS syntax highlighter for AutoIt support -->
+    <link rel="stylesheet" type="text/css" href="https://v20100v.github.io//autoit-gui-skeleton/assets/css/vendor/prism.css" />
+
+    <!-- Flags sprites -->
+    <link rel="stylesheet" type="text/css" href="https://v20100v.github.io//autoit-gui-skeleton/assets/flag-icon-css-master/css/flag-icon.min.css" />
+
+    <!-- seo tags -->
+    <!-- Begin Jekyll SEO tag v2.4.0 -->
+<title>Getting started with AGS | AutoIt GUI Skeleton</title>
+<meta name="generator" content="Jekyll v3.8.1" />
+<meta property="og:title" content="Getting started with AGS" />
+<meta property="og:locale" content="fr" />
+<meta name="description" content="AGS propose to provide an architecture and an organization to efficiently develop and build a desktop application Windows with AutoIt." />
+<meta property="og:description" content="AGS propose to provide an architecture and an organization to efficiently develop and build a desktop application Windows with AutoIt." />
+<link rel="canonical" href="https://v20100v.github.io/autoit-gui-skeleton/fr/documentation/getting-started" />
+<meta property="og:url" content="https://v20100v.github.io/autoit-gui-skeleton/fr/documentation/getting-started" />
+<meta property="og:site_name" content="AutoIt GUI Skeleton" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2018-05-22T00:00:00+02:00" />
+<script type="application/ld+json">
+{"url":"https://v20100v.github.io/autoit-gui-skeleton/fr/documentation/getting-started","headline":"Getting started with AGS","dateModified":"2018-05-22T00:00:00+02:00","datePublished":"2018-05-22T00:00:00+02:00","description":"AGS propose to provide an architecture and an organization to efficiently develop and build a desktop application Windows with AutoIt.","mainEntityOfPage":{"@type":"WebPage","@id":"https://v20100v.github.io/autoit-gui-skeleton/fr/documentation/getting-started"},"@type":"BlogPosting","@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <!-- Manual seo tags -->
+
+    <title>AutoIt GUI Skeleton</title>
+    <meta name="description" content="">
+</head>
+
+  <body>
+    <header class="site-header">
+
+    <!-- Logo and title -->
+	<div class="branding">
+		<a href="https://v20100v.github.io/autoit-gui-skeleton/fr/">
+			<img class="avatar" src="https://v20100v.github.io/autoit-gui-skeleton/assets/img/autoit.png" alt=""/>
+		</a>
+
+		<p class="site-title">
+			<a href="https://v20100v.github.io/autoit-gui-skeleton/fr/">Entrée</a>
+		</p>
+	</div>
+
+    <!-- This finds the current page so it can be highlighted. -->
+    
+
+    <nav class="clear">
+
+        <!-- Toggle menu -->
+        <a id="pull" class="toggle">
+            <i class="fa fa-bars fa-lg"></i>
+        </a>
+
+        <!-- Menu -->
+        <ul class="hide">
+
+            
+              <li><a href="https://v20100v.github.io/autoit-gui-skeleton/fr/documentation">Documentation</a></li>
+              <li><a href="https://v20100v.github.io/autoit-gui-skeleton/fr/articles">Articles</a></li>
+              <li><a href="https://v20100v.github.io/autoit-gui-skeleton/fr/about">About</a></li>
+            
+
+            
+            
+            <li class="separator"> | </li>
+            <li>
+                <a class="clear" href="https://v20100v.github.io/autoit-gui-skeleton/fr/search">
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                </a>
+            </li>
+            
+            
+            
+            
+
+            
+            <li>
+                <a class="link-en" href="https://v20100v.github.io/autoit-gui-skeleton//documentation/getting-started">
+                    <span class="flag-icon flag-icon-gb" data-toggle="tooltip" data-placement="bottom" title="Translate in english" alt="Anglais"></span>
+                </a>
+            </li>
+            
+        </ul>
+    </nav>
+</header>
+
+    <div class="content">
+      <article class="feature-image">
+  <header id="main" style="background-image: url('https://v20100v.github.io/autoit-gui-skeleton/assets/img/documentation/hand-3285912_1920.jpg')">
+
+    
+      <h1 id="D%C3%A9marrer+avec+AGS" class="title">
+        Démarrer avec AGS
+      </h1>
+      
+    
+  </header>
+
+  <section class="post-content"><!-- Breadcrumb navigation -->
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="https://v20100v.github.io/autoit-gui-skeleton/fr/">Home</a></li>
+    <li class="breadcrumb-item"><a href="https://v20100v.github.io/autoit-gui-skeleton/fr/documentation">Documentation</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Getting started</li>
+  </ol>
+</nav>
+
+<!-- To be placed at the beginning of the post, it is where the table of content will be generated -->
+<ul id="markdown-toc">
+  <li><a href="#ags-" id="markdown-toc-ags-">AGS ?</a></li>
+  <li><a href="#architecture-et-vue-densemble-dun-projet-ags" id="markdown-toc-architecture-et-vue-densemble-dun-projet-ags">Architecture et vue d’ensemble d’un projet AGS</a>    <ul>
+      <li><a href="#répertoires-et-fichiers-dun-projet-ags" id="markdown-toc-répertoires-et-fichiers-dun-projet-ags">Répertoires et fichiers d’un projet AGS</a>        <ul>
+          <li><a href="#répertoire-assets" id="markdown-toc-répertoire-assets">Répertoire <code class="highlighter-rouge">assets</code></a></li>
+          <li><a href="#répertoire-deployment" id="markdown-toc-répertoire-deployment">Répertoire <code class="highlighter-rouge">deployment</code></a></li>
+          <li><a href="#répertoire-vendor" id="markdown-toc-répertoire-vendor">Répertoire <code class="highlighter-rouge">vendor</code></a></li>
+          <li><a href="#répertoire-views" id="markdown-toc-répertoire-views">Répertoire <code class="highlighter-rouge">views</code></a></li>
+        </ul>
+      </li>
+      <li><a href="#vue-densemble-de-larchitecture-dags" id="markdown-toc-vue-densemble-de-larchitecture-dags">Vue d’ensemble de l’architecture d’AGS</a>        <ul>
+          <li><a href="#programme-dentrée-principale" id="markdown-toc-programme-dentrée-principale">Programme d’entrée principale</a></li>
+          <li><a href="#gestionnaire-principal-de-lihm" id="markdown-toc-gestionnaire-principal-de-lihm">Gestionnaire principal de l’IHM</a></li>
+          <li><a href="#centraliser-la-déclaration-des-variables-globales" id="markdown-toc-centraliser-la-déclaration-des-variables-globales">Centraliser la déclaration des variables globales</a></li>
+          <li><a href="#package-et-déploiement" id="markdown-toc-package-et-déploiement">Package et déploiement</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="ags-">AGS ?</h1>
+
+<p>AutoIt Gui Skeleton (AGS) fournit un environement pour les développeurs, pour faciliter la construction d’application AutoIt.</p>
+
+<p>Pour organiser le code d’une application AutoIT, AGS propose d’utiliser des conventions et le modèle suivant pour développer et construire une application AutoIt avec une interface graphqiue (IHM).</p>
+
+<h1 id="architecture-et-vue-densemble-dun-projet-ags">Architecture et vue d’ensemble d’un projet AGS</h1>
+
+<p>Un projet AGS respecte l’organisation suivante pour ses fichiers et répertoires.</p>
+
+<pre>
+<code class="language-markup">Project root folder
+|
+|   myApplication.au3          # Main entry program
+|   myApplication_GLOBAL.au3   # Centralized global variables declaration
+|   myApplication_GUI.au3      # Main GUI handler
+|   myApplication_LOGIC.au3    # Logic/Business code only
+|   README.md                  # Cause We always need it
+|  
++---assets                     # All applications assets
+|   +---html
+|   +---images
+|   \---pdf
+|
++---deployment                
+|   \---releases               # Contains releases setup (zip and Windows setup files)
+|   deployment.bat             # The orquestrator to pilot Windows setup creation
+|   deploymeny.iss             # InnoSetup script use to generate Windows setup
+|
++---vendor                     # All third-party code use in this project
+|   \--- FolderVendor
+|              
+\---views                      # Views declaration
+    View_About.au3
+    View_Footer.au3
+    View_Welcome.au3</code>
+</pre>
+
+<h2 id="répertoires-et-fichiers-dun-projet-ags">Répertoires et fichiers d’un projet AGS</h2>
+
+<p>On organise les fichiers dans des répertyoires spécifiques.</p>
+
+<h3 id="répertoire-assets">Répertoire <code class="highlighter-rouge">assets</code></h3>
+
+<p>Ce répertoire contient les éléments utilisés dans l’application comme des images, des fichiers textes, pdf, html, css, javascript. Ce répertoire contient tous les fichiers locaux nécessaire à l’application.</p>
+
+<h3 id="répertoire-deployment">Répertoire <code class="highlighter-rouge">deployment</code></h3>
+
+<p>Ce répertoire contient un batch Windows qui pilote la création d’un installeur Windows avec la solution InnoSetup. Pour faire fonctionner le batch, il est nécessaire que le compilateur d’InnoSetup et que 7zip soit installer sur le poste client. Si ce n’est pas le cas, je vous conseille d’utiliser le gestionnaire de package Windows Chocolatey pour les installer simplement :</p>
+
+<pre class="command-line" data-prompt="C: \&gt;">
+<code class=" language-bash">choco install 7zip
+choco install innosetup</code>
+</pre>
+
+<h3 id="répertoire-vendor">Répertoire <code class="highlighter-rouge">vendor</code></h3>
+
+<p>Ce répertoire est l’endroit par convention où stocker le code développé par des tiers dans un projet.</p>
+
+<p>Par exemple, dans ce projet (https://github.com/v20100v/autoit-gui-skeleton), nous avons inclus la bibliothèque GUICtrlOnHover v2.0 créée par G.Sandler a.k.a MrCreatoR dans ce répertoire.</p>
+
+<h3 id="répertoire-views">Répertoire <code class="highlighter-rouge">views</code></h3>
+
+<p>Ce répertoire contient les gestionnaires des vues. Tout le code de toutes les vues sont définis à chaque fois dans un fichier spécifique et stockés dans ce répertoire.</p>
+
+<h2 id="vue-densemble-de-larchitecture-dags">Vue d’ensemble de l’architecture d’AGS</h2>
+
+<p><img src="https://v20100v.github.io/autoit-gui-skeleton/assets/img/documentation/autoit-gui-skeleton_overview.png" alt="Vue d'ensemble de l'architecture d'AGS" class="img-fancybox img-full" /></p>
+
+<h3 id="programme-dentrée-principale">Programme d’entrée principale</h3>
+
+<p>Le programme d’entrée principale sert de point d’entrée unique pour l’application AutoIt. C’est l’endroit où l’application démarre. Dans ce dernier, il est nécessaire d’inclure les autres libraires, de définir toutes les variables globales, l’interface graphique et le code métier de l’application.</p>
+
+<p>L’application démarre avec le gestionnaire principal de l’IHM <code class="highlighter-rouge">_main_GUI()</code>.</p>
+
+<h3 id="gestionnaire-principal-de-lihm">Gestionnaire principal de l’IHM</h3>
+
+<p>Ce gestionnaire contiens la méthode <code class="highlighter-rouge">_main_GUI()</code>, qui est uniquement appellé par le programme d’entrée principal. Cette méthode a pour rôle de créer l’interface graphique (IHM) et de gérer toutes les interactions et évenements de l’utilisateur.</p>
+
+<h3 id="centraliser-la-déclaration-des-variables-globales">Centraliser la déclaration des variables globales</h3>
+
+<p>Toutes les constantes et les variables globales sont définis en un seul endroit, dans le fichier <code class="highlighter-rouge">myProject_GLOBALS.au3</code>. À l’exception de toutes les variables globales des éléments graphiques qui elles, sont définies dans chaque fichier de vue spécifique. On rappelle que les constantes ne peuvent plus changer de valeur dans le temps, contrairement aux variables globales.</p>
+
+<p>Par convetion, toutes les variables glboales doivent être écrites en majuscule avec un underscore pour séparée les motes. Par exemple : <code class="highlighter-rouge">Global Const $APP_EMAIL_CONTACT</code></p>
+
+<h3 id="package-et-déploiement">Package et déploiement</h3>
+
+<p>Dans le but de faciliter le déploiement d’application Windows développer avec AutoIt, on propose d’utiliser un processus automatisée pour construire un installeur Windows avec la solution InnoSetup. Dans AGS, on utilise en plus un fichier batch Windows, appellé <code class="highlighter-rouge">deployment_autoit_application.bat</code> qui joue le rôle de chef d’orquestre dans la génération de l’installeur. Dans le répertoire <code class="highlighter-rouge">\Deployment</code>, il va créer le répertoire de sortie <code class="highlighter-rouge">\releases\vx.y.z\</code> où l’archive zip de l’application, ainsi que le programme d’installation -Windows seront construits.</p>
+
+<p>Pour génerer un installeur, il faut suvire plusieurs étapes, dont voici les principales :</p>
+
+<ul>
+  <li>Assigner un numéro de version à l’application;</li>
+  <li>Compiler l’application, c’est à dire compiler le programme d’entrée principale myProject.au3 avec le compilateur aut2exe;</li>
+  <li>Copier les assets (images, files…) nécessaires au fonctionnement de l’application dans le répertoire de génération;</li>
+  <li>Créer l’archive zip;</li>
+  <li>Et finalement construire l’installeur Windows par la compilation du script InnoSetup associé.</li>
+</ul>
+
+<p>Toutes ces étapes sont pilotées par le fichier batch Windows <code class="highlighter-rouge">deployment_autoit_application.bat</code>.</p>
+
+<p>For generate a Windows application installer, we need a preparation whose main steps are:</p>
+
+<p><img src="https://v20100v.github.io/autoit-gui-skeleton/assets/img/documentation/AGS-package-and-deployment-result.png" alt="Result of process to package AutoIt application and generate Windows installer in AGS" class="img-full" /></p>
+
+<p><br /></p>
+
+<blockquote>
+  <p><strong>Lecture associée</strong></p>
+
+  <p><a href="https://v20100v.github.io/autoit-gui-skeleton/fr/documentation/code-organization">Organisation du code d’un projet AGS</a>.</p>
+</blockquote>
+
+</section>
+
+  <!-- Tag list for portfolio -->
+  
+  
+
+
+
+<div class="tag-list">
+    
+    <div class="meta">Tags</div>
+    
+
+    
+    <a class="button" href="/autoit-gui-skeleton/fr/tags#AGS">
+        <p><i class="fa fa-tag fa-fw"></i> AGS</p>
+    </a>
+    
+    <a class="button" href="/autoit-gui-skeleton/fr/tags#Documentation">
+        <p><i class="fa fa-tag fa-fw"></i> Documentation</p>
+    </a>
+    
+</div>
+
+
+</article>
+    </div>
+    
+<footer class="site-footer">
+    <p class="text">Build with ♥ by <a href="https://jekyllrb.com/">Jekyll</a> and <a href="https://github.com/sylhare/Type-on-Strap">Type on Strap</a>
+</p>
+            <div class="footer-icons">
+                <ul>
+                <!-- Social icons from Font Awesome, if enabled -->
+                
+
+
+<li>
+	<a href="mailto:vb20100bv@gmail.com" title="Email">
+		<span class="fa-stack fa-lg">
+            <i class="fa fa-circle fa-stack-2x"></i>
+            <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+        </span>
+	</a>
+</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li>
+	<a href="https://github.com/v20100v" title="Follow on GitHub">
+		<span class="fa-stack fa-lg">
+            <i class="fa fa-circle fa-stack-2x"></i>
+            <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+        </span>
+	</a>
+</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                </ul>
+            </div>
+</footer>
+
+
+
+
+    <!-- KaTeX 0.8.3 -->
+
+<link rel="stylesheet" type="text/css" href="https://v20100v.github.io//autoit-gui-skeleton/assets/css/vendor/katex.min.css">
+<script src="https://v20100v.github.io//autoit-gui-skeleton/assets/js/vendor/katex.min.js"></script>
+
+
+<!-- Google Analytics -->
+
+<script>
+    (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function () {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-119463892-1', 'auto');
+    ga('send', 'pageview');
+</script>
+
+
+<!-- Jquery -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+
+<!-- FancyBox -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.5/jquery.fancybox.min.js"></script>
+
+<!-- Bootstrap -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"
+        integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+        crossorigin="anonymous"></script>
+
+<!-- Prism CSS syntax highlighter for AutoIt support -->
+<script src="https://v20100v.github.io//autoit-gui-skeleton/assets/js/vendor/prism.js"></script>
+
+<script>
+    $(document).ready(function () {
+        // Enable fancybox evrywhere with this class selector
+        $('.img-fancybox').each(function (index, value) {
+            $(this).wrap('<a href="' + $(this).attr('src') + '" data-fancybox data-caption="' + $(this).attr('alt') + '">');
+        });
+
+        // Enable bootstrap tooltip everywhere with data-toogle attribute
+        $('[data-toggle="tooltip"]').tooltip()
+    });
+</script>
+
+<!-- Main JS (navbar.js, katex_init.js and masonry_init.js)-->
+<script defer=true src="/autoit-gui-skeleton/assets/js/main.min.js"></script>
+  </body>
+</html>

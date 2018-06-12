@@ -1,3 +1,107 @@
----
-layout: feed
----
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>AutoIt GUI Skeleton</title>
+        <atom:link href="/autoit-gui-skeleton/feed.xml" rel="self" type="application/rss+xml"/>
+        <link>https://v20100v.github.io/autoit-gui-skeleton/</link>
+        <description></description>
+        <pubDate>Tue, 12 Jun 2018 17:26:17 +0200</pubDate>
+        
+        <item>
+            <title>Creation of a Windows setup for an AutoIt application</title>
+            <link>/autoit-gui-skeleton/2018/06/04/autoit-windows-setup.html</link>
+            <guid isPermaLink="true">/autoit-gui-skeleton/2018/06/04/autoit-windows-setup.html</guid>
+            <description>&lt;blockquote&gt;
+  &lt;p&gt;AGS provides a process industrialized and some features to facilitate the creation of a package and a Windows setup to an AutoIt application.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;!--more--&gt;
+
+&lt;h1 id=&quot;ags-features-deployment&quot;&gt;AGS features deployment&lt;/h1&gt;
+&lt;p&gt;Here are some new features with the combination of AGS, InnoSetup&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Generate package (archive zip) and Windows setup.&lt;/li&gt;
+  &lt;li&gt;Support internationalization (i18n).&lt;/li&gt;
+  &lt;li&gt;Check if application is already install.&lt;/li&gt;
+  &lt;li&gt;Configure additional messages in the setup like: license agreement, prerequisites and history project.&lt;/li&gt;
+  &lt;li&gt;Add icons applciation into Windows start menu.&lt;/li&gt;
+  &lt;li&gt;Launch custom command after the end of the installation.&lt;/li&gt;
+  &lt;li&gt;Customize and change the graphic elements of the Windows installer (setup).&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;ags-use-a-windows-batch-to-automate-windows-installer-creation&quot;&gt;AGS use a Windows batch to automate Windows installer creation&lt;/h1&gt;
+
+&lt;p&gt;In AGS we use a Windows batch file which plays the role of orquestrian leader.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://v20100v.github.io/autoit-gui-skeleton/assets/img/documentation/AGS-package-and-deployment-process.gif&quot; alt=&quot;AGS GUI package and deployment process&quot; class=&quot;img-full img-fancybox&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;strong&gt;Read AGS documentation&lt;/strong&gt;&lt;/p&gt;
+
+  &lt;p&gt;&lt;a href=&quot;https://v20100v.github.io/autoit-gui-skeleton/documentation/creating-setup-package-autoit-application&quot;&gt;Creating installation packages for AutoIt application with AGS&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+</description>
+            <pubDate>Mon, 04 Jun 2018 00:00:00 +0200</pubDate>
+        </item>
+        
+        <item>
+            <title>Publication of AGS v1.0.0</title>
+            <link>/autoit-gui-skeleton/2018/05/22/ags-first-release-version.html</link>
+            <guid isPermaLink="true">/autoit-gui-skeleton/2018/05/22/ags-first-release-version.html</guid>
+            <description>&lt;p&gt;AutoIt Gui Skeleton (AGS) v1.0.0 is now available on GitHub. AGS will try respect &lt;a href=&quot;https://semver.org/&quot;&gt;semantic versionning&lt;/a&gt;, meaning that it contains no breaking changes for v1.x.x future release version.&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;p&gt;AGS give an environment for developers, that makes it easy to build AutoIt applications. To do that, it proposes to use conventions and a specific organization of code.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;ul&gt;
+    &lt;li&gt;
+      &lt;p&gt;&lt;a href=&quot;https://v20100v.github.io/autoit-gui-skeleton/documentation&quot;&gt;Read AGS documentation&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+      &lt;p&gt;&lt;a href=&quot;https://github.com/v20100v/autoit-gui-skeleton/releases/tag/1.0.0&quot;&gt;Get AGS v1.0.0 on GitHub&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/blockquote&gt;
+</description>
+            <pubDate>Tue, 22 May 2018 00:00:00 +0200</pubDate>
+        </item>
+        
+        <item>
+            <title>Github Pages with Jekyll support</title>
+            <link>/autoit-gui-skeleton/2018/05/17/thx-github-jekyll.html</link>
+            <guid isPermaLink="true">/autoit-gui-skeleton/2018/05/17/thx-github-jekyll.html</guid>
+            <description>&lt;blockquote&gt;
+  &lt;p&gt;This website is deployed on Github pages, with Jekyll. Thanks to them for this wedding.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;!--more--&gt;
+
+&lt;h1 id=&quot;what-is-github-pages&quot;&gt;What is GitHub Pages?&lt;/h1&gt;
+
+&lt;p&gt;GitHub Pages is a static site hosting service designed to host your personal, organization, or project pages directly from a GitHub repository.&lt;/p&gt;
+
+&lt;p&gt;More information about &lt;a href=&quot;https://help.github.com/articles/what-is-github-pages/&quot;&gt;Github Pages&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h1 id=&quot;what-is-jekyll-&quot;&gt;What is Jekyll ?&lt;/h1&gt;
+
+&lt;p&gt;Jekyll is a simple, blog-aware, static site generator perfect for personal, project, or organization sites. Think of it like a file-based CMS, without all the complexity. Jekyll takes your content, renders Markdown and Liquid templates, and spits out a complete, static website ready to be served by Apache, Nginx or another web server. Jekyll is the engine behind GitHub Pages, which you can use to host sites right from your GitHub repositories.&lt;/p&gt;
+
+&lt;p&gt;More information about &lt;a href=&quot;https://jekyllrb.com/&quot;&gt;Jekyll&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h1 id=&quot;github-pages-with-jekyll&quot;&gt;Github Pages with Jekyll&lt;/h1&gt;
+
+&lt;p&gt;For this website we use Jekyll as a static site generator with GitHub Pages. In addition to supporting regular HTML content, GitHub Pages supports Jekyll.&lt;/p&gt;
+
+&lt;p&gt;More information about &lt;a href=&quot;https://help.github.com/articles/using-jekyll-as-a-static-site-generator-with-github-pages/&quot;&gt;Jekyll support on Github Pages&lt;/a&gt;.&lt;/p&gt;
+</description>
+            <pubDate>Thu, 17 May 2018 00:00:00 +0200</pubDate>
+        </item>
+        
+    </channel>
+</rss>

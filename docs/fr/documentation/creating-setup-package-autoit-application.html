@@ -1,0 +1,944 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+    <!-- URL canonical -->
+    <link rel="canonical" href="https://v20100v.github.io/autoit-gui-skeleton/documentation/creating-setup-package-autoit-application" />
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://v20100v.github.io//autoit-gui-skeleton/assets/css/main.css" />
+
+    <!--Favicon-->
+    <link rel="shortcut icon" href="https://v20100v.github.io//autoit-gui-skeleton/assets/img/favicon.ico" type="image/x-icon" />
+
+    <!-- RSS -->
+    <link rel="alternate" type="application/atom+xml" title="AutoIt GUI Skeleton" href="https://v20100v.github.io//autoit-gui-skeleton/fr//feed.xml" />
+
+    <!-- Font Awesome -->
+    <!-- <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"> -->
+    <!-- <link rel="stylesheet" type="text/css" href="/autoit-gui-skeleton/fr/assets/css/vendor/font-awesome.min.css"> -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous" />
+
+    <!-- Google Fonts -->
+    
+    <link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,700italic,400italic" rel="stylesheet" type="text/css" />
+    
+
+    <!-- KaTeX 0.8.3 -->
+    
+    <link rel="stylesheet" type="text/css" href="https://v20100v.github.io//autoit-gui-skeleton/assets/css/vendor/katex.min.css" />
+    
+
+    <!-- FancyBox style -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.5/jquery.fancybox.min.css" />
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous" />
+
+    <!-- Prism CSS syntax highlighter for AutoIt support -->
+    <link rel="stylesheet" type="text/css" href="https://v20100v.github.io//autoit-gui-skeleton/assets/css/vendor/prism.css" />
+
+    <!-- Flags sprites -->
+    <link rel="stylesheet" type="text/css" href="https://v20100v.github.io//autoit-gui-skeleton/assets/flag-icon-css-master/css/flag-icon.min.css" />
+
+    <!-- seo tags -->
+    <!-- Begin Jekyll SEO tag v2.4.0 -->
+<title>Creating installation packages - setup Windows - for AutoIt application | AutoIt GUI Skeleton</title>
+<meta name="generator" content="Jekyll v3.8.1" />
+<meta property="og:title" content="Creating installation packages - setup Windows - for AutoIt application" />
+<meta property="og:locale" content="fr" />
+<meta name="description" content="AGS propose to provide an architecture and an organization to efficiently develop and build a desktop application Windows with AutoIt." />
+<meta property="og:description" content="AGS propose to provide an architecture and an organization to efficiently develop and build a desktop application Windows with AutoIt." />
+<link rel="canonical" href="https://v20100v.github.io/autoit-gui-skeleton/fr/documentation/creating-setup-package-autoit-application" />
+<meta property="og:url" content="https://v20100v.github.io/autoit-gui-skeleton/fr/documentation/creating-setup-package-autoit-application" />
+<meta property="og:site_name" content="AutoIt GUI Skeleton" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2018-05-22T00:00:00+02:00" />
+<script type="application/ld+json">
+{"url":"https://v20100v.github.io/autoit-gui-skeleton/fr/documentation/creating-setup-package-autoit-application","headline":"Creating installation packages - setup Windows - for AutoIt application","dateModified":"2018-05-22T00:00:00+02:00","datePublished":"2018-05-22T00:00:00+02:00","description":"AGS propose to provide an architecture and an organization to efficiently develop and build a desktop application Windows with AutoIt.","mainEntityOfPage":{"@type":"WebPage","@id":"https://v20100v.github.io/autoit-gui-skeleton/fr/documentation/creating-setup-package-autoit-application"},"@type":"BlogPosting","@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <!-- Manual seo tags -->
+
+    <title>AutoIt GUI Skeleton</title>
+    <meta name="description" content="">
+</head>
+
+  <body>
+    <header class="site-header">
+
+    <!-- Logo and title -->
+	<div class="branding">
+		<a href="https://v20100v.github.io/autoit-gui-skeleton/fr/">
+			<img class="avatar" src="https://v20100v.github.io/autoit-gui-skeleton/assets/img/autoit.png" alt=""/>
+		</a>
+
+		<p class="site-title">
+			<a href="https://v20100v.github.io/autoit-gui-skeleton/fr/">Entrée</a>
+		</p>
+	</div>
+
+    <!-- This finds the current page so it can be highlighted. -->
+    
+
+    <nav class="clear">
+
+        <!-- Toggle menu -->
+        <a id="pull" class="toggle">
+            <i class="fa fa-bars fa-lg"></i>
+        </a>
+
+        <!-- Menu -->
+        <ul class="hide">
+
+            
+              <li><a href="https://v20100v.github.io/autoit-gui-skeleton/fr/documentation">Documentation</a></li>
+              <li><a href="https://v20100v.github.io/autoit-gui-skeleton/fr/articles">Articles</a></li>
+              <li><a href="https://v20100v.github.io/autoit-gui-skeleton/fr/about">About</a></li>
+            
+
+            
+            
+            <li class="separator"> | </li>
+            <li>
+                <a class="clear" href="https://v20100v.github.io/autoit-gui-skeleton/fr/search">
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                </a>
+            </li>
+            
+            
+            
+            
+
+            
+            <li>
+                <a class="link-en" href="https://v20100v.github.io/autoit-gui-skeleton//documentation/creating-setup-package-autoit-application">
+                    <span class="flag-icon flag-icon-gb" data-toggle="tooltip" data-placement="bottom" title="Translate in english" alt="Anglais"></span>
+                </a>
+            </li>
+            
+        </ul>
+    </nav>
+</header>
+
+    <div class="content">
+      <article class="feature-image">
+  <header id="main" style="background-image: url('https://v20100v.github.io/autoit-gui-skeleton/assets/img/pixabay/jigsaw-puzzle-712465_1920.jpg')">
+
+    
+      <h1 id="Cr%C3%A9ation+d%27installeur+-+setup+Windows+-+pour+des+applications+AutoIt" class="title">
+        Création d'installeur - setup Windows - pour des applications AutoIt
+      </h1>
+      
+    
+  </header>
+
+  <section class="post-content"><!-- Breadcrumb navigation -->
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="https://v20100v.github.io/autoit-gui-skeleton/fr/">Home</a></li>
+    <li class="breadcrumb-item"><a href="https://v20100v.github.io/autoit-gui-skeleton/fr/documentation">Documentation</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Creating installation packages for AutoIt application</li>
+  </ol>
+</nav>
+
+<!-- To be placed at the beginning of the post, it is where the table of content will be generated -->
+<ul id="markdown-toc">
+  <li><a href="#objectifs-et-motivations" id="markdown-toc-objectifs-et-motivations">Objectifs et motivations</a></li>
+  <li><a href="#packager-une-application-autoit-et-créer-un-programme-dinstallation-windows" id="markdown-toc-packager-une-application-autoit-et-créer-un-programme-dinstallation-windows">Packager une application AutoIt et créer un programme d’installation Windows</a>    <ul>
+      <li><a href="#utiliser-un-batch-windwos-comme-chef-dorquestre" id="markdown-toc-utiliser-un-batch-windwos-comme-chef-dorquestre">Utiliser un batch Windwos comme chef d’orquestre</a>        <ul>
+          <li><a href="#étape-17--créer-un-répertoire-de-sortie" id="markdown-toc-étape-17--créer-un-répertoire-de-sortie">Étape 1/7 : créer un répertoire de sortie</a></li>
+          <li><a href="#étape-27-compilation-autoit-du-programme-principal" id="markdown-toc-étape-27-compilation-autoit-du-programme-principal">Étape 2/7: Compilation AutoIt du programme principal</a></li>
+          <li><a href="#étape-37-copier-les-ressources" id="markdown-toc-étape-37-copier-les-ressources">Étape 3/7: Copier les ressources</a></li>
+          <li><a href="#étape-47-create-a-file-with-metadatas-of-generation" id="markdown-toc-étape-47-create-a-file-with-metadatas-of-generation">Étape 4/7: Create a file with metadatas of generation</a></li>
+          <li><a href="#étape-57-créer-larchive-zip" id="markdown-toc-étape-57-créer-larchive-zip">Étape 5/7: Créer l’archive zip</a></li>
+          <li><a href="#étape-67-créer-linstalleur-windows-avec-le-script-innosetup" id="markdown-toc-étape-67-créer-linstalleur-windows-avec-le-script-innosetup">Étape 6/7: Créer l’installeur Windows avec le script InnoSetup</a></li>
+          <li><a href="#étape-77-nettoyer-en-supprimant-le-répertoire-temporaire" id="markdown-toc-étape-77-nettoyer-en-supprimant-le-répertoire-temporaire">Étape 7/7: Nettoyer en supprimant le répertoire temporaire</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><a href="#fonctionnalité-dun-installeur-windows-avec-ags-et-innosetup" id="markdown-toc-fonctionnalité-dun-installeur-windows-avec-ags-et-innosetup">Fonctionnalité d’un installeur Windows avec AGS et InnoSetup</a>    <ul>
+      <li><a href="#support-de-linternationalisation-i18n" id="markdown-toc-support-de-linternationalisation-i18n">Support de l’internationalisation (i18n)</a></li>
+      <li><a href="#vérifier-si-lapplication-est-déjà-installé-sur-le-pc" id="markdown-toc-vérifier-si-lapplication-est-déjà-installé-sur-le-pc">Vérifier si l’application est déjà installé sur le PC</a></li>
+      <li><a href="#configurer-des-messages-supplémentaires-dans-linstalleur--licence-prérequis--historique" id="markdown-toc-configurer-des-messages-supplémentaires-dans-linstalleur--licence-prérequis--historique">Configurer des messages supplémentaires dans l’installeur : licence, prérequis &amp; historique</a></li>
+      <li><a href="#ajouter-des-icônes-dans-le-menu-démarrer-de-windows" id="markdown-toc-ajouter-des-icônes-dans-le-menu-démarrer-de-windows">Ajouter des icônes dans le menu Démarrer de Windows</a></li>
+      <li><a href="#executer-une-commande-après-linstallation" id="markdown-toc-executer-une-commande-après-linstallation">Executer une commande après l’installation</a></li>
+      <li><a href="#personnaliser-et-modifiez-les-éléments-graphiques-du-programme-dinstallation-windows" id="markdown-toc-personnaliser-et-modifiez-les-éléments-graphiques-du-programme-dinstallation-windows">Personnaliser et modifiez les éléments graphiques du programme d’installation Windows</a></li>
+    </ul>
+  </li>
+  <li><a href="#code-source" id="markdown-toc-code-source">Code source</a>    <ul>
+      <li><a href="#windows-batch-le-chef-dorquestre" id="markdown-toc-windows-batch-le-chef-dorquestre">Windows batch, le chef d’orquestre</a></li>
+      <li><a href="#innosetup-script-iss-associé" id="markdown-toc-innosetup-script-iss-associé">InnoSetup Script (ISS) associé</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="objectifs-et-motivations">Objectifs et motivations</h1>
+
+<p>Lorsqu’on termine une application, et que nous avons un code executable, il faut trouver un moyen pour faciliter le déploiement et l’installation sur un poste client. L’approche naturelle est de créer une simple archive zip du projet. Mais ce n’est pas suffisant, si on souhaite bénéficier de toutes les fonctionnalités d’un installeur Windows.</p>
+
+<p>Ainsi afin de faciliter le déploiement d’une application de bureau Windows, AGS propose de constuire un installeur Windows avec la solution <a href="http://www.jrsoftware.org/isinfo.php">InnoSetup</a>.</p>
+
+<h1 id="packager-une-application-autoit-et-créer-un-programme-dinstallation-windows">Packager une application AutoIt et créer un programme d’installation Windows</h1>
+
+<p>Pour préparer un package et générer un programme d’installation, les principales étapes à suivre sont les suivantes :</p>
+
+<p>  - Affecter un numéro de version à l’application et configurez les scripts qui créent le paquet et génèrent le programme d’installation de Windows.
+  - Compiler l’application via le point d’entrée principal myApplication.au3 avec le compilateur theaut2exe;
+  - Copier les assets (images, fichiers …) nécessaires au bon fonctionnement de l’application dans le répertoire de sortie;
+  - Créer une archive zip pour récupérer l’application;
+  - Et finalement construire le programme d’installation en compilant le script InnoSetup associé.</p>
+
+<p>Toutes les étapes, pour packager l’application et générer le programme d’installation, sont pilotées à partir d’un batch Windows, pour des raisons évidentes de rejouabilité et de facilité d’utilsiation.</p>
+
+<h2 id="utiliser-un-batch-windwos-comme-chef-dorquestre">Utiliser un batch Windwos comme chef d’orquestre</h2>
+
+<p>Avec AGS nous utilisons un fichier batch Windows, appelé <code class="highlighter-rouge">deployment_autoit_application.bat</code>, qui joue en effet le rôle de ched d’orquestre. Il créer le répertoire de sortie <code class="highlighter-rouge">\releases\vx.y.z\</code>, dans lequel l’archive zip de l’application et le programme d’installation de Windows seront construits.</p>
+
+<p><img src="https://v20100v.github.io/autoit-gui-skeleton/assets/img/documentation/AGS-package-and-deployment-process.gif" alt="AGS GUI package and deployment process" class="img-full img-fancybox" /></p>
+
+<p><br /></p>
+
+<p>Pour ce faire, il suivra les 7 étapes suivantes:</p>
+
+<h3 id="étape-17--créer-un-répertoire-de-sortie">Étape 1/7 : créer un répertoire de sortie</h3>
+
+<p>Avant l’exécution du batch Windows, il est nécessaire de définir différentes variables utilisées dans ce processus de création d’installeur:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Variable</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="highlighter-rouge">%VERSION%</code></td>
+      <td>Version assigned to the application.</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">%NAME_PROJECT%</code></td>
+      <td>Used to name the executable of the application. Note that the version number also appears in the executable name.</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">%AUT2EXE_AU3%</code></td>
+      <td>The name of the main AutoIt file (<code class="highlighter-rouge">myApplication.au3</code>)</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">%AUT2EXE_ICON%</code></td>
+      <td>The application icon (<code class="highlighter-rouge">%FOLDER_SRC%\assets\images\myApplication.ico</code>)</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">%ZIP_CLI%</code></td>
+      <td>Path of the 7zip binary to create an archive (<code class="highlighter-rouge">"C:\Program Files\7-Zip\7z.exe"</code>). I advise you to install it via the manager Chocolatey.</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">%ISCC_CLI%</code></td>
+      <td>InnoSetup compiler binary path (<code class="highlighter-rouge">"C:\Program Files (x86)\Inno Setup 5\ISCC.exe "</code>). I advise you to install it via the manager Chocolatey.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>À partir de ces variables, le batch Windows construira le répertoire de sortie <code class="highlighter-rouge">.\ Releases\v1.0.0\ myApplication_v1.0.0\</code>, dans lequel le programme d’entrée principal sera compiler,</p>
+
+<h3 id="étape-27-compilation-autoit-du-programme-principal">Étape 2/7: Compilation AutoIt du programme principal</h3>
+
+<p>Le programme AutoIt principal est compilé en ligne de commande avec le binaire <code class="highlighter-rouge">aut2exe</code>. Attention, il faut que ce dernier soit correctement renseigné dans la variable d’environnement <code class="highlighter-rouge">%PATH%</code> du système d’exploitation.</p>
+
+<pre><code class="language-Batch">:: deployment_autoit_application.bat ::
+
+(...)
+
+set AUT2EXE_ARGS=/in "%FOLDER_SRC%\%AUT2EXE_AU3%" /out "%FOLDER_OUT%\%NAME_EXE%" /icon
+aut2exe %AUT2EXE_ARGS%
+echo Compilation AutoIt is finished.
+</code></pre>
+
+<h3 id="étape-37-copier-les-ressources">Étape 3/7: Copier les ressources</h3>
+
+<p>Lorsque le processus est lancé, il copiera dans le répertoire de sortie tous les éléments (images, fichiers …) nécessaires au bon fonctionnement de l’application et à la génération du programme d’installation dans le répertoire de sortie.</p>
+
+<h3 id="étape-47-create-a-file-with-metadatas-of-generation">Étape 4/7: Create a file with metadatas of generation</h3>
+
+<p>In order to keep the build date, we create a file named <code class="highlighter-rouge">".v%VERSION%"</code> in the output directory. It’s possible to store in this text file any metadats need to describe this generated application.</p>
+
+<h3 id="étape-57-créer-larchive-zip">Étape 5/7: Créer l’archive zip</h3>
+
+<p>La création de l’archive zip nécessite que 7zip soit installé sur l’ordinateur et que la variable <code class="highlighter-rouge">%ZIP_CLI%</code> soit correctement renseignée avec le chemin complet de ce binaire. La commande qui génère alors l’archive est la suivante:</p>
+
+<pre><code class="language-Batch">set ZIP_CLI="C:\Program Files\7-Zip\7z.exe"
+
+%ZIP_CLI% a -tzip %NAME_PROJECT%_v%VERSION%.zip "%NAME_PROJECT%_v%VERSION%
+echo * The zip has been created.
+</code></pre>
+
+<h3 id="étape-67-créer-linstalleur-windows-avec-le-script-innosetup">Étape 6/7: Créer l’installeur Windows avec le script InnoSetup</h3>
+
+<p>Le script InnoSetup <code class="highlighter-rouge">.\Deployment\deployment_autoit_application.iss</code> contient toutes les instructions pour générer le programme d’installation Windows associé.</p>
+
+<p>On passe les arguments définis dans le batch Windows au script ISS via l’instruction <code class="highlighter-rouge">/dNameVariable=ValueVariable</code> en ligne de commande. Ainsi avec cette démarche, il suffit de configurer une seule fois les variables du projet (nom, version …) dans le fichier batch Windows. Il n’est pas nécessaire de reconfigurer les variables dans le script ISS.</p>
+
+<blockquote>
+  <p><strong>!!! Attention !!!</strong></p>
+
+  <p>Dans le fichier de script ISS, il existe d’autres variables à configurer: <code class="highlighter-rouge">ApplicationPublisher</code>,<code class="highlighter-rouge"> ApplicationURL</code>, <code class="highlighter-rouge">ApplicationGUID</code>, …</p>
+</blockquote>
+
+<pre><code class="language-Batch">set ISCC_CLI="C:\Program Files (x86)\Inno Setup 5\ISCC.exe"
+set ISCC_SCRIPT=deployment_autoit_application.iss
+
+echo * Launch compilation with iscc
+%ISCC_CLI% %ISCC_SCRIPT% /dApplicationVersion=%VERSION% /dApplicationName=%NAME_PROJECT%
+echo * Compilation has been finished.
+</code></pre>
+
+<h3 id="étape-77-nettoyer-en-supprimant-le-répertoire-temporaire">Étape 7/7: Nettoyer en supprimant le répertoire temporaire</h3>
+
+<p>Il suffit de conserver uniquement l’archive Zip et le programme d’installation Windows à la fin du processus. Donc le batch Windows supprime le répertoire temporaire à la fin du processus.</p>
+
+<p><img src="https://v20100v.github.io/autoit-gui-skeleton/assets/img/documentation/AGS-package-and-deployment-result.png" alt="AGS GUI package and deployment result" class="img-full" /></p>
+
+<h1 id="fonctionnalité-dun-installeur-windows-avec-ags-et-innosetup">Fonctionnalité d’un installeur Windows avec AGS et InnoSetup</h1>
+
+<h2 id="support-de-linternationalisation-i18n">Support de l’internationalisation (i18n)</h2>
+
+<p>Pour ajouter une nouvelle langue, il suffit d’ajouter dans la section <code class="highlighter-rouge">[languages]</code> la langue fournie dans le compilateur dans le fichier de script InnoSetup (ISS). Cela va traduire tous les messages natifs à InnoSetup.
+Attention, méfiez-vous des boutons «YES/NO» des MsgBox. Ils n’utilisent que la langue du système d’exploitation.</p>
+
+<pre><code class="language-Batch">[Languages]
+Name: "en"; MessagesFile: compiler:Default.isl;
+Name: "french"; MessagesFile: "compiler:Languages\French.isl"
+</code></pre>
+
+<p>Pour traduire les autres messages, il suffit de les déclarer dans la section <code class="highlighter-rouge">[CustomMessages]</code>, en préfixant les variables avec la langue (<code class="highlighter-rouge">en</code>,<code class="highlighter-rouge"> french</code>, <code class="highlighter-rouge">nl</code>, …). <a href="http://www.jrsoftware.org/ishelp/index.php?topic=languagessection">http://www.jrsoftware.org/ishelp/index.php?topic=languagessection</a></p>
+
+<pre><code class="language-Batch">[CustomMessages]
+french.CheckInstall=est déjà installé sur ce PC.
+french.CheckInstallAction=Souhaitez-vous désinstaller cette version existante avant de poursuivre?
+en.CheckInstall=is already install on this PC.
+en.CheckInstallAction=Do you want to uninstall this existing version before continuing?
+</code></pre>
+
+<p>Ainsi, au démarrage de l’installation, il demande à l’utilisateur de choisir la langue qu’il doit utiliser.</p>
+
+<p><img src="https://v20100v.github.io/autoit-gui-skeleton/assets/img/documentation/innosetup_choose_language.png" alt="AGS InnoSetup choix langue" /></p>
+
+<h2 id="vérifier-si-lapplication-est-déjà-installé-sur-le-pc">Vérifier si l’application est déjà installé sur le PC</h2>
+
+<p>Pour éviter d’installer plusieurs fois l’application sur l’ordinateur client, le programme d’installation vérifie à l’avance qu’il n’est pas déjà présent.</p>
+
+<p><img src="https://v20100v.github.io/autoit-gui-skeleton/assets/img/documentation/innosetup_check_already_install.png" alt="AGS InnoSetup check already install" /></p>
+
+<p>Pour ce faire, il est basé sur le GUID (<em>global unique identifier</em>) défini dans le script InnoSetup. Il est important de ne pas modifier ce code entre différentes versions d’application et qu’il soit unique par application. L’IDE fourni par InnoSetup fournit un outil pour en générer un nouveau GUID, accessible via le menu: <em>Outils &gt; Générer GUID dans l’IDE</em>.</p>
+
+<pre><code class="language-Batch">; NOTE: The value of AppId uniquely identifies this application.
+; Do not use the same AppId value in installers for other applications.
+; (To generate a new GUID, click Tools | Generate GUID inside the IDE.)
+#define ApplicationGUID "6886E28B-AAB5-4866-BCD5-E1B4C171A87A"
+#define ApplicationID ApplicationName + "_" + ApplicationGUID
+</code></pre>
+
+<p>Le programme d’installation ajoute la clé <code class="highlighter-rouge">SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\{# ApplicationID}_is1</code> dans la base de registre Windows. Et lorsque l’application est désinstallée, cette clé est supprimée. Il suffit donc de vérifier la présence de cette clé dans le registre pour savoir si l’application a déjà été installée.</p>
+
+<p><img src="https://v20100v.github.io/autoit-gui-skeleton/assets/img/documentation/innosetup_check_already_install2.png" alt="AGS InnoSetup check already install in Windows registry" class="img-fancybox img-full" /></p>
+
+<h2 id="configurer-des-messages-supplémentaires-dans-linstalleur--licence-prérequis--historique">Configurer des messages supplémentaires dans l’installeur : licence, prérequis &amp; historique</h2>
+
+<p>Pour configurer différents messages pour le programme d’installation, y compris les accords de licence, il suffit de remplir les fichiers texte stockés dans le répertoire <code class="highlighter-rouge">/Assets</code>.</p>
+
+<ul>
+  <li><code class="highlighter-rouge">AFTER_INSTALL.txt</code>: généralement pour afficher la feuille de route et l’historique du projet;</li>
+  <li><code class="highlighter-rouge">BEFORE_INSTALL.txt</code>: généralement pour afficher les prérequis de l’application;</li>
+  <li><code class="highlighter-rouge">LICENSE.txt</code>: pour la licence d’utilisation.</li>
+</ul>
+
+<p><img src="https://v20100v.github.io/autoit-gui-skeleton/assets/img/documentation/innosetup_choose_license_agreement.png" alt="AGS InnoSetup licence aggrement" /></p>
+
+<h2 id="ajouter-des-icônes-dans-le-menu-démarrer-de-windows">Ajouter des icônes dans le menu Démarrer de Windows</h2>
+
+<p>Pour ajouter des éléments au menu Démarrer de Windows, entrez la section <code class="highlighter-rouge">[Icons]</code> dans le script InnoSetup comme suit:</p>
+
+<pre><code class="language-batch">[Icons]
+Name: "{group}\{#ApplicationName}"; Filename: "{app}\{#ApplicationExeName}"; IconFilename: {app}\assets\images\myApplication.ico;
+Name: "{group}\{cm:ProgramOnTheWeb,{#ApplicationName}}"; Filename: "{#ApplicationURL}";
+Name: "{group}\{cm:UninstallProgram,{#ApplicationName}}"; Filename: "{uninstallexe}"; IconFilename: {app}\assets\images\setup.ico;
+Name: "{commondesktop}\{#ApplicationName}"; Filename: "{app}\{#ApplicationExeName}"; IconFilename: {app}\assets\images\myApplication.ico; IconIndex: 0
+</code></pre>
+
+<p>Ainsi on obtient :</p>
+
+<p><img src="https://v20100v.github.io/autoit-gui-skeleton/assets/img/documentation/innosetup_finish2.png" alt="AGS InnoSetup licence Windows icons start menu" /></p>
+
+<h2 id="executer-une-commande-après-linstallation">Executer une commande après l’installation</h2>
+
+<p>Il est possible de configurer l’installeur pour qu’il execute une commande à la fin de l’installation, comme par exemple pour démarrer l’application, ouvrir une page web, ouvrir un pdf…</p>
+
+<p><img src="https://v20100v.github.io/autoit-gui-skeleton/assets/img/documentation/innosetup_finish.png" alt="AGS InnoSetup licence Windows icons start menu" /></p>
+
+<h2 id="personnaliser-et-modifiez-les-éléments-graphiques-du-programme-dinstallation-windows">Personnaliser et modifiez les éléments graphiques du programme d’installation Windows</h2>
+
+<p>Nous avons choisi une taille (largeur x hauter) statique pour l’installateur. Ce n’est pas le plus facile de changer ces dimensions.</p>
+
+<p>Il y a 2 images et 2 icônes utilisées dans l’installateur. Ils sont stockés dans le répertoire <code class="highlighter-rouge">.\Assets\images</code>. Les images sont nécessairement au format bmp et doivent respecter les tailles standards.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Images use in setup</th>
+      <th>File</th>
+      <th>Comments</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>UninstallDisplayIcon</td>
+      <td>.\assets\images\myApplication.ico</td>
+      <td>Must be an ico</td>
+    </tr>
+    <tr>
+      <td>SetupIconFile</td>
+      <td>.\assets\images\setup.ico</td>
+      <td>Must be an ico</td>
+    </tr>
+    <tr>
+      <td>WizardImageFile</td>
+      <td>.\assets\images\innosetup_background.bmp</td>
+      <td>Must be a 500x313 bmp image</td>
+    </tr>
+    <tr>
+      <td>WizardSmallImageFile</td>
+      <td>.\assets\images\innosetup_image.bmp</td>
+      <td>Must be a 50x50 bmp image</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Dans le script InnoSetup, ils sont utilisés comme suit:</p>
+
+<pre><code class="language-Batch">UninstallDisplayIcon={app}\assets\images\myApplication.ico
+WizardImageFile={#PathAssets}\images\innosetup_background.bmp
+WizardSmallImageFile={#PathAssets}\images\innosetup_image.bmp
+SetupIconFile={#PathAssets}\images\setup.ico
+</code></pre>
+
+<h1 id="code-source">Code source</h1>
+
+<h2 id="windows-batch-le-chef-dorquestre">Windows batch, le chef d’orquestre</h2>
+
+<pre><code class="language-Batch">::---------------------------------------------------------------------------------
+::
+::    Copyright © 2018-05, v20100v
+::
+::    @author    v20100v
+::    @contact   7567933+v20100v@users.noreply.github.com
+::    @version   1.0.0
+::
+::---------------------------------------------------------------------------------
+
+cls
+@echo off
+
+:: Change value for this variables
+set VERSION=1.0.0
+set NAME_PROJECT=myApplication
+
+:: Deployment variables
+set FOLDER_CURRENT=%cd%
+set NAME_EXE=%NAME_PROJECT%_v%VERSION%.exe
+set FOLDER_SRC=%FOLDER_CURRENT%\..\
+cd %FOLDER_SRC%
+set FOLDER_SRC=%cd%
+set FOLDER_OUT=%FOLDER_CURRENT%\releases\v%VERSION%\%NAME_PROJECT%_v%VERSION%
+
+:: AutoIt compiler
+Set AUT2EXE_AU3=myApplication.au3
+set AUT2EXE_ICON=%FOLDER_SRC%\assets\images\myApplication.ico
+set AUT2EXE_ARGS=/in "%FOLDER_SRC%\%AUT2EXE_AU3%" /out "%FOLDER_OUT%\%NAME_EXE%" /icon "%AUT2EXE_ICON%"
+
+:: Path binaries
+set ZIP_CLI="C:\Program Files\7-Zip\7z.exe"
+set ISCC_CLI="C:\Program Files (x86)\Inno Setup 5\ISCC.exe"
+set ISCC_SCRIPT=deployment_autoit_application.iss
+
+
+echo.
+echo.
+echo     º  Run script deployment for : %NAME_PROJECT%  º
+echo.
+echo.
+
+
+echo ÄÄÄÄ[ Variables for generation ]ÄÄÄÄ
+echo * VERSION        = %VERSION%
+echo * NAME_PROJECT   = %NAME_PROJECT%
+echo * FOLDER_CURRENT = %FOLDER_CURRENT%
+echo * NAME_EXE       = %NAME_EXE%
+echo * FOLDER_SRC     = %FOLDER_SRC%
+echo * FOLDER_OUT     = %FOLDER_OUT%
+echo * AUT2EXE_ICON   = %AUT2EXE_ICON%
+echo * AUT2EXE_AU3    = %AUT2EXE_AU3%
+echo * AUT2EXE_ARGS   = %AUT2EXE_ARGS%
+echo * ZIP_CLI        = %ZIP_CLI%
+echo * ISCC_CLI       = %ISCC_CLI%
+echo * ISCC_SCRIPT    = %ISCC_SCRIPT%
+echo ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+
+echo.
+echo.
+
+echo ÄÄÄÄ[ Step 1/7 - Creating directories ]ÄÄÄÄ
+cd %FOLDER_CURRENT%
+echo * Attempt to create : "%cd%\releases\"
+mkdir releases
+cd releases
+echo.
+echo * Attempt to create : "%cd%\v%VERSION%\"
+mkdir v%VERSION%
+cd v%VERSION%
+echo.
+echo * Attempt to create : %cd%\%NAME_PROJECT%_v%VERSION%\
+mkdir %NAME_PROJECT%_v%VERSION%
+cd %FOLDER_CURRENT%
+echo ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+
+echo.
+echo.
+
+
+echo ÄÄÄÄ[ Step 2/7 - Launch AutoIt compilation ]ÄÄÄÄ
+echo * Run compilation with aut2exe and AUT2EXE_ARGS.
+aut2exe %AUT2EXE_ARGS%
+echo * Compilation AutoIt is finished.
+echo ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+
+echo.
+echo.
+
+
+echo ÄÄÄÄ[ Step 3/7 - Copy assets files ]ÄÄÄÄ
+echo * Create the file xcopy_EXCLUDE.txt in order to ignore some file and directory.
+echo .au3 &gt; xcopy_Exclude.txt
+echo .pspimage &gt;&gt; xcopy_Exclude.txt
+echo *   - ignore all .au3 files
+echo *   - ignore all .pspimage files
+echo * The file xcopy_EXCLUDE.txt is created.
+echo.
+echo * Copy additional files store in assets directory with xcopy
+echo * Launch command : xcopy "%FOLDER_SRC%\assets" "%FOLDER_OUT%\assets\" /E /H /Y /EXCLUDE:xcopy_Exclude.txt
+xcopy "%FOLDER_SRC%\assets" "%FOLDER_OUT%\assets\" /E /H /Y /EXCLUDE:xcopy_Exclude.txt
+echo * Files and directory are copied.
+echo.
+echo * Delete xcopy_Exclude.txt.
+del xcopy_Exclude.txt
+echo ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+
+echo.
+echo.
+
+
+echo ÄÄÄÄ[ Step 4/7 - Create additional files ]ÄÄÄÄ
+echo * Create file ".v%VERSION%" in FOLDER_OUT.
+cd %FOLDER_OUT%
+echo Last compilation of application %NAME_PROJECT% version %VERSION% the %date% at %time% &gt; .v%VERSION%
+echo * This file has been created.
+echo ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+
+echo.
+echo.
+
+
+echo ÄÄÄÄ[ Step 5/7 - Create zip archive ]ÄÄÄÄ
+echo * Move in the folder %FOLDER_CURRENT%\releases\v%VERSION%
+cd %FOLDER_CURRENT%\releases\v%VERSION%
+echo * Zip the folder %NAME_PROJECT%_v%VERSION%
+%ZIP_CLI% a -tzip %NAME_PROJECT%_v%VERSION%.zip "%NAME_PROJECT%_v%VERSION%
+echo * The zip has been created.
+echo ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+
+echo.
+echo.
+
+echo ÄÄÄÄ[ Step 6/7 - Make setup with InnoSetup command line compilation ]ÄÄÄÄ
+cd %FOLDER_CURRENT%
+echo * Launch compilation with iscc
+%ISCC_CLI% %ISCC_SCRIPT% /dApplicationVersion=%VERSION% /dApplicationName=%NAME_PROJECT%
+echo.
+echo * Compilation has been finished.
+echo ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+
+echo.
+echo.
+
+echo ÄÄÄÄ[ Step 7/7 - Delete temp folder use for ISS compilation ]ÄÄÄÄ
+cd %FOLDER_CURRENT%
+echo * Delete the folder %FOLDER_CURRENT%\releases\v%VERSION%\%NAME_PROJECT%_v%VERSION%\
+rmdir %FOLDER_CURRENT%\releases\v%VERSION%\%NAME_PROJECT%_v%VERSION% /S /Q
+echo ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+
+echo.
+echo.
+
+cd %FOLDER_CURRENT%
+echo ÄÄÄÄ[ End process ]ÄÄÄÄ
+echo.
+</code></pre>
+
+<h2 id="innosetup-script-iss-associé">InnoSetup Script (ISS) associé</h2>
+
+<pre><code class="language-batch">;---------------------------------------------------------------------------------
+;
+;    Copyright © 2018-05, v20100v
+;
+;    @author    v20100v
+;    @contact   7567933+v20100v@users.noreply.github.com
+;    @version   1.0.0
+;
+;---------------------------------------------------------------------------------
+
+; ApplicationVersion : the version number is defined by InnoSetupCommandLineCompiler (iscc) with /d&lt;name&gt;[=&lt;value&gt;]	(/dApplicationVersion=0.3.6.5)
+; ApplicationName : the name of applciation is defined by InnoSetupCommandLineCompiler (iscc) with /d&lt;name&gt;[=&lt;value&gt;]	(/dApplicationName=MyApplication)
+
+#define ApplicationPublisher "v20100v"
+#define ApplicationURL "https://github.com/v20100v/autoit-gui-skeleton"
+#define ApplicationExeName ApplicationName+"_v" + ApplicationVersion + ".exe"
+#define ApplicationCopyright "Copyright (C) 2018, A.C.M.E v20100v"
+
+; Get the path where the script iss is placed
+#define PathRelease SourcePath + "releases\v" + ApplicationVersion + "\"+ApplicationName+"_v" + ApplicationVersion
+#define PathOutput SourcePath + "releases\v" + ApplicationVersion + "\"
+#define PathAssets SourcePath + "..\assets"
+
+; NOTE: The value of AppId uniquely identifies this application.
+; Do not use the same AppId value in installers for other applications.
+; (To generate a new GUID, click Tools | Generate GUID inside the IDE.)
+#define ApplicationGUID "6886E28B-AAB5-4866-BCD5-E1B4C171A87A"
+#define ApplicationID ApplicationName + "_" + ApplicationGUID
+
+[Setup]
+; NOTE: The value of AppId uniquely identifies this application.
+; Do not use the same AppId value in installers for other applications.
+; (To generate a new GUID, click Tools | Generate GUID inside the IDE.)
+AppId={#ApplicationID}
+AppName={#ApplicationName}
+AppVersion={#ApplicationVersion}
+AppPublisher={#ApplicationPublisher}
+AppPublisherURL={#ApplicationURL}
+AppSupportURL={#ApplicationURL}
+AppUpdatesURL={#ApplicationURL}
+AppCopyright={#ApplicationCopyright}
+DefaultDirName={sd}\ACME\{#ApplicationName}
+DefaultGroupName=ACME\{#ApplicationName}
+LicenseFile={#PathAssets}\LICENSE.txt
+InfoBeforeFile={#PathAssets}\BEFORE_INSTALL.txt
+InfoAfterFile={#PathAssets}\AFTER_INSTALL.txt
+OutputDir={#PathOutput}\
+OutputBaseFilename=Setup_{#ApplicationName}_v{#ApplicationVersion}
+Compression=lzma2/fast
+SolidCompression=yes
+AppContact=7567933+v20100v@users.noreply.github.com
+UninstallDisplayIcon={app}\assets\images\myApplication.ico
+WizardImageFile={#PathAssets}\images\innosetup_background.bmp
+WizardImageStretch=no
+WizardSmallImageFile={#PathAssets}\images\innosetup_image.bmp
+SetupIconFile={#PathAssets}\images\setup.ico
+BackColor=$FFFF00
+VersionInfoVersion={#ApplicationVersion}
+
+; Make this setup program work with 32-bit and 64-bit Windows
+ArchitecturesAllowed=x86 x64
+ArchitecturesInstallIn64BitMode=x64
+
+
+[Languages]
+Name: "en"; MessagesFile: compiler:Default.isl;
+Name: "french"; MessagesFile: "compiler:Languages\French.isl"
+
+[CustomMessages]
+french.CheckInstall=est déjà installé sur ce PC.
+french.CheckInstallAction=Souhaitez-vous désinstaller cette version existante avant de poursuivre?
+en.CheckInstall=is already install on this PC.
+en.CheckInstallAction=Do you want to uninstall this existing version before continuing?
+
+[Tasks]
+Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}";
+
+[Files]
+Source: "{#PathRelease}\{#ApplicationExeName}"; DestDir: "{app}"; Flags: ignoreversion
+Source: "{#PathRelease}\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
+                                                                          
+[Icons]
+Name: "{group}\{#ApplicationName}"; Filename: "{app}\{#ApplicationExeName}"; IconFilename: {app}\assets\images\myApplication.ico;
+Name: "{group}\{cm:ProgramOnTheWeb,{#ApplicationName}}"; Filename: "{#ApplicationURL}";
+Name: "{group}\{cm:UninstallProgram,{#ApplicationName}}"; Filename: "{uninstallexe}"; IconFilename: {app}\assets\images\setup.ico;
+Name: "{commondesktop}\{#ApplicationName}"; Filename: "{app}\{#ApplicationExeName}"; IconFilename: {app}\assets\images\myApplication.ico; IconIndex: 0 
+
+[Run]
+Filename: "{app}\{#ApplicationExeName}"; Description: "{cm:LaunchProgram,{#StringChange(ApplicationName, '&amp;', '&amp;&amp;')}}"; Flags: shellexec postinstall skipifsilent
+
+[Registry]
+Root: HKCR; Subkey: {#ApplicationName}Application; ValueType: string; ValueName: ; ValueData: Program {#ApplicationName}; Flags: uninsdeletekey
+Root: HKCR; Subkey: {#ApplicationName}Application\DefaultIcon; ValueType: string; ValueName: ; ValueData: {app}\{#ApplicationExeName},0; Flags: uninsdeletevalue
+Root: HKCR; Subkey: {#ApplicationName}Application\shell\open\command; ValueType: string; ValueName: ; ValueData: """{app}\{#ApplicationExeName}"" ""%1"""; Flags: uninsdeletevalue
+
+[Code]
+function InitializeSetup(): Boolean;
+var
+  ResultCode: Integer;
+  ResultStr:string;
+begin
+  // Check if the application is already install
+  // MsgBox('ApplicationID = ' + '{#ApplicationID}', mbInformation, mb_Ok);
+  begin
+    If RegQueryStringValue(HKLM, 'SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\{#ApplicationID}_is1', 'UninstallString', ResultStr) then begin
+      If ResultStr&lt;&gt;'' then begin
+        ResultStr:=RemoveQuotes(ResultStr);
+          if MsgBox('{#ApplicationName} ' + ExpandConstant('{cm:CheckInstall}') + #13#13 + ExpandConstant('{cm:CheckInstallAction}'), mbConfirmation, MB_YESNO) = idYes then
+          if not Exec(ResultStr, '/silent', '', SW_SHOW, ewWaitUntilTerminated, ResultCode) then
+            MsgBox('Erreur !!! ' #13#13 '' + SysErrorMessage(ResultCode) + '.', mbError, MB_OK);
+      end;
+    end;
+  end ;
+  Result := True;
+end;
+
+procedure InitializeWizard();
+var
+  WLabel1, WLabel2 : TLabel;
+begin
+  WizardForm.WelcomeLabel1.Hide;
+  WizardForm.WelcomeLabel2.Hide;
+  WizardForm.FinishedHeadingLabel.Hide;
+
+  WizardForm.WizardBitmapImage.Width := 500;
+  WizardForm.WizardBitmapImage.Height := 315;
+
+  WLabel1 := TLabel.Create(WizardForm);
+  WLabel1.Left := ScaleX(176); 
+  WLabel1.Top := ScaleY(16);
+  WLabel1.Width := ScaleX(301); 
+  WLabel1.Height := ScaleY(54); 
+  WLabel1.AutoSize := False;
+  WLabel1.WordWrap := True;
+  WLabel1.Font.Name := 'tahoma'; 
+  WLabel1.Font.Size := 12; 
+  WLabel1.Font.Style := [fsBold];
+  WLabel1.Font.Color:= clBlack; 
+  WLabel1.ShowAccelChar := False;
+  WLabel1.Caption := WizardForm.WelcomeLabel1.Caption;
+  WLabel1.Transparent := True;
+  WLabel1.Parent := WizardForm.WelcomePage;
+  WLabel1.Hide;
+
+  WLabel2 :=TLabel.Create(WizardForm);
+  WLabel2.Left := ScaleX(176); 
+  WLabel2.Top := ScaleY(136);
+  WLabel2.Width := ScaleX(301); 
+  WLabel2.Height := ScaleY(234); 
+  WLabel2.AutoSize := False;
+  WLabel2.WordWrap := True;
+  WLabel2.Font.Name := 'tahoma'; 
+  WLabel2.Font.Color:= clBlack; 
+  WLabel2.ShowAccelChar := False;
+  WLabel2.Caption := WizardForm.WelcomeLabel2.Caption;
+  WLabel2.Transparent := True;
+  WLabel2.Parent := WizardForm.WelcomePage;
+
+  WizardForm.WizardBitmapImage2.Width := 500; 
+  WizardForm.WizardBitmapImage2.Height := 315; 
+
+  WizardForm.FinishedLabel.Left := ScaleX(176);
+  WizardForm.FinishedLabel.Top := ScaleY(116);
+end;
+
+procedure CurPageChanged(CurPageID: Integer);
+begin
+  // you must do this as late as possible, because the RunList is being modified
+  // after installation; so this will check if there's at least one item in the
+  // RunList and then set to the first item (indexing starts at 0) Enabled state
+  // to False
+  if (CurPageID = wpFinished) then    
+    //WizardForm.RunList.Visible := False;
+    WizardForm.RunList.Left := ScaleX(176);
+    WizardForm.RunList.Top := ScaleY(214);
+end;
+</code></pre>
+
+<p><br /></p>
+
+<blockquote>
+  <p><strong>Lectures associés</strong></p>
+
+  <p><a href="https://v20100v.github.io/autoit-gui-skeleton/fr/documentation/getting-started">Démarrer avec AGS</a><br />
+<a href="https://v20100v.github.io/autoit-gui-skeleton/fr/documentation/code-organization">Organisation du code d’un projet AGS</a>.</p>
+</blockquote>
+
+</section>
+
+  <!-- Tag list for portfolio -->
+  
+  
+
+
+
+<div class="tag-list">
+    
+    <div class="meta">Tags</div>
+    
+
+    
+    <a class="button" href="/autoit-gui-skeleton/fr/tags#Documentation">
+        <p><i class="fa fa-tag fa-fw"></i> Documentation</p>
+    </a>
+    
+    <a class="button" href="/autoit-gui-skeleton/fr/tags#InnoSetup">
+        <p><i class="fa fa-tag fa-fw"></i> InnoSetup</p>
+    </a>
+    
+</div>
+
+
+</article>
+    </div>
+    
+<footer class="site-footer">
+    <p class="text">Build with ♥ by <a href="https://jekyllrb.com/">Jekyll</a> and <a href="https://github.com/sylhare/Type-on-Strap">Type on Strap</a>
+</p>
+            <div class="footer-icons">
+                <ul>
+                <!-- Social icons from Font Awesome, if enabled -->
+                
+
+
+<li>
+	<a href="mailto:vb20100bv@gmail.com" title="Email">
+		<span class="fa-stack fa-lg">
+            <i class="fa fa-circle fa-stack-2x"></i>
+            <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+        </span>
+	</a>
+</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li>
+	<a href="https://github.com/v20100v" title="Follow on GitHub">
+		<span class="fa-stack fa-lg">
+            <i class="fa fa-circle fa-stack-2x"></i>
+            <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+        </span>
+	</a>
+</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                </ul>
+            </div>
+</footer>
+
+
+
+
+    <!-- KaTeX 0.8.3 -->
+
+<link rel="stylesheet" type="text/css" href="https://v20100v.github.io//autoit-gui-skeleton/assets/css/vendor/katex.min.css">
+<script src="https://v20100v.github.io//autoit-gui-skeleton/assets/js/vendor/katex.min.js"></script>
+
+
+<!-- Google Analytics -->
+
+<script>
+    (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function () {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-119463892-1', 'auto');
+    ga('send', 'pageview');
+</script>
+
+
+<!-- Jquery -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+
+<!-- FancyBox -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.5/jquery.fancybox.min.js"></script>
+
+<!-- Bootstrap -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"
+        integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+        crossorigin="anonymous"></script>
+
+<!-- Prism CSS syntax highlighter for AutoIt support -->
+<script src="https://v20100v.github.io//autoit-gui-skeleton/assets/js/vendor/prism.js"></script>
+
+<script>
+    $(document).ready(function () {
+        // Enable fancybox evrywhere with this class selector
+        $('.img-fancybox').each(function (index, value) {
+            $(this).wrap('<a href="' + $(this).attr('src') + '" data-fancybox data-caption="' + $(this).attr('alt') + '">');
+        });
+
+        // Enable bootstrap tooltip everywhere with data-toogle attribute
+        $('[data-toggle="tooltip"]').tooltip()
+    });
+</script>
+
+<!-- Main JS (navbar.js, katex_init.js and masonry_init.js)-->
+<script defer=true src="/autoit-gui-skeleton/assets/js/main.min.js"></script>
+  </body>
+</html>

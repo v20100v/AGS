@@ -5,18 +5,18 @@
 .DS_Store
 
 # Byte-compiled / optimized / DLL files
-docs/*.manifest
-docs/*.spec
+_docs/*.manifest
+_docs/*.spec
 
 # Jekyll dev or build files
-docs/_site/*
-docs/_development_tool/*
-docs/.sass-cache/*
-docs/*.css.map
-docs/*.scssc
+_docs/_site/*
+_docs/_development_tool/*
+_docs/.sass-cache/*
+_docs/*.css.map
+_docs/*.scssc
 
 # Theme Gem files
-docs/Gemfile.lock
-docs/*.gem
-docs/.gems
-docs/jekyll-theme-type-on-strap.gemspec
+_docs/Gemfile.lock
+_docs/*.gem
+_docs/.gems
+_docs/jekyll-theme-type-on-strap.gemspec
