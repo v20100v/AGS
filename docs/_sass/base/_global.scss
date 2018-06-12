@@ -140,6 +140,10 @@ li {
     margin-left: 0em;
 }
 
+.hide li {
+    margin-left: 0em;
+}
+
 ol,
 ul {
     list-style-position: inside;
@@ -198,4 +202,8 @@ video {
     li {
         font-size: 1em;
     }
+}
+
+.text-presentation {
+    margin-top:1rem;
 }

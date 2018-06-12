@@ -3,6 +3,7 @@ baseurl: "/autoit-gui-skeleton"
 url: "https://v20100v.github.io"
 title: AutoIt GUI Skeleton # site's title
 description: "AGS propose to provide an architecture and an organization to efficiently develop and build a desktop application Windows with AutoIt." # used by search engines
+encoding: utf-8
 
 # Theme configuration
 theme_settings:
@@ -114,7 +115,12 @@ sass:
   style: :compressed
 
 # PLUGIN
-plugins: [jekyll-paginate, jekyll-seo-tag]
+plugins: [jekyll-paginate, jekyll-seo-tag, jekyll-multiple-languages-plugin]
+
+# LANGUAGES
+languages: ["en", "fr"]
+exclude_from_localizations: ["assets"]
+
 
 #theme: type-on-strap # Uncomment if using the theme as a jekyll theme gem
 exclude: ["Gemfile", "Gemfile.lock", "type-on-strap.gemspec", "*.gem", "LICENSE", "README.md"]

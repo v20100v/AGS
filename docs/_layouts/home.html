@@ -4,24 +4,24 @@ layout: default
 
 <div class="home">
   {% if site.theme_settings.header_text %}
-  <div id="main" class="call-out" style="background-image: url('{{ site.baseurl }}/assets/img/black-and-white-contemporary-dark-1040489.jpg')">
-    <p>AGS proposes to provide an architecture and an organization to efficiently build an desktop application Windows with AutoIt.</p>
+  <div id="main" class="call-out" style="background-image: url('{{ site.baseurl_root }}/assets/img/black-and-white-contemporary-dark-1040489.jpg')">
+    <p class="text-presentation">{% t global.presentation %}</p>
     <p>
-      <a href="./documentation" class="button">Get started</a>
+      <a href="{{ site.url }}{{ site.baseurl }}/documentation" class="button">{% t global.get_started %}</a>
       &nbsp; or &nbsp;
-      <a href="https://github.com/v20100v/autoit-gui-skeleton" class="button">View on GitHub &nbsp;<i class="fab fa-github"></i></a>
+      <a href="https://github.com/v20100v/autoit-gui-skeleton" class="button">{% t global.view_on_github %} &nbsp;<i class="fab fa-github"></i></a>
     </p>
   </div>
   {% endif %}
 
   <!-- Pagination list posts -->
-  <div class="posts">
+  <div class="posts posts-home">
     {% for post in paginator.posts %}
     <div class="post-teaser">
       {% if post.thumbnail %} 
       <div class="post-img mb-2">
         <a class="post-link" href="{{ site.url }}{{ site.baseurl }}{{ post.url }}">
-          <img src="{{ post.thumbnail }}">
+          <img src="{{ site.url }}{{ site.baseurl_root }}/{{ post.thumbnail }}">
         </a>
       </div>
       {% endif %}
@@ -34,7 +34,27 @@ layout: default
               </a>
             </h1>
             <p class="meta">
-              {{ post.date | date: "%B %-d, %Y" }}
+              {% if site.lang == "fr" %}
+                {% assign m = post.date | date: "%-m" %}
+                {{ post.date | date: "%-d" }}
+                {% case m %}
+                  {% when '1' %}Janvier
+                  {% when '2' %}Février
+                  {% when '3' %}Mars
+                  {% when '4' %}Avril
+                  {% when '5' %}Mai
+                  {% when '6' %}Juin
+                  {% when '7' %}Juillet
+                  {% when '8' %}Août
+                  {% when '9' %}Septembre
+                  {% when '10' %}Octobre
+                  {% when '11' %}Novembre
+                  {% when '12' %}Décembre
+                {% endcase %}
+                {{ post.date | date: "%Y" }}
+              {% else %}
+                {{ post.date | date: "%B %-d, %Y" }}
+              {% endif %}
             </p>
           </header>
           <div class="excerpt">

@@ -9,7 +9,7 @@ notifications:
 # branch whitelist, only for GitHub Pages
 branches:
   only:
-  - gh-pages
+  - gh-_pages
   - master
 
 env:

@@ -1,0 +1,13 @@
+global:
+  english: Anglais
+  french: Français
+  presentation: AGS se propose de fournir une architecture et une organisation pour construire efficacement une application bureautique Windows avec la solution AutoIt.
+  get_started: Pour démarrer
+  view_on_github: Voir sur GitHub
+  view_this_site_in: Translate in english
+  home: Entrée
+  about: À propos
+  read: Lire
+langs:
+  en: Anglais
+  fr: Français

@@ -37,6 +37,10 @@
 }
 
 // Post listing
+.posts-home{
+  margin-top:2em;
+}
+
 .posts {
   .post-teaser {
     @extend %padding-regular;

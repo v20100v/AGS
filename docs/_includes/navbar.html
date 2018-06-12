@@ -3,11 +3,11 @@
     <!-- Logo and title -->
 	<div class="branding">
 		<a href="{{ site.url }}{{ site.baseurl }}/">
-			<img class="avatar" src="{{ site.url }}{{ site.baseurl }}/assets/img/autoit.png" alt=""/>
+			<img class="avatar" src="{{ site.url }}{{ site.baseurl_root }}/assets/img/autoit.png" alt=""/>
 		</a>
 
 		<p class="site-title">
-			<a href="{{ site.url }}{{ site.baseurl }}/">Home</a>
+			<a href="{{ site.url }}{{ site.baseurl }}/">{% t global.home %}</a>
 		</p>
 	</div>
 
@@ -31,27 +31,16 @@
 
         <!-- Menu -->
         <ul class="hide">
-            {% for entry in site.data.navigation %}
-                {% if entry.url == current_page %}
-                    {% assign current = ' class="current"' %}
-                {% else %}
-                    <!-- We have to declare it 'null' to ensure it doesn't propagate. -->
-                    {% assign current = null %}
-                {% endif %}
-                {% assign sublinks = entry.sublinks %}
-                {% if sublinks %}
-                    <li{{ current }}>
-                        <a href="{{ site.url }}{{ site.baseurl }}/{{ entry.url }}">{{ entry.title }}</a>
-                        <ul>
-                        {% for sublink in sublinks %}
-                            <li><a href="{{ site.url }}{{ site.baseurl }}/{{ sublink.url }}">{{ sublink.title }}</a></li>
-                        {% endfor %}
-                        </ul>
-                    </li>
-                {% else %}
-                    <li{{ current }}><a href="{{ site.url }}{{ site.baseurl }}/{{ entry.url }}">{{ entry.title }}</a></li>
-                {% endif %}
-            {% endfor %}
+
+            {% if site.lang == "fr" %}
+              <li{{ current }}><a href="{{ site.url }}{{ site.baseurl }}/documentation">Documentation</a></li>
+              <li{{ current }}><a href="{{ site.url }}{{ site.baseurl }}/articles">Articles</a></li>
+              <li{{ current }}><a href="{{ site.url }}{{ site.baseurl }}/about">About</a></li>
+            {% else %}
+              <li{{ current }}><a href="{{ site.url }}{{ site.baseurl }}/documentation">Documentation</a></li>
+              <li{{ current }}><a href="{{ site.url }}{{ site.baseurl }}/articles">Articles</a></li>
+              <li{{ current }}><a href="{{ site.url }}{{ site.baseurl }}/about">À propos</a></li>
+            {% endif %}
 
             {% for item in site.theme_settings.special_page %}
             {% if item[1].enabled %}
@@ -63,6 +52,20 @@
             </li>
             {% endif %}
             {% endfor %}
+
+            {% if site.lang == "fr" %}
+            <li>
+                <a class="link-en" href="{{ site.url }}{{ site.baseurl_root }}/{{ page.url }}">
+                    <span class="flag-icon flag-icon-gb" data-toggle="tooltip" data-placement="bottom" title="{% t global.view_this_site_in %}" alt="{% t langs.en %}"></span>
+                </a>
+            </li>
+            {% else %}
+            <li>
+                <a class="link-fr" href="{{ site.url }}{{ site.baseurl_root }}/fr{{ page.url }}">
+                    <span class="flag-icon flag-icon-fr" data-toggle="tooltip" data-placement="bottom" title="{% t global.view_this_site_in %}" alt="{% t langs.fr %}"></span>
+                </a>
+            </li>
+            {% endif %}
         </ul>
     </nav>
 </header>

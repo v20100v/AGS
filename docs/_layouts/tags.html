@@ -2,93 +2,144 @@
 layout: page
 ---
 
-<div class="home">
-
-<!-- cycles through posts to get tags -->
+{% comment %}
+<!-- Iterate all posts to get its tags -->
+{% endcomment %}
 {% assign rawtags = "" %}
 {% for post in site.posts %}
-  {% assign post_tags = post.tags | join:'|' | append:'|' %}
-  {% assign rawtags = rawtags | append:post_tags %}
+  {% assign ttags = post.tags | join:'|' | append:'|' %}
+  {% assign rawtags = rawtags | append:ttags %}
 {% endfor %}
 
-<!-- cycles through portfolio collection to get tags -->
-{% assign portfolio =  site.portfolio | map: 'tags' | join: ','  | split: ',' | uniq %}
-{% for tag in portfolio %}
-  {% assign portfolio_tags = tag | join:'|' | append:'|' %}
-  {% assign rawtags = rawtags | append:portfolio_tags %}
-{% endfor %}
-
-<!-- cycles through pages to get tags -->
+{% comment %}
+<!-- Iterate all pages to get its tags -->
+{% endcomment %}
 {% for page in site.pages %}
-  {% assign page_tags = page.tags | join:'|'  %}
+  {% assign page_tags = page.tags | join:'|' | append:'|' %}
   {% assign rawtags = rawtags | append:page_tags %}
-{% endfor %}    
-    
-<!-- Displays the list of tags-->
-{% include tags_list.html tags=rawtags %}
+{% endfor %}
 
-    <!-- Displays the posts and pages that contains the tag-->
-    <div class="posts">
-        {% for tag in tags %}
-        <h3 id="{{ tag | cgi_escape }}" class="tag-anchor">
-            <a href="#{{ tag | cgi_escape }}"><i class="fa fa-tag fa-fw"></i> {{ tag }}</a>
-            <a href="#{{ page.title }}" style="float: right"><i class="fa fa-chevron-up" aria-hidden="true"> </i> </a>
+{% comment %}
+<!-- Clean rawtags -->
+{% endcomment %}
+{% assign rawtags = rawtags | split:'|' | sort %}
 
-        </h3>
+{% comment %}
+<!-- Removes dulpicated tags and blank tags -->
+{% endcomment %}
+{% assign tags = "" %}
+{% for tag in rawtags %}
+  {% if tag != "" %}
+    {% if tags == "" %}
+      {% assign tags = tag | split:'|' %}
+    {% endif %}
+    {% unless tags contains tag %}
+      {% assign tags = tags | join:'|' | append:'|' | append:tag | split:'|' %}
+    {% endunless %}
+  {% endif %}
+{% endfor %}
 
-        <!-- Posts and collection for each tags -->
-        <div class="tag-posts">
+{% comment %}
+<!-- List all tags in website -->
+{% endcomment %}
+{% if tags.size > 0 %}
+<div class="tag-list">
+    {% for tag in tags %}
+    <a class="button" href="{{ site.url }}{{ site.baseurl }}/tags#{{tag}}">
+        <p><i class="fa fa-tag fa-fw"></i> {{ tag }}</p>
+    </a>
+    {% endfor %}
+</div>
+{% else %}
+<div class="tag-list"></div>
+{% endif %}
 
-            <!-- Pages -->
-            {% for page in site.pages %} 
-                {% if page.tags contains tag %}
-                <h5 class="tag-title">
-                    <a href="{{ page.url | prepend: site.baseurl }}">
-                        <i class="fa fa-file-image-o" aria-hidden="true"></i>
-                        {{ page.title }}
-                    </a>
-                    
-                    <div class="meta">
-                        {{ "today" | date: "%B %-d, %Y" }}
-                    </div>
-                </h5>
-                {% endif %} 
-            {% endfor %} 
-            
-            <!-- Posts -->
-            {% for post in site.posts %} 
-                {% if post.tags contains tag %}
-                <h5 class="tag-title">
-                    <a href="{{ post.url | prepend: site.baseurl }}">
-                        <i class="fa fa-file-text-o" aria-hidden="true"></i>
-                        {{ post.title }}
-                    </a>
-                    
-                    <div class="meta">
-                        {{ post.date | date: "%B %-d, %Y" }}
-                    </div>
-                </h5>
-                {% endif %} 
-            {% endfor %} 
-            
-            <!-- Portfolio -->
-            {% for note in site.portfolio %} 
-                {% if note.tags contains tag %}
-                <h5 class="tag-title">
-                    <a href="{{ site.baseurl }}{{ note.url }}">
-                        <i class="fa fa-file-o" aria-hidden="true"></i>
-                        {{ note.title }}
-                    </a>
-                
-                    <div class="meta">
-                        {{ note.date | date: "%B %-d, %Y" }}
-                    </div>
-                </h5>
-                {% endif %} 
-            {% endfor %}
+{% comment %}
+<!-- List all your posts posted by tag -->
+{% endcomment %}
+<div class="posts">
+    {% for tag in tags %}
+    <h3 id="{{ tag | cgi_escape }}" class="tag-anchor">
+        <a href="#{{ tag | cgi_escape }}"><i class="fa fa-tag fa-fw"></i> {{ tag }}</a>
+        <a href="#{{ page.title }}" style="float: right"><i class="fa fa-chevron-up" aria-hidden="true"> </i> </a>
+    </h3>
 
-        </div>
+    <!-- Posts and collection for each tags -->
+    <div class="tag-posts">
+
+        <!-- Pages -->
+        {% for page in site.pages %}
+        {% if page.tags contains tag %}
+        <h5 class="tag-title">
+            <a href="{{ site.url }}{{ site.baseurl }}{{ page.url }}"><i class="fa fa-file-image-o" aria-hidden="true"></i>{% if site.lang == "fr" %}{{ page.title_fr }}{% else %}{{ page.title }}{% endif %}</a>
+<span class="tags-date">
+{% if site.lang == "fr" %}
+    {% assign m = page.date | date: "%-m" %}
+    {{ page.date | date: "%-d" }}
+    {% case m %}
+        {% when '1' %}Janvier
+        {% when '2' %}Février
+        {% when '3' %}Mars
+        {% when '4' %}Avril
+        {% when '5' %}Mai
+        {% when '6' %}Juin
+        {% when '7' %}Juillet
+        {% when '8' %}Août
+        {% when '9' %}Septembre
+        {% when '10' %}Octobre
+        {% when '11' %}Novembre
+        {% when '12' %}Décembre
+    {% endcase %}
+    {{ page.date | date: "%Y" }}
+{% else %}
+    {{ page.date | date: "%B %-d, %Y" }}
+{% endif %}
+</span>
+        </h5>
+        {% endif %}
         {% endfor %}
 
+        <!-- Posts -->
+        {% for post in site.posts %}
+        {% if post.tags contains tag %}
+        <h5 class="tag-title">
+            <a href="{{ post.url | prepend: site.baseurl }}"><i class="fa fa-file-text-o" aria-hidden="true"></i>{{ post.title }}</a>
+            <span class="tags-date">
+              {% if site.lang == "fr" %}
+                {% assign m = post.date | date: "%-m" %}
+                {{ post.date | date: "%-d" }}
+                {% case m %}
+                  {% when '1' %}Janvier
+                  {% when '2' %}Février
+                  {% when '3' %}Mars
+                  {% when '4' %}Avril
+                  {% when '5' %}Mai
+                  {% when '6' %}Juin
+                  {% when '7' %}Juillet
+                  {% when '8' %}Août
+                  {% when '9' %}Septembre
+                  {% when '10' %}Octobre
+                  {% when '11' %}Novembre
+                  {% when '12' %}Décembre
+                {% endcase %}
+                {{ post.date | date: "%Y" }}
+              {% else %}
+                {{ post.date | date: "%B %-d, %Y" }}
+              {% endif %}
+            </span>
+        </h5>
+        {% endif %}
+        {% endfor %}
+
+        <!-- Portfolio -->
+        {% for note in site.portfolio %}
+        {% if note.tags contains tag %}
+        <h5 class="tag-title">
+            <a href="{{ site.baseurl }}{{ note.url }}"><i class="fa fa-file-o" aria-hidden="true"></i>{{ note.title }}</a>
+            <div class="tags-date">{{ note.date | date: "%B %-d, %Y" }}</div>
+        </h5>
+        {% endif %}
+        {% endfor %}
     </div>
+    {% endfor %}
 </div>
