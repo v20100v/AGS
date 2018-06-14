@@ -5,7 +5,7 @@
         <atom:link href="/autoit-gui-skeleton/fr/feed.xml" rel="self" type="application/rss+xml"/>
         <link>https://v20100v.github.io/autoit-gui-skeleton/fr/</link>
         <description></description>
-        <pubDate>Tue, 12 Jun 2018 17:26:33 +0200</pubDate>
+        <pubDate>Thu, 14 Jun 2018 15:05:02 +0200</pubDate>
         
         <item>
             <title>Création d'un setup Windows pour une application AutoIt</title>
@@ -35,21 +35,14 @@
 
 &lt;p&gt;Dans AGS on utilise un batch Windows qui joue le rôle de chef d’orquestre, pour générer le setup.&lt;/p&gt;
 
-&lt;table&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;![AGS GUI package and deployment process](assets/img/documentation/AGS-package-and-deployment-process.gif”&lt;/td&gt;
-      &lt;td&gt;absolute_url }}){:class=”img-full img-fancybox”}&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
+&lt;p&gt;&lt;img src=&quot;https://v20100v.github.io/autoit-gui-skeleton/assets/img/documentation/AGS-package-and-deployment-process.gif&quot; alt=&quot;AGS GUI package and deployment process&quot; class=&quot;img-full img-fancybox&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;br /&gt;&lt;/p&gt;
 
 &lt;blockquote&gt;
-  &lt;p&gt;&lt;strong&gt;Read AGS documentation&lt;/strong&gt;&lt;/p&gt;
+  &lt;p&gt;&lt;strong&gt;Lire la documentation AGS&lt;/strong&gt;&lt;/p&gt;
 
-  &lt;p&gt;&lt;a href=&quot;https://v20100v.github.io/autoit-gui-skeleton/fr/documentation/creating-setup-package-autoit-application&quot;&gt;Creating installation packages for AutoIt application with AGS&lt;/a&gt;&lt;/p&gt;
+  &lt;p&gt;&lt;a href=&quot;https://v20100v.github.io/autoit-gui-skeleton/fr/documentation/creating-setup-package-autoit-application&quot;&gt;Création d’installeur - setup Windows - pour des applications AutoIt&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 
 </description>
