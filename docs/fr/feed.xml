@@ -5,7 +5,7 @@
         <atom:link href="/autoit-gui-skeleton/fr/feed.xml" rel="self" type="application/rss+xml"/>
         <link>https://v20100v.github.io/autoit-gui-skeleton/fr/</link>
         <description></description>
-        <pubDate>Thu, 14 Jun 2018 15:05:02 +0200</pubDate>
+        <pubDate>Mon, 18 Jun 2018 14:06:51 +0200</pubDate>
         
         <item>
             <title>Création d'un setup Windows pour une application AutoIt</title>
@@ -17,7 +17,7 @@
 
 &lt;!--more--&gt;
 
-&lt;h1 id=&quot;fonctionnalités-deploiement-avec-ags&quot;&gt;Fonctionnalités deploiement avec AGS&lt;/h1&gt;
+&lt;h1 id=&quot;fonctionnalités-pour-faciliter-le-déploiement-dapplication-dautoit&quot;&gt;Fonctionnalités pour faciliter le déploiement d’application d’AutoIt&lt;/h1&gt;
 
 &lt;p&gt;Voici quelques nouvelles fonctionnalités avec le couple AGS et InnoSetup:&lt;/p&gt;
 
@@ -26,14 +26,14 @@
   &lt;li&gt;Soutenir l’internationalisation (i18n).&lt;/li&gt;
   &lt;li&gt;Vérifier si l’application est déjà installée.&lt;/li&gt;
   &lt;li&gt;Configurer des messages supplémentaires dans la configuration comme: contrat de licence, prérequis et projet d’historique.&lt;/li&gt;
-  &lt;li&gt;Ajouter des applciations d’icônes dans le menu Démarrer de Windows.&lt;/li&gt;
+  &lt;li&gt;Ajouter l’application dans le menu Démarrer de Windows.&lt;/li&gt;
   &lt;li&gt;Lancer une commande personnalisée après la fin de l’installation.&lt;/li&gt;
   &lt;li&gt;Personnaliser et modifier les éléments graphiques du programme d’installation de Windows.&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h1 id=&quot;ags-utilise-un-batch-windows-pour-automatiser-la-génération-du-setup&quot;&gt;AGS utilise un batch Windows pour automatiser la génération du setup&lt;/h1&gt;
 
-&lt;p&gt;Dans AGS on utilise un batch Windows qui joue le rôle de chef d’orquestre, pour générer le setup.&lt;/p&gt;
+&lt;p&gt;Dans AGS on utilise un batch Windows qui joue le rôle de chef d’orchestre, pour générer le setup.&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;https://v20100v.github.io/autoit-gui-skeleton/assets/img/documentation/AGS-package-and-deployment-process.gif&quot; alt=&quot;AGS GUI package and deployment process&quot; class=&quot;img-full img-fancybox&quot; /&gt;&lt;/p&gt;
 
@@ -79,7 +79,7 @@
             <link>/autoit-gui-skeleton/fr/2018/05/17/thx-github-jekyll.html</link>
             <guid isPermaLink="true">/autoit-gui-skeleton/fr/2018/05/17/thx-github-jekyll.html</guid>
             <description>&lt;blockquote&gt;
-  &lt;p&gt;Le site de documentation d’AGS est deployé sur Github Pages avec Jekyll. Merci pour ce mariage heureux.&lt;/p&gt;
+  &lt;p&gt;Le site de documentation d’AGS est déployé sur Github Pages avec Jekyll. Merci pour ce mariage heureux.&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;!--more--&gt;

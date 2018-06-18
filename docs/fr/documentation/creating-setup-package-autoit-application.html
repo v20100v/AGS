@@ -140,7 +140,7 @@
   <ol class="breadcrumb">
     <li class="breadcrumb-item"><a href="https://v20100v.github.io/autoit-gui-skeleton/fr/">Home</a></li>
     <li class="breadcrumb-item"><a href="https://v20100v.github.io/autoit-gui-skeleton/fr/documentation">Documentation</a></li>
-    <li class="breadcrumb-item active" aria-current="page">Creating installation packages for AutoIt application</li>
+    <li class="breadcrumb-item active" aria-current="page">Création d'installeur Windows pour des applications AutoIt</li>
   </ol>
 </nav>
 
@@ -148,11 +148,11 @@
 <ul id="markdown-toc">
   <li><a href="#objectifs-et-motivations" id="markdown-toc-objectifs-et-motivations">Objectifs et motivations</a></li>
   <li><a href="#packager-une-application-autoit-et-créer-un-programme-dinstallation-windows" id="markdown-toc-packager-une-application-autoit-et-créer-un-programme-dinstallation-windows">Packager une application AutoIt et créer un programme d’installation Windows</a>    <ul>
-      <li><a href="#utiliser-un-batch-windwos-comme-chef-dorquestre" id="markdown-toc-utiliser-un-batch-windwos-comme-chef-dorquestre">Utiliser un batch Windwos comme chef d’orquestre</a>        <ul>
+      <li><a href="#utiliser-un-batch-windows-comme-chef-dorchestre" id="markdown-toc-utiliser-un-batch-windows-comme-chef-dorchestre">Utiliser un batch Windows comme chef d’orchestre</a>        <ul>
           <li><a href="#étape-17--créer-un-répertoire-de-sortie" id="markdown-toc-étape-17--créer-un-répertoire-de-sortie">Étape 1/7 : créer un répertoire de sortie</a></li>
           <li><a href="#étape-27-compilation-autoit-du-programme-principal" id="markdown-toc-étape-27-compilation-autoit-du-programme-principal">Étape 2/7: Compilation AutoIt du programme principal</a></li>
           <li><a href="#étape-37-copier-les-ressources" id="markdown-toc-étape-37-copier-les-ressources">Étape 3/7: Copier les ressources</a></li>
-          <li><a href="#étape-47-create-a-file-with-metadatas-of-generation" id="markdown-toc-étape-47-create-a-file-with-metadatas-of-generation">Étape 4/7: Create a file with metadatas of generation</a></li>
+          <li><a href="#étape-47-création-dun-fichier-avec-des-métadonnées-sur-la-génération" id="markdown-toc-étape-47-création-dun-fichier-avec-des-métadonnées-sur-la-génération">Étape 4/7: Création d’un fichier avec des métadonnées sur la génération</a></li>
           <li><a href="#étape-57-créer-larchive-zip" id="markdown-toc-étape-57-créer-larchive-zip">Étape 5/7: Créer l’archive zip</a></li>
           <li><a href="#étape-67-créer-linstalleur-windows-avec-le-script-innosetup" id="markdown-toc-étape-67-créer-linstalleur-windows-avec-le-script-innosetup">Étape 6/7: Créer l’installeur Windows avec le script InnoSetup</a></li>
           <li><a href="#étape-77-nettoyer-en-supprimant-le-répertoire-temporaire" id="markdown-toc-étape-77-nettoyer-en-supprimant-le-répertoire-temporaire">Étape 7/7: Nettoyer en supprimant le répertoire temporaire</a></li>
@@ -162,15 +162,15 @@
   </li>
   <li><a href="#fonctionnalité-dun-installeur-windows-avec-ags-et-innosetup" id="markdown-toc-fonctionnalité-dun-installeur-windows-avec-ags-et-innosetup">Fonctionnalité d’un installeur Windows avec AGS et InnoSetup</a>    <ul>
       <li><a href="#support-de-linternationalisation-i18n" id="markdown-toc-support-de-linternationalisation-i18n">Support de l’internationalisation (i18n)</a></li>
-      <li><a href="#vérifier-si-lapplication-est-déjà-installé-sur-le-pc" id="markdown-toc-vérifier-si-lapplication-est-déjà-installé-sur-le-pc">Vérifier si l’application est déjà installé sur le PC</a></li>
+      <li><a href="#vérifier-si-lapplication-est-déjà-installée-sur-le-pc" id="markdown-toc-vérifier-si-lapplication-est-déjà-installée-sur-le-pc">Vérifier si l’application est déjà installée sur le PC</a></li>
       <li><a href="#configurer-des-messages-supplémentaires-dans-linstalleur--licence-prérequis--historique" id="markdown-toc-configurer-des-messages-supplémentaires-dans-linstalleur--licence-prérequis--historique">Configurer des messages supplémentaires dans l’installeur : licence, prérequis &amp; historique</a></li>
       <li><a href="#ajouter-des-icônes-dans-le-menu-démarrer-de-windows" id="markdown-toc-ajouter-des-icônes-dans-le-menu-démarrer-de-windows">Ajouter des icônes dans le menu Démarrer de Windows</a></li>
-      <li><a href="#executer-une-commande-après-linstallation" id="markdown-toc-executer-une-commande-après-linstallation">Executer une commande après l’installation</a></li>
+      <li><a href="#éxecuter-une-commande-après-linstallation" id="markdown-toc-éxecuter-une-commande-après-linstallation">Éxecuter une commande après l’installation</a></li>
       <li><a href="#personnaliser-et-modifiez-les-éléments-graphiques-du-programme-dinstallation-windows" id="markdown-toc-personnaliser-et-modifiez-les-éléments-graphiques-du-programme-dinstallation-windows">Personnaliser et modifiez les éléments graphiques du programme d’installation Windows</a></li>
     </ul>
   </li>
   <li><a href="#code-source" id="markdown-toc-code-source">Code source</a>    <ul>
-      <li><a href="#windows-batch-le-chef-dorquestre" id="markdown-toc-windows-batch-le-chef-dorquestre">Windows batch, le chef d’orquestre</a></li>
+      <li><a href="#windows-batch" id="markdown-toc-windows-batch">Windows batch</a></li>
       <li><a href="#innosetup-script-iss-associé" id="markdown-toc-innosetup-script-iss-associé">InnoSetup Script (ISS) associé</a></li>
     </ul>
   </li>
@@ -178,9 +178,9 @@
 
 <h1 id="objectifs-et-motivations">Objectifs et motivations</h1>
 
-<p>Lorsqu’on termine une application, et que nous avons un code executable, il faut trouver un moyen pour faciliter le déploiement et l’installation sur un poste client. L’approche naturelle est de créer une simple archive zip du projet. Mais ce n’est pas suffisant, si on souhaite bénéficier de toutes les fonctionnalités d’un installeur Windows.</p>
+<p>Lorsqu’on termine une application, et que nous avons un binaire exécutable, il faut trouver un moyen pour faciliter son déploiement et son installation sur un poste client. L’approche naturelle est de créer une simple archive zip du projet. Mais ce n’est pas suffisant, si on souhaite bénéficier de toutes les fonctionnalités d’un installeur Windows.</p>
 
-<p>Ainsi afin de faciliter le déploiement d’une application de bureau Windows, AGS propose de constuire un installeur Windows avec la solution <a href="http://www.jrsoftware.org/isinfo.php">InnoSetup</a>.</p>
+<p>Ainsi afin de faciliter le déploiement d’une application de bureau Windows, AGS propose de construire un installeur Windows via la solution <a href="http://www.jrsoftware.org/isinfo.php">InnoSetup</a>.</p>
 
 <h1 id="packager-une-application-autoit-et-créer-un-programme-dinstallation-windows">Packager une application AutoIt et créer un programme d’installation Windows</h1>
 
@@ -192,11 +192,11 @@
   - Créer une archive zip pour récupérer l’application;
   - Et finalement construire le programme d’installation en compilant le script InnoSetup associé.</p>
 
-<p>Toutes les étapes, pour packager l’application et générer le programme d’installation, sont pilotées à partir d’un batch Windows, pour des raisons évidentes de rejouabilité et de facilité d’utilsiation.</p>
+<p>Toutes les étapes, pour packager l’application et générer le programme d’installation, sont pilotées à partir d’un batch Windows, pour des raisons évidentes de re-jouabilité et de facilité d’utilisation.</p>
 
-<h2 id="utiliser-un-batch-windwos-comme-chef-dorquestre">Utiliser un batch Windwos comme chef d’orquestre</h2>
+<h2 id="utiliser-un-batch-windows-comme-chef-dorchestre">Utiliser un batch Windows comme chef d’orchestre</h2>
 
-<p>Avec AGS nous utilisons un fichier batch Windows, appelé <code class="highlighter-rouge">deployment_autoit_application.bat</code>, qui joue en effet le rôle de ched d’orquestre. Il créer le répertoire de sortie <code class="highlighter-rouge">\releases\vx.y.z\</code>, dans lequel l’archive zip de l’application et le programme d’installation de Windows seront construits.</p>
+<p>Avec AGS nous utilisons un fichier batch Windows, appelé <code class="highlighter-rouge">deployment_autoit_application.bat</code>, qui pilote la génération de l’installeur Windows. Il va créer le répertoire de sortie <code class="highlighter-rouge">\releases\vx.y.z\</code>, dans lequel l’archive zip de l’application et le programme d’installation de Windows seront construits.</p>
 
 <p><img src="https://v20100v.github.io/autoit-gui-skeleton/assets/img/documentation/AGS-package-and-deployment-process.gif" alt="AGS GUI package and deployment process" class="img-full img-fancybox" /></p>
 
@@ -262,9 +262,9 @@ echo Compilation AutoIt is finished.
 
 <p>Lorsque le processus est lancé, il copiera dans le répertoire de sortie tous les éléments (images, fichiers …) nécessaires au bon fonctionnement de l’application et à la génération du programme d’installation dans le répertoire de sortie.</p>
 
-<h3 id="étape-47-create-a-file-with-metadatas-of-generation">Étape 4/7: Create a file with metadatas of generation</h3>
+<h3 id="étape-47-création-dun-fichier-avec-des-métadonnées-sur-la-génération">Étape 4/7: Création d’un fichier avec des métadonnées sur la génération</h3>
 
-<p>In order to keep the build date, we create a file named <code class="highlighter-rouge">".v%VERSION%"</code> in the output directory. It’s possible to store in this text file any metadats need to describe this generated application.</p>
+<p>Dans le but de garder la date de génération, le batch va créer un fichier <code class="highlighter-rouge">".v%VERSION%"</code> dans le répertoire de sortie. Il est possible ainsi de stocker dans ce fichier texte d’autres métadonnées dont a besoin pour décrire l’application et son installeur.</p>
 
 <h3 id="étape-57-créer-larchive-zip">Étape 5/7: Créer l’archive zip</h3>
 
@@ -327,7 +327,7 @@ en.CheckInstallAction=Do you want to uninstall this existing version before cont
 
 <p><img src="https://v20100v.github.io/autoit-gui-skeleton/assets/img/documentation/innosetup_choose_language.png" alt="AGS InnoSetup choix langue" /></p>
 
-<h2 id="vérifier-si-lapplication-est-déjà-installé-sur-le-pc">Vérifier si l’application est déjà installé sur le PC</h2>
+<h2 id="vérifier-si-lapplication-est-déjà-installée-sur-le-pc">Vérifier si l’application est déjà installée sur le PC</h2>
 
 <p>Pour éviter d’installer plusieurs fois l’application sur l’ordinateur client, le programme d’installation vérifie à l’avance qu’il n’est pas déjà présent.</p>
 
@@ -373,17 +373,17 @@ Name: "{commondesktop}\{#ApplicationName}"; Filename: "{app}\{#ApplicationExeNam
 
 <p><img src="https://v20100v.github.io/autoit-gui-skeleton/assets/img/documentation/innosetup_finish2.png" alt="AGS InnoSetup licence Windows icons start menu" /></p>
 
-<h2 id="executer-une-commande-après-linstallation">Executer une commande après l’installation</h2>
+<h2 id="éxecuter-une-commande-après-linstallation">Éxecuter une commande après l’installation</h2>
 
-<p>Il est possible de configurer l’installeur pour qu’il execute une commande à la fin de l’installation, comme par exemple pour démarrer l’application, ouvrir une page web, ouvrir un pdf…</p>
+<p>Il est possible de configurer l’installeur pour qu’il éxecute une commande à la fin de l’installation, comme par exemple pour démarrer l’application, ouvrir une page web, ouvrir un pdf…</p>
 
 <p><img src="https://v20100v.github.io/autoit-gui-skeleton/assets/img/documentation/innosetup_finish.png" alt="AGS InnoSetup licence Windows icons start menu" /></p>
 
 <h2 id="personnaliser-et-modifiez-les-éléments-graphiques-du-programme-dinstallation-windows">Personnaliser et modifiez les éléments graphiques du programme d’installation Windows</h2>
 
-<p>Nous avons choisi une taille (largeur x hauter) statique pour l’installateur. Ce n’est pas le plus facile de changer ces dimensions.</p>
+<p>Nous avons choisi une taille (largeur ; hauteur) statique pour le setup Windows. Ce n’est pas le plus facile de changer ces dimensions, mais c’est possible.</p>
 
-<p>Il y a 2 images et 2 icônes utilisées dans l’installateur. Ils sont stockés dans le répertoire <code class="highlighter-rouge">.\Assets\images</code>. Les images sont nécessairement au format bmp et doivent respecter les tailles standards.</p>
+<p>Il y a 2 images et 2 icônes utilisées dans le setup. Ils sont stockés dans le répertoire <code class="highlighter-rouge">.\Assets\images</code>. Attention avec InnoSetup, les images sont nécessairement au format bmp. De plus elles doivent respecter les tailles standards, pour ne pas être déformé.</p>
 
 <table>
   <thead>
@@ -427,7 +427,7 @@ SetupIconFile={#PathAssets}\images\setup.ico
 
 <h1 id="code-source">Code source</h1>
 
-<h2 id="windows-batch-le-chef-dorquestre">Windows batch, le chef d’orquestre</h2>
+<h2 id="windows-batch">Windows batch</h2>
 
 <pre><code class="language-Batch">::---------------------------------------------------------------------------------
 ::

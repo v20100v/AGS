@@ -166,15 +166,15 @@
 
 <h1 id="organisation-du-code">Organisation du code</h1>
 
-<p>Pour organiser le code d’une application AuotIt avec une interface graphique, AGS propose d’utiliser des conventions et le modèle suivant. Cet article explique plus en détails l’organisation du code d’un projet respectant les conventiosn AGS. Nous décrivons ci-dessous ses principaux éléments.</p>
+<p>Cet article explique plus en détails l’organisation du code d’un projet respectant les conventions AGS. Nous décrivons ci-dessous ses principaux éléments.</p>
 
 <p><img src="https://v20100v.github.io/autoit-gui-skeleton/assets/img/documentation/autoit-gui-skeleton_overview.png" alt="Overview of AGS architecture" class="img-fancybox img-full" /></p>
 
 <h2 id="programme-dentrée-principal">Programme d’entrée principal</h2>
 
-<p>Le programme <code class="highlighter-rouge">myApplication.au3</code> nous sert de point d’entrée unique de notre application. C’est lui qui démarre l’application. Dans ce dernier on commence par inclure toutes les autres dependances qu’il a besoin : librairies d’AutoIt, librairies tierces, la déclaration des variables globales, le code de l’application GUI et métier.</p>
+<p>Le programme <code class="highlighter-rouge">myApplication.au3</code> nous sert de point d’entrée unique de notre application. C’est lui qui démarre l’application. Dans ce dernier on commence par inclure toutes les autres dépendances qu’il a besoin : librairies d’AutoIt, librairies tierces, la déclaration des variables globales, le code de l’application GUI et métier.</p>
 
-<p>Il appelle la méthode _main_GUI()`, le gestionnaire principale de l’interface graphique qui va construire l’interface graphique et gérer les interactions des utilisateurs et les évenements de l’application.</p>
+<p>Il appelle la méthode _main_GUI()`, le gestionnaire principale de l’interface graphique qui va construire l’interface graphique et gérer les interactions des utilisateurs et les évènements de l’application.</p>
 
 <pre><code class="language-autoit">;; myApplication.au3 ;;
 
@@ -231,9 +231,9 @@ Global $OPEN_FILE_NAME = -1
 
 <h2 id="ecrire-le-code-métier-dans-des-fichiers-spécifiquement-dédiés">Ecrire le code métier dans des fichiers spécifiquement dédiés</h2>
 
-<p>Dans cet organisation, le code métier est décrit dans des fichiers spécifiquement dédiés.</p>
+<p>Dans cette organisation, le code métier est décrit dans des fichiers spécifiquement dédiés.</p>
 
-<p>Par exemple nous ajoutons un fichier <code class="highlighter-rouge">myApplication_LOGIC.au3</code> qui contient toutes les méthodes du code métier. Ces méthodes logiques sont ensuite appelées par d’autres généralement déclenchées par des interactions utilisateur, dont les liens sont définies dans l’interface graphique. Principe simple de séparation entre logique et vue. Nous gérons une boîte de dialogue de la façon suivante:</p>
+<p>Par exemple nous ajoutons un fichier <code class="highlighter-rouge">myApplication_LOGIC.au3</code> qui contient toutes les méthodes du code métier. Ces méthodes logiques sont ensuite appelées par d’autres généralement déclenchées par des interactions utilisateur, dont les liens sont définis dans l’interface graphique. Principe simple de séparation entre logique et vue. Nous gérons une boîte de dialogue de la façon suivante:</p>
 
 <pre><code class="language-autoit">;; myApplication_LOGIC.au3 ;;
 
@@ -272,7 +272,7 @@ EndFunc
 
 <h3 id="programme-principal-pour-gérer-linterface-graphique">Programme principal pour gérer l’interface graphique</h3>
 
-<p>Le fichier <code class="highlighter-rouge">myApplication_GUI.au3</code> contient la méthode <code class="highlighter-rouge">_main_GUI()</code> qui est appelé par le programme d’entrée principal. Cette méthode est conçue pour créer l’interface utilisateur graphique (GUI) et gérer toutes les interactions et tous les événements de l’utilisateur. Ainsi elle appelle toutes les autres méthodes qui initialise les éléments de l’interface graphique.</p>
+<p>Le fichier <code class="highlighter-rouge">myApplication_GUI.au3</code> contient la méthode <code class="highlighter-rouge">_main_GUI()</code> qui est appelé par le programme d’entrée principal. Cette méthode est conçue pour créer l’interface utilisateur graphique (GUI) et gérer toutes les interactions et tous les événements de l’utilisateur. Ainsi elle appelle toutes les autres méthodes qui initialisent les éléments de l’interface graphique.</p>
 
 <pre><code class="language-autoit">;; myApplication_GUI.au3 ;;
 
@@ -379,7 +379,7 @@ EndFunc
 
 <h3 id="gestionnaire-principal-des-événements">Gestionnaire principal des événements</h3>
 
-<p>Le gestionnaire principal des événements utilisateurs et dans l’application se nomme <code class="highlighter-rouge">_GUI_HandleEvents()</code>. C’est ce dernier qui va appelé tous les autres gestionnaires d’événement spécifique à chaque vue. Ils sont nommés par convention <code class="highlighter-rouge">_GUI_HandleEvents_View_Xxx($msg)</code>.</p>
+<p>Le gestionnaire principal des événements utilisateurs et dans l’application se nomme <code class="highlighter-rouge">_GUI_HandleEvents()</code>. C’est ce dernier qui va appeler tous les autres gestionnaires d’événement spécifique à chaque vue. Ils sont nommés par convention <code class="highlighter-rouge">_GUI_HandleEvents_View_Xxx($msg)</code>.</p>
 
 <pre><code class="language-autoit">;; myApplication_GUI.au3 ;;
 
@@ -408,7 +408,7 @@ EndFunc
 
 <h3 id="changer-de-vue">Changer de vue</h3>
 
-<p>Pour passer d’une vue de départ à une autre vue d’arrivée, il suffit d’abord de masquer tous les éléments graphiques, puis dans un second temps d’afficher uniquement ceux de la vue d’arrivée. Alors, comment cacher tous les éléments graphiques? Juste avec une méthode <code class="highlighter-rouge">_GUI_Hide_all_view()</code> qui va appelle le gestionnaire de visibilité de chaque vue. Ces derniers sont nommés par convention <code class="highlighter-rouge">_GUI_ShowHide_View_Xxx</code>.</p>
+<p>Pour passer d’une vue de départ à une autre vue d’arrivée, il suffit d’abord de masquer tous les éléments graphiques, puis dans un second temps d’afficher uniquement ceux de la vue d’arrivée. Alors, comment cacher tous les éléments graphiques? Juste avec une méthode <code class="highlighter-rouge">_GUI_Hide_all_view()</code> qui va appeller le gestionnaire de visibilité de chaque vue. Ces derniers sont nommés par convention <code class="highlighter-rouge">_GUI_ShowHide_View_Xxx</code>.</p>
 
 <pre><code class="language-autoit">;; myApplication_GUI.au3 ;;
 

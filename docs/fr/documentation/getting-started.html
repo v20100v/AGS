@@ -140,7 +140,7 @@
   <ol class="breadcrumb">
     <li class="breadcrumb-item"><a href="https://v20100v.github.io/autoit-gui-skeleton/fr/">Home</a></li>
     <li class="breadcrumb-item"><a href="https://v20100v.github.io/autoit-gui-skeleton/fr/documentation">Documentation</a></li>
-    <li class="breadcrumb-item active" aria-current="page">Getting started</li>
+    <li class="breadcrumb-item active" aria-current="page">Démarrer avec AGS</li>
   </ol>
 </nav>
 
@@ -168,9 +168,9 @@
 
 <h1 id="ags-">AGS ?</h1>
 
-<p>AutoIt Gui Skeleton (AGS) fournit un environement pour les développeurs, pour faciliter la construction d’application AutoIt.</p>
+<p>AutoIt Gui Skeleton (AGS) fournit un environnement et des outils pour les développeurs, afin de faciliter la construction d’application AutoIt.</p>
 
-<p>Pour organiser le code d’une application AutoIT, AGS propose d’utiliser des conventions et le modèle suivant pour développer et construire une application AutoIt avec une interface graphqiue (IHM).</p>
+<p>On se propose d’utiliser une organisation du code, des conventions et le modèle suivant pour développer et construire une application AutoIt avec une interface graphique (IHM).</p>
 
 <h1 id="architecture-et-vue-densemble-dun-projet-ags">Architecture et vue d’ensemble d’un projet AGS</h1>
 
@@ -206,11 +206,11 @@
 
 <h2 id="répertoires-et-fichiers-dun-projet-ags">Répertoires et fichiers d’un projet AGS</h2>
 
-<p>On organise les fichiers dans des répertyoires spécifiques.</p>
+<p>On organise les fichiers dans des répertoires spécifiques.</p>
 
 <h3 id="répertoire-assets">Répertoire <code class="highlighter-rouge">assets</code></h3>
 
-<p>Ce répertoire contient les éléments utilisés dans l’application comme des images, des fichiers textes, pdf, html, css, javascript. Ce répertoire contient tous les fichiers locaux nécessaire à l’application.</p>
+<p>Ce répertoire contient les éléments utilisés dans l’application comme des images, des fichiers textes, pdf, html, css, javascript. Ce répertoire contient tous les fichiers locaux nécessaires à l’application.</p>
 
 <h3 id="répertoire-deployment">Répertoire <code class="highlighter-rouge">deployment</code></h3>
 
@@ -229,7 +229,7 @@ choco install innosetup</code>
 
 <h3 id="répertoire-views">Répertoire <code class="highlighter-rouge">views</code></h3>
 
-<p>Ce répertoire contient les gestionnaires des vues. Tout le code de toutes les vues sont définis à chaque fois dans un fichier spécifique et stockés dans ce répertoire.</p>
+<p>Ce répertoire contient la définition de toutes les vues. Chaque vue est définie est gérée dans un fichier spécifique de ce répertoire. La séparation des vues dans chaque fichier, en simplifie grandement l’écriture et la maintenance par la suite.</p>
 
 <h2 id="vue-densemble-de-larchitecture-dags">Vue d’ensemble de l’architecture d’AGS</h2>
 
@@ -243,19 +243,19 @@ choco install innosetup</code>
 
 <h3 id="gestionnaire-principal-de-lihm">Gestionnaire principal de l’IHM</h3>
 
-<p>Ce gestionnaire contiens la méthode <code class="highlighter-rouge">_main_GUI()</code>, qui est uniquement appellé par le programme d’entrée principal. Cette méthode a pour rôle de créer l’interface graphique (IHM) et de gérer toutes les interactions et évenements de l’utilisateur.</p>
+<p>Ce gestionnaire contiens la méthode <code class="highlighter-rouge">_main_GUI()</code>. Elle est uniquement appellé par le programme d’entrée principal. Cette méthode a pour rôle de créer l’interface graphique (IHM) et de gérer toutes les interactions et évènements de l’utilisateur.</p>
 
 <h3 id="centraliser-la-déclaration-des-variables-globales">Centraliser la déclaration des variables globales</h3>
 
 <p>Toutes les constantes et les variables globales sont définis en un seul endroit, dans le fichier <code class="highlighter-rouge">myProject_GLOBALS.au3</code>. À l’exception de toutes les variables globales des éléments graphiques qui elles, sont définies dans chaque fichier de vue spécifique. On rappelle que les constantes ne peuvent plus changer de valeur dans le temps, contrairement aux variables globales.</p>
 
-<p>Par convetion, toutes les variables glboales doivent être écrites en majuscule avec un underscore pour séparée les motes. Par exemple : <code class="highlighter-rouge">Global Const $APP_EMAIL_CONTACT</code></p>
+<p>Par convention, toutes les variables globales doivent être écrites en majuscule avec un underscore qui sépare les mots. Par exemple : <code class="highlighter-rouge">Global Const $APP_EMAIL_CONTACT</code></p>
 
 <h3 id="package-et-déploiement">Package et déploiement</h3>
 
-<p>Dans le but de faciliter le déploiement d’application Windows développer avec AutoIt, on propose d’utiliser un processus automatisée pour construire un installeur Windows avec la solution InnoSetup. Dans AGS, on utilise en plus un fichier batch Windows, appellé <code class="highlighter-rouge">deployment_autoit_application.bat</code> qui joue le rôle de chef d’orquestre dans la génération de l’installeur. Dans le répertoire <code class="highlighter-rouge">\Deployment</code>, il va créer le répertoire de sortie <code class="highlighter-rouge">\releases\vx.y.z\</code> où l’archive zip de l’application, ainsi que le programme d’installation -Windows seront construits.</p>
+<p>Dans le but de faciliter le déploiement d’application Windows développé avec AutoIt, on propose d’utiliser un processus automatisée pour construire un installeur Windows avec la solution InnoSetup. Dans AGS, on utilise en plus un fichier batch Windows, appellé <code class="highlighter-rouge">deployment_autoit_application.bat</code> qui joue le rôle de chef d’orchestre dans la génération de l’installeur. Dans le répertoire <code class="highlighter-rouge">\Deployment</code>, il va créer le répertoire de sortie <code class="highlighter-rouge">\releases\vx.y.z\</code> où l’archive zip de l’application, ainsi que le programme d’installation -Windows seront construits.</p>
 
-<p>Pour génerer un installeur, il faut suvire plusieurs étapes, dont voici les principales :</p>
+<p>Pour générer un installeur, il faut suivre plusieurs étapes, dont voici les principales :</p>
 
 <ul>
   <li>Assigner un numéro de version à l’application;</li>
@@ -266,8 +266,6 @@ choco install innosetup</code>
 </ul>
 
 <p>Toutes ces étapes sont pilotées par le fichier batch Windows <code class="highlighter-rouge">deployment_autoit_application.bat</code>.</p>
-
-<p>For generate a Windows application installer, we need a preparation whose main steps are:</p>
 
 <p><img src="https://v20100v.github.io/autoit-gui-skeleton/assets/img/documentation/AGS-package-and-deployment-result.png" alt="Result of process to package AutoIt application and generate Windows installer in AGS" class="img-full" /></p>
 
