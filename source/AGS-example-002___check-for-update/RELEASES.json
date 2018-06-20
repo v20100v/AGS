@@ -1,0 +1,22 @@
+{
+   "name": "myApplication",
+   "description": "Description of myApplication into a small paragraph",
+   "license": "",
+   "homepage": "https://myApplication.com",
+   "releases": [
+     {
+       "version": "1.1.0",
+       "state": "stable",
+       "downloadSetup": "https://myApplication.com/download/setup_myApplication_v1.2.1.exe",
+       "published": "2018-04-25",
+       "releaseNotes": "https://extranet.ac-orleans-tours.fr/confluence/display/PADI/eMailing+%3A%3A+notes+de+version+1.3.1"
+     },
+     {
+       "version": "1.0.0",
+       "state": "prototype",
+       "downloadSetup": "undefined",
+       "published": "2014-03-21",
+       "releaseNotes": "undefined"
+     }
+   ]
+}

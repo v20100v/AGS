@@ -1,0 +1,1 @@
+More information about JSON.au3 here : https://www.autoitscript.com/forum/topic/148114-a-non-strict-json-udf-jsmn/

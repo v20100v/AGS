@@ -1,0 +1,54 @@
+.atlwdg-popup {
+    left: 0 !important;
+    top: 0 !important;
+    height: 100% !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    max-height: 100% !important;
+}
+
+.atlwdg-blanket {
+    display: none !important;
+}
+
+.container {
+    padding: 50px 0px 0px 0px;
+}
+
+.mainAutoIt {
+    height: 600px;
+}
+
+.mainTitle {
+	margin: -30px 0px 20px;
+}
+
+.separe {
+	margin:30px 0px 30px 0px;
+	border-top: 1px solid rgba(0, 0, 0, 0.12);		
+}
+
+h5 {
+	margin-top:60px !important;
+}
+
+li {
+	display: list-item;
+	text-align: -webkit-match-parent;
+	margin-top: 0.75em;
+	margin-left: 28px;			
+	list-style-type: square !important;
+}
+
+.copyright {
+	text-align: center;
+	color:rgb(128,128,128);
+}
+
+.card-reveal h6 {
+	margin-top:20px;
+	padding-top:20px;
+	border-top: 1px solid rgb(128,128,128);
+	font-weight: bold;
+}
